@@ -1,6 +1,9 @@
 import type { Metadata } from "next"
+import type { ReactNode } from "react"
 import { Archivo, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
 
 // Brand typography per Ticket 0c Section 2: Archivo (display + body) and
 // JetBrains Mono (labels, eyebrows, timestamps, numeric figures). Fraunces
@@ -19,9 +22,8 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 // Ticket 22 (Open Graph + meta): sitewide defaults. Individual pages override
-// title/description/OG image via their own generateMetadata export once
-// those pages are built -- see docs/section-manifest.md for what's in scope
-// in this PR versus follow-on work.
+// title/description/OG image via their own generateMetadata/metadata export
+// (see lib/metadata.ts buildMetadata helper, used by every Ticket 2-21 page).
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.alyvon.com"),
   title: {
@@ -38,11 +40,15 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <html lang="en" className={cnFonts(archivo.variable, jetbrainsMono.variable)}>
-      <body>{children}</body>
+      <body className="flex min-h-screen flex-col">
+        <SiteHeader />
+        <main className="flex-1">{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   )
 }
