@@ -1,20 +1,17 @@
-// Ticket 22: sitemap route. Only "/" is a real page in this PR (Tickets 2-21 build
-// the other 21 marketing pages listed in spec-2-marketing-site.md section 4). Add
-// each additional page's entry here as it lands -- do not fabricate entries for
-// pages that don't exist yet.
+// Ticket 22: sitemap route. Maps over SITE_ROUTES (lib/nav-data.ts), the
+// single source of truth for the site's route list -- add a page's entry
+// there in the same commit that lands its app/**/page.tsx, never ahead of
+// the real route existing.
 import type { MetadataRoute } from "next"
+import { SITE_ROUTES } from "@/lib/nav-data"
 
 const SITE_URL = "https://www.alyvon.com"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: SITE_URL,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    // Follow-on tickets: add /pricing, /departments, /about, etc. here as each
-    // page is built (see spec-2-marketing-site.md section 4 for the full list).
-  ]
+  return SITE_ROUTES.map((route) => ({
+    url: `${SITE_URL}${route.path}`,
+    lastModified: new Date(),
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
+  }))
 }
