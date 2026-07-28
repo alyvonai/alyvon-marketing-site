@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
   <rect width="48" height="48" rx="11" fill="#ffffff"/>
-  <g transform="translate(24 24) scale(0.72) translate(-24 -24)">
-    <path fill="#0b0d11" fill-rule="evenodd" d="M24 4 43 44 5 44Z M24 27 31 44 17 44Z M24 10.5 28.5 23 19.5 23Z"/>
-    <path fill="#de4b12" d="M24 13.5 27.8 22 20.2 22Z"/>
+  <g transform="translate(5.1 8.15) scale(0.235)">
+    <path fill="#0b0d11" fill-rule="evenodd" d="M80 0 160 134 1 134Z M80 34 110 85 51 85Z M40 107 121 107 135 134 26 134Z"/>
+    <path fill="#de4b12" d="M80 56 90 74 70 74Z"/>
   </g>
 </svg>
