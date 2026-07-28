@@ -13,6 +13,7 @@ import Link from "next/link"
 import { ChevronDown, Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { Logo } from "@/components/brand/logo"
 import { PRIMARY_NAV } from "@/lib/nav-data"
 
 export function SiteHeader() {
@@ -23,10 +24,11 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-content-lg items-center justify-between px-6">
         <Link
           href="/"
-          className="font-mono text-body font-medium uppercase tracking-wide text-text-primary"
+          aria-label="Alyvon home"
+          className="text-text-primary"
           onClick={() => setMobileOpen(false)}
         >
-          Alyvon
+          <Logo size={26} />
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:flex lg:items-center lg:gap-1">

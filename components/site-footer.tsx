@@ -3,6 +3,7 @@
 // their own footer. Server component: no interactivity needed.
 
 import Link from "next/link"
+import { Logo } from "@/components/brand/logo"
 import { FOOTER_LINK_GROUPS } from "@/lib/nav-data"
 
 export function SiteFooter() {
@@ -34,8 +35,8 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-border-subtle pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <Link href="/" className="font-mono text-body-s uppercase tracking-wide text-text-secondary">
-            Alyvon
+          <Link href="/" aria-label="Alyvon home" className="text-text-primary">
+            <Logo size={22} />
           </Link>
           <p className="text-body-s text-text-secondary">
             &copy; {year} Alyvon. Direct a team. Not a tool.
