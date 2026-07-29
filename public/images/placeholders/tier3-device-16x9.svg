@@ -1,0 +1,13 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Tier 3 device-in-context, 16:9">
+  <!-- Placeholder only. Real asset pending Creative ratification (imagery spec Section 10). -->
+  <!-- Colors trace to app/globals.css tokens: --bg-surface #F6F7F9, --border-subtle #D4D9E0, --text-secondary #585F6A, --accent #DE4B12. -->
+  <rect width="1600" height="900" fill="#F6F7F9"/>
+  <rect x="4" y="4" width="1592" height="892" fill="none" stroke="#D4D9E0" stroke-width="4"/>
+  <rect x="480" y="140" width="640" height="420" rx="16" fill="none" stroke="#D4D9E0" stroke-width="6"/>
+  <g transform="translate(800,430)" text-anchor="middle">
+    <text font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#0B0D11">PLACEHOLDER</text>
+    <text y="40" font-family="Arial, sans-serif" font-size="22" fill="#585F6A">Tier 3 &#183; Device-in-Context &#183; 16:9</text>
+    <text y="72" font-family="Arial, sans-serif" font-size="16" fill="#767D88">1600 &#215; 900 &#183; photoreal composite, use MediaFrame</text>
+  </g>
+  <rect x="730" y="510" width="140" height="6" fill="#DE4B12"/>
+</svg>
