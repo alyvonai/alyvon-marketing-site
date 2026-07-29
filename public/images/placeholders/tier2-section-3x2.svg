@@ -1,0 +1,12 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Tier 2 section break, 3:2 desktop">
+  <!-- Placeholder only. Real asset pending Creative ratification (imagery spec Section 10). -->
+  <!-- Colors trace to app/globals.css tokens: --bg-surface #F6F7F9, --border-subtle #D4D9E0, --text-secondary #585F6A, --accent #DE4B12. -->
+  <rect width="1200" height="800" fill="#F6F7F9"/>
+  <rect x="4" y="4" width="1192" height="792" fill="none" stroke="#D4D9E0" stroke-width="4"/>
+  <g transform="translate(600,370)" text-anchor="middle">
+    <text font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#0B0D11">PLACEHOLDER</text>
+    <text y="40" font-family="Arial, sans-serif" font-size="22" fill="#585F6A">Tier 2 &#183; Section Break &#183; 3:2 (desktop)</text>
+    <text y="72" font-family="Arial, sans-serif" font-size="16" fill="#767D88">1200 &#215; 800 &#183; composed concept art, no real UI</text>
+  </g>
+  <rect x="530" y="450" width="140" height="6" fill="#DE4B12"/>
+</svg>
