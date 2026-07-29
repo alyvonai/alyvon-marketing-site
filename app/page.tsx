@@ -5,6 +5,7 @@ import { Section } from "@/components/marketing/section"
 import { CtaBand } from "@/components/marketing/cta-band"
 import { buttonVariants } from "@/components/ui/button"
 import { OrderedList, List, DataTable } from "@/components/ui/typography"
+import { ProductShot } from "@/components/ui/product-shot"
 
 export const metadata = buildMetadata({
   title: "Direct a team. Not a tool.",
@@ -64,6 +65,16 @@ export default function Home() {
               14 days or 10 deliverables, whichever comes first. No credit card.
             </p>
           </div>
+        }
+        visual={
+          <ProductShot
+            src="/images/homepage/workforce-board-dashboard-hero.png"
+            alt="Alyvon workforce board dashboard showing departments, specialists, and task status"
+            aspect="tier1Hero"
+            priority
+            illustrative
+            caption="The workforce board: every department, every specialist, every task in flight."
+          />
         }
       />
 
