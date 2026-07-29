@@ -51,7 +51,7 @@ brand permanently. Do not reintroduce them, including in font fallback chains.
 ## Type scale (Tailwind font-size tokens, already wired)
 
 `display-xl` 56/60 (mobile 36/40), `display-l` 40/44 (mobile 28/34),
-`display-m` 28/34 (mobile 22/28), `body-l` 18/28, `body` 16/26, `body-s`
+`display-m` 28/34 (mobile 22/28), `body-l` 18/28, `body` 16/26, `body-s
 14/22, `label` 12/16 uppercase mono tracked +0.1em, `mono` 13/22. Never go
 below 12px anywhere on the site (Ticket 0c floor, restated in spec section 8).
 
@@ -75,9 +75,27 @@ shadows on photography, a single `border-border-subtle` 1px outline only.
 ## Full state/treatment rules live in Ticket 0c Sections 3 to 8
 
 Empty/error/loading states, all six form field states, iconography rules
-(1.5px stroke, 24px box, line-only, no filled/emoji), list/table/blockquote/
-code styles, breakpoint behavior (360 to 2560px), and the complete motion
+(2px stroke, 24px box, line-only, no filled/emoji — see "Icon stroke width"
+ratification below), list/table/blockquote/code styles, breakpoint behavior (360 to 2560px), and the complete motion
 rulebook are reproduced in full in the operator-supplied Ticket 0c memo. Build
 units implementing these should treat this file's token table as the literal
 values to use, and the full memo (passed to you in your dispatch context) as
 the behavioral spec to implement against.
+
+## Icon stroke width: ratified at 2px (supersedes Ticket 0c's 1.5px draft)
+
+Ticket 0c's original draft specified a 1.5px stroke for all line icons. The
+95-icon Lucide-based icon system (nav/product-surface, department, and common
+UI/action icons) was built and committed against **2px stroke at a 24x24
+viewBox** — Lucide's own default weight — rather than 1.5px, to avoid
+shipping two stroke weights side by side across the icon set and
+`IconWrapper`. This has been ratified as the standing rule: `IconWrapper`
+(`components/ui/icon-wrapper.tsx`) now forces `strokeWidth={2}` on every
+icon it renders. Do not reintroduce 1.5px anywhere, including in new
+components that bypass `IconWrapper`.
+
+**Still open, not resolved by this ratification:** the department icon set
+ships with 10 icons (5 live-routed nav entries + 5 org-chart clusters) against
+a spec target of 15-16. The remaining department icons are intentionally not
+built — the canonical department list needs Product/Content confirmation
+before more department icons are fabricated.
