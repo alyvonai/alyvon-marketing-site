@@ -70,7 +70,7 @@ export default function Home() {
           <ProductShot
             src="/images/homepage/workforce-board-dashboard-hero.png"
             alt="Alyvon workforce board dashboard showing departments, specialists, and task status"
-            aspect="tier1Hero"
+            aspect="tier3Device"
             priority
             illustrative
             caption="The workforce board: every department, every specialist, every task in flight."
