@@ -1,0 +1,14 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Tier 1 product hero, 16:10">
+  <!-- Placeholder only. Real asset pending Creative ratification (imagery spec Section 10). -->
+  <!-- Colors trace to app/globals.css tokens: --bg-surface #F6F7F9, --border-subtle #D4D9E0, --text-secondary #585F6A, --accent #DE4B12. -->
+  <rect width="1600" height="1000" fill="#F6F7F9"/>
+  <rect x="4" y="4" width="1592" height="992" fill="none" stroke="#D4D9E0" stroke-width="4"/>
+  <line x1="533" y1="0" x2="533" y2="1000" stroke="#D4D9E0" stroke-width="2" stroke-dasharray="12 10"/>
+  <text x="40" y="60" font-family="Arial, sans-serif" font-size="22" fill="#585F6A">Safe zone: left third text-free</text>
+  <g transform="translate(800,470)" text-anchor="middle">
+    <text font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="#0B0D11">PLACEHOLDER</text>
+    <text y="46" font-family="Arial, sans-serif" font-size="24" fill="#585F6A">Tier 1 &#183; Product Hero &#183; 16:10</text>
+    <text y="82" font-family="Arial, sans-serif" font-size="18" fill="#767D88">1600 &#215; 1000 &#183; replace with ProductShot screenshot</text>
+  </g>
+  <rect x="700" y="560" width="200" height="6" fill="#DE4B12"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Open Graph share image, 1200x630">
+  <!-- Placeholder only. Real asset pending Creative ratification (imagery spec Section 10). -->
+  <!-- Colors trace to app/globals.css tokens: --bg-inverse #0B0D11, --bg-surface #F6F7F9, --accent #DE4B12. -->
+  <rect width="1200" height="630" fill="#0B0D11"/>
+  <rect x="4" y="4" width="1192" height="622" fill="none" stroke="#585F6A" stroke-width="2"/>
+  <rect x="60" y="60" width="120" height="10" fill="#DE4B12"/>
+  <g transform="translate(60,300)">
+    <text font-family="Arial, sans-serif" font-size="44" font-weight="bold" fill="#F6F7F9">Alyvon</text>
+    <text y="52" font-family="Arial, sans-serif" font-size="24" fill="#AEA8A8">OG PLACEHOLDER &#183; 1200 &#215; 630</text>
+    <text y="90" font-family="Arial, sans-serif" font-size="16" fill="#767D88">replace with final social share image</text>
+  </g>
+</svg>

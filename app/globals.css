@@ -155,3 +155,27 @@ body {
     animation: none;
   }
 }
+
+/* ==================================================================================
+   Imagery dark-mode guard
+   Source: alyvon-imagery-ui-icon-spec.md, Section 7 ("Dark mode").
+
+   This site is light-only for imagery this round: `darkMode: "class"` in
+   tailwind.config.ts is reserved for a possible future app-shell theme, but
+   no `.dark` class is ever applied on the marketing site today.
+
+   This block is a forward-looking safety net, not active behavior: if a
+   `.dark` class is ever introduced, screenshots and composited product
+   shots (light-background by construction, per the imagery spec) must sit
+   on a neutral light card rather than being auto-inverted/filtered by a
+   theme-level `filter: invert()` or CSS `color-scheme` heuristic. Every
+   Tier 1-4 imagery wrapper is expected to carry `data-imagery-tier` (see
+   `lib/imagery.ts` + ProductShot/MediaFrame) or, for ProductShot
+   specifically, the `.product-shot` class, so this selector finds it
+   without depending on any particular component's internal markup.
+   =================================================================================== */
+.dark .product-shot,
+.dark [data-imagery-tier] {
+  background-color: var(--bg-surface) !important;
+  filter: none !important;
+}
