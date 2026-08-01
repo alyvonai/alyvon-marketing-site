@@ -1,73 +1,126 @@
 import Link from "next/link"
+import { cn } from "@/lib/utils"
+import { buildMetadata } from "@/lib/metadata"
 import { buttonVariants } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
-import { cn } from "@/lib/utils"
-import { buildMetadata } from "@/lib/metadata"
-
-// Copy pulled verbatim from Library deliverable e0adc23e-9115-4d27-ab08-b1cd1896e9b2
-// (Ticket 0h, final version -- use this one, not the earlier cc857c3b... draft).
-// Vertical-neutral per docs/tickets-2-21-manifest.md.
+import { Faq } from "@/components/marketing/faq"
+import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
+import { JsonLd } from "@/components/marketing/json-ld"
+import { BookingCta } from "@/components/marketing/booking-cta"
+import { CTA } from "@/lib/site"
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
   title: "Analytics - Alyvon",
   description:
-    "Alyvon Analytics: data engineering, data analysis, data science, and applied AI, built into one consulting practice.",
+    "Alyvon Analytics scopes, builds, and deploys data pipelines, reporting layers, applied AI workflows, and custom agents inside your business environment. A custom build engagement, not a self-serve product.",
   path: "/analytics",
 })
 
-const PARTS = [
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Analytics", path: "/analytics" },
+]
+
+const SYSTEM = [
+  { name: "Data engineering", copy: "Get the data reliable — pipelines, warehouse, and hygiene so every number downstream can be trusted." },
+  { name: "Data analysis", copy: "Answer the operational questions — the reports and reads your team acts on week to week." },
+  { name: "Data science", copy: "Model what should happen next — forecasting, segmentation, and experimentation." },
+  { name: "Applied AI", copy: "Automate the decision or workflow once the data is trustworthy — custom agents in your environment." },
+]
+
+const ENGAGEMENTS = [
+  "A reporting layer your team actually uses",
+  "A pipeline that makes a messy source reliable",
+  "A forecasting or segmentation model",
+  "An applied-AI workflow or custom agent deployed in your infrastructure",
+]
+
+const FAQ_ITEMS = [
   {
-    title: "Data engineering",
-    body: "Building and maintaining the pipelines that move and clean your data.",
+    q: "What is Alyvon Analytics?",
+    a: "Alyvon Analytics is a custom build practice. We scope, build, and deploy data pipelines, reporting layers, applied AI workflows, and custom agents inside your business environment.",
   },
   {
-    title: "Data analysis",
-    body: "Turning raw numbers into reporting you can read and act on.",
+    q: "How is Analytics different from Workforce?",
+    a: "Workforce is self-serve: departments produce finished files inside Alyvon on your connected tools. Analytics is a custom engagement that builds and deploys data systems and agents in your own infrastructure.",
   },
   {
-    title: "Data science",
-    body: "Modeling and forecasting built on top of clean data.",
+    q: "What is a custom AI engagement?",
+    a: "A scoped project to build an AI workflow or agent for one clear problem — after the data and the workflow are clear — deployed where your data lives.",
   },
   {
-    title: "Artificial intelligence",
-    body: "Applying custom AI to a specific business problem, once the data underneath it is solid.",
+    q: "What data does Alyvon need access to?",
+    a: "Only what the engagement requires, agreed during scoping. Access, environment, and controls are defined before any build begins.",
+  },
+  {
+    q: "Does Alyvon deploy into our infrastructure?",
+    a: "Yes, when the engagement calls for it. Deployment environment and security model are part of scoping.",
+  },
+  {
+    q: "How is Analytics priced?",
+    a: "Engagements are scoped after a discovery call because data access, deployment environment, and workflow risk change the build. There is no self-serve price.",
   },
 ]
 
-export default function AnalyticsPillarPage() {
+export default function AnalyticsPage() {
   return (
     <>
       <Hero
         eyebrow="Product line: analytics"
-        heading="Turn your data into a system you can act on."
-        subhead="Analytics covers the full path from raw data to a working model: engineering the pipeline, analyzing the numbers, building the science, and applying AI where it earns its place."
+        heading="Turn your data into a system your team can actually act on."
+        subhead="Alyvon Analytics scopes, builds, and deploys data pipelines, reporting layers, applied AI workflows, and custom agents inside your business environment."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <BookingCta
+            href={CTA.analytics.href}
+            label={CTA.analytics.label}
+            product="analytics"
+            placement="analytics_hero"
+            className={cn(buttonVariants({ size: "lg" }))}
+          />
         }
       />
 
       <Section tone="surface">
-        <div className="flex flex-col gap-8">
-          <h2 className="text-display-m text-text-primary">The four parts</h2>
-          <p className="max-w-[720px] text-body-l text-text-secondary">
-            These four parts are sequential in practice: a model is only as good as the
-            pipeline feeding it, and a pipeline is only worth building if the analysis behind
-            it is sound.
+        <div className="flex max-w-[720px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">What Analytics is</h2>
+          <p className="text-body-l text-text-secondary">
+            Analytics is a custom build engagement, not a self-serve product. We start with your
+            data and your questions, make the data reliable, and build the reporting and AI on top of
+            it — deployed where your data already lives.
           </p>
+        </div>
+      </Section>
+
+      <Section tone="canvas">
+        <div className="flex flex-col gap-8">
+          <h2 className="text-display-m text-text-primary">A four-part system</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {PARTS.map((p) => (
-              <Card key={p.title}>
+            {SYSTEM.map((s, i) => (
+              <Card key={s.name} className="flex flex-col gap-3 p-6">
+                <span className="font-mono text-label uppercase text-accent-strong">
+                  Step {i + 1}
+                </span>
+                <h3 className="text-body-l font-semibold text-text-primary">{s.name}</h3>
+                <p className="text-body text-text-secondary">{s.copy}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="surface">
+        <div className="flex flex-col gap-8">
+          <h2 className="text-display-m text-text-primary">Example engagements</h2>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {ENGAGEMENTS.map((e) => (
+              <Card key={e}>
                 <CardHeader>
-                  <CardTitle className="text-body-l">{p.title}</CardTitle>
+                  <CardTitle className="text-body-l">{e}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-body text-text-secondary">{p.body}</p>
-                </CardContent>
               </Card>
             ))}
           </div>
@@ -75,28 +128,80 @@ export default function AnalyticsPillarPage() {
       </Section>
 
       <Section tone="canvas">
-        <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">Detail page</h2>
+        <div className="flex max-w-[760px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">Why it’s custom</h2>
           <p className="text-body-l text-text-secondary">
-            Custom AI is documented in depth on its own page, covering what &ldquo;custom&rdquo;
-            means in practice and where it fits once the first three parts are in place.
+            Data access, deployment environment, and workflow risk are different in every business,
+            so the build is scoped, not bought. That’s why Analytics starts with a scoping call, not
+            a signup.
           </p>
-          <Link
-            href="/analytics/custom-ai"
-            className={cn(buttonVariants({ variant: "secondary", size: "lg" }), "w-fit")}
-          >
-            See custom AI
-          </Link>
         </div>
+      </Section>
+
+      {/* Workforce boundary (spec §26) */}
+      <Section tone="surface">
+        <div className="max-w-[760px] rounded-r-card border-l-4 border-accent bg-accent-wash p-6">
+          <p className="text-body-l text-text-primary">
+            Looking for self-serve research deliverables instead of a custom analytics build? See{" "}
+            <Link
+              href="/workforce/product-engineering#research-insights"
+              className="text-accent-strong underline-offset-4 hover:underline"
+            >
+              Workforce Research &amp; Insights
+            </Link>
+            .
+          </p>
+        </div>
+      </Section>
+
+      <Section tone="canvas">
+        <div className="flex max-w-[720px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">Engagements &amp; pricing</h2>
+          <p className="text-body-l text-text-secondary">
+            Analytics engagements are scoped after a discovery call because data access, deployment
+            environment, and workflow risk change the build.
+          </p>
+          <div>
+            <Link href="/analytics/pricing" className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}>
+              See engagement details
+            </Link>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="surface">
+        <Faq items={FAQ_ITEMS} />
       </Section>
 
       <CtaBand
         heading="Start with the data you already have."
+        subhead="Book a scoping call and we’ll map the engagement to your environment."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <BookingCta
+            href={CTA.analytics.href}
+            label={CTA.analytics.label}
+            product="analytics"
+            placement="analytics_final"
+            className={cn(buttonVariants({ size: "lg" }))}
+          />
         }
+      />
+
+      <Section tone="canvas" spacing="sm">
+        <Breadcrumbs crumbs={crumbs} />
+      </Section>
+
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: "Alyvon Analytics",
+            description:
+              "Custom data engineering, analysis, data science, and applied AI built and deployed in your environment.",
+            url: "/analytics",
+          }),
+          faqSchema(FAQ_ITEMS),
+          breadcrumbSchema(crumbs),
+        ]}
       />
     </>
   )

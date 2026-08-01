@@ -15,6 +15,8 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Logo } from "@/components/brand/logo"
 import { PRIMARY_NAV } from "@/lib/nav-data"
+import { CTA } from "@/lib/site"
+import { track } from "@/lib/analytics"
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = React.useState(false)
@@ -37,6 +39,7 @@ export function SiteHeader() {
               <div key={item.href} className="group relative">
                 <Link
                   href={item.href}
+                  aria-haspopup="menu"
                   className="flex items-center gap-1 rounded-[8px] px-3 py-2 text-body-s text-text-secondary transition-colors duration-micro ease-out-standard hover:bg-surface hover:text-text-primary"
                 >
                   {item.label}
@@ -75,9 +78,13 @@ export function SiteHeader() {
           >
             Log in
           </Link>
-          <Link href="/login" className={cn(buttonVariants({ size: "sm" }))}>
+          <a
+            href={CTA.workforce.href}
+            onClick={() => track("trial_cta_clicked", { product: "workforce", placement: "header" })}
+            className={cn(buttonVariants({ size: "sm" }))}
+          >
             Start free trial
-          </Link>
+          </a>
         </div>
 
         <button
@@ -136,13 +143,16 @@ export function SiteHeader() {
             >
               Log in
             </Link>
-            <Link
-              href="/login"
-              onClick={() => setMobileOpen(false)}
+            <a
+              href={CTA.workforce.href}
+              onClick={() => {
+                track("trial_cta_clicked", { product: "workforce", placement: "header_mobile" })
+                setMobileOpen(false)
+              }}
               className={cn(buttonVariants({ size: "md" }), "w-full")}
             >
               Start free trial
-            </Link>
+            </a>
           </div>
         </nav>
       ) : null}

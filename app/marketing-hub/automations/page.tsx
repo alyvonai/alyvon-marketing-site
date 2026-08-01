@@ -1,90 +1,64 @@
-import Link from "next/link"
-import { CalendarClock, Inbox, MessageCircle, PhoneMissed, Share2, Star } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { buildMetadata } from "@/lib/metadata"
 import { buttonVariants } from "@/components/ui/button"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
-import { MARKETING_HUB_FEATURES } from "@/lib/nav-data"
-import { cn } from "@/lib/utils"
-import { buildMetadata } from "@/lib/metadata"
-
-// Copy pulled verbatim from Library deliverable 21aa1393-4494-42ec-b221-c01ada1bfcea
-// (Ticket 0j, only version -- the /marketing-hub/automations section, lines 39-73
-// of the source docx). Mined from the real service.alyvon.com audit per the manifest.
+import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
+import { JsonLd } from "@/components/marketing/json-ld"
+import { BookingCta } from "@/components/marketing/booking-cta"
+import { CTA } from "@/lib/site"
+import { softwareApplicationSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "Automations - Alyvon Marketing Hub",
+  title: "Marketing Hub Automations - Alyvon",
   description:
-    "The automations inside Alyvon Marketing Hub: booking, follow-up, and messaging that runs without someone at a keyboard.",
+    "Follow-up that happens on time without someone remembering — missed-call text-back, lead nurture, appointment reminders, no-show recovery, review requests, and reactivation.",
   path: "/marketing-hub/automations",
 })
 
-const WHAT_IT_DOES = [
-  {
-    icon: CalendarClock,
-    title: "Appointment automation",
-    text: "Self-serve booking with automatic reminders, no back-and-forth to land a time.",
-  },
-  {
-    icon: PhoneMissed,
-    title: "Missed call text back",
-    text: "A missed call automatically sends a text, so a missed call still starts a conversation.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Automated web chat",
-    text: "A website chat widget that captures a lead and can book them directly.",
-  },
-  {
-    icon: Inbox,
-    title: "Unified messaging",
-    text: "Email, SMS, web chat, Facebook, and Instagram in a single inbox, so no channel is checked separately.",
-  },
-  {
-    icon: Star,
-    title: "Reputation management",
-    text: "Requests and tracks reviews after a job or engagement closes.",
-  },
-  {
-    icon: Share2,
-    title: "Social media management",
-    text: "Schedules and publishes across platforms from one place.",
-  },
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Marketing Hub", path: "/marketing-hub" },
+  { name: "Automations", path: "/marketing-hub/automations" },
 ]
 
-// "Related" links pulled from MARKETING_HUB_FEATURES rather than hardcoded,
-// filtering out this page's own entry.
-const RELATED = MARKETING_HUB_FEATURES.filter((f) => f.label !== "Automations")
+const USE_CASES = [
+  "Missed-call text-back",
+  "Lead nurture",
+  "Appointment reminders",
+  "No-show recovery",
+  "Review request",
+  "Reactivation campaign",
+]
 
-export default function AutomationsDetailPage() {
+export default function AutomationsPage() {
   return (
     <>
       <Hero
         eyebrow="Marketing Hub / Automations"
-        heading="Follow-up that runs whether or not someone's watching."
-        subhead="Booking, reminders, and the first reply to a missed call or a web chat all run automatically, and land on the same contact record as everything else."
+        heading="Follow-up that happens on time without someone remembering."
+        subhead="Automations respond to the event — a missed call, a booking, a stale lead — across SMS and email, so the next step never waits on a person to notice."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <BookingCta
+            href={CTA.marketingHub.href}
+            label={CTA.marketingHub.label}
+            product="marketing_hub"
+            placement="automations_hero"
+            className={cn(buttonVariants({ size: "lg" }))}
+          />
         }
       />
 
       <Section tone="surface">
         <div className="flex flex-col gap-8">
           <h2 className="text-display-m text-text-primary">What it does</h2>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {WHAT_IT_DOES.map((item) => (
-              <Card key={item.title}>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {USE_CASES.map((u) => (
+              <Card key={u}>
                 <CardHeader>
-                  <item.icon
-                    className="mb-2 h-6 w-6 text-text-primary"
-                    strokeWidth={1.5}
-                    aria-hidden="true"
-                  />
-                  <CardTitle className="text-body-l">{item.title}</CardTitle>
-                  <CardDescription>{item.text}</CardDescription>
+                  <CardTitle className="text-body-l">{u}</CardTitle>
                 </CardHeader>
               </Card>
             ))}
@@ -92,47 +66,49 @@ export default function AutomationsDetailPage() {
         </div>
       </Section>
 
+      {/* Consent / control */}
       <Section tone="canvas">
-        <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">How it connects</h2>
+        <div className="flex max-w-[760px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">Consent and control, built in</h2>
           <p className="text-body-l text-text-secondary">
-            Every automated touch, a booked appointment, a text sent after a missed call, a
-            message answered in web chat, writes back to the same CRM record. The AI Employee can
-            also act inside these same conversations when a routine question comes in outside
-            business hours.
+            SMS and email automations run on consent. Contacts are only messaged where you have the
+            right to reach them, every message carries the required identification and opt-out, and
+            an unsubscribe or STOP is honored automatically across the system.
           </p>
-        </div>
-      </Section>
-
-      <Section tone="surface">
-        <div className="flex flex-col gap-8">
-          <h2 className="text-display-m text-text-primary">Related</h2>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {RELATED.map((item) => (
-              <Link key={item.href} href={item.href} className="group">
-                <Card className="transition-colors duration-micro ease-out-standard group-hover:bg-surface">
-                  <CardHeader>
-                    <CardTitle className="text-body-l">{item.label}</CardTitle>
-                    <CardDescription>
-                      <span className="font-mono text-label uppercase text-accent-strong">
-                        Marketing Hub
-                      </span>
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
-            ))}
-          </div>
+          <p className="text-body text-text-tertiary">
+            You control quiet hours, sending limits, and which segments are eligible — so
+            automations stay compliant with SMS and email rules and with your own brand standards.
+          </p>
         </div>
       </Section>
 
       <CtaBand
         heading="Stop losing leads between channels."
+        subhead="See the automations mapped to your funnel on a walkthrough."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <BookingCta
+            href={CTA.marketingHub.href}
+            label={CTA.marketingHub.label}
+            product="marketing_hub"
+            placement="automations_final"
+            className={cn(buttonVariants({ size: "lg" }))}
+          />
         }
+      />
+
+      <Section tone="canvas" spacing="sm">
+        <Breadcrumbs crumbs={crumbs} />
+      </Section>
+
+      <JsonLd
+        data={[
+          softwareApplicationSchema({
+            name: "Alyvon Marketing Hub Automations",
+            description: "Event-driven follow-up across SMS and email.",
+            url: "/marketing-hub/automations",
+          }),
+          breadcrumbSchema(crumbs),
+        ]}
       />
     </>
   )

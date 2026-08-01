@@ -1,53 +1,35 @@
-import Link from "next/link"
+import { cn } from "@/lib/utils"
+import { buildMetadata } from "@/lib/metadata"
 import { buttonVariants } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
-import { cn } from "@/lib/utils"
-import { buildMetadata } from "@/lib/metadata"
-
-// Copy pulled verbatim from Library deliverable 21aa1393-4494-42ec-b221-c01ada1bfcea
-// (Ticket 0j, only version -- mined from the real service.alyvon.com audit).
-// Reframed away from the original site's novelty headline per Content's rewrite.
+import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
+import { JsonLd } from "@/components/marketing/json-ld"
+import { BookingCta } from "@/components/marketing/booking-cta"
+import { CTA } from "@/lib/site"
+import { softwareApplicationSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "AI Employee - Alyvon Marketing Hub",
+  title: "Marketing Hub AI Employee - Alyvon",
   description:
-    "The AI Employee inside Alyvon Marketing Hub: a trained conversational assistant that answers routine questions and books time on your calendar.",
+    "A trained front-line assistant for routine questions and booking — it answers from your approved knowledge base, qualifies inbound, books and reschedules meetings, and escalates anything outside its scope.",
   path: "/marketing-hub/ai-employee",
 })
 
-const CAPABILITIES = [
-  {
-    title: "Availability",
-    body: "Operates continuously and replies immediately to an inbound message.",
-  },
-  {
-    title: "Easily trained",
-    body: "Trained from your website, your FAQs, and your Google Docs, not a blank prompt.",
-  },
-  {
-    title: "Easily taught",
-    body: "A feedback mechanism lets you correct a wrong or off-brand response directly.",
-  },
-  {
-    title: "Easily customized",
-    body: "Styled to match your brand, not a generic chat widget.",
-  },
-  {
-    title: "Playground included",
-    body: "A private testing environment to check its answers before it talks to a real lead.",
-  },
-  {
-    title: "Private and secure",
-    body: "Runs on encrypted servers with access controls.",
-  },
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Marketing Hub", path: "/marketing-hub" },
+  { name: "AI Employee", path: "/marketing-hub/ai-employee" },
 ]
 
-const RELATED = [
-  { label: "CRM", href: "/marketing-hub/crm" },
-  { label: "Automations", href: "/marketing-hub/automations" },
+const USE_CASES = [
+  "Answer routine service questions",
+  "Qualify inbound leads",
+  "Book a meeting",
+  "Reschedule appointments",
+  "Hand off complex questions",
 ]
 
 export default function AiEmployeePage() {
@@ -55,12 +37,16 @@ export default function AiEmployeePage() {
     <>
       <Hero
         eyebrow="Marketing Hub / AI Employee"
-        heading="A trained assistant for the questions that repeat."
-        subhead="Train it on what you already have. It answers the routine questions and books the routine meetings, and hands off anything it shouldn't handle alone."
+        heading="A trained front-line assistant for routine questions and booking."
+        subhead="It answers from your approved knowledge base, qualifies inbound, and books meetings — and knows when to hand off to a person."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <BookingCta
+            href={CTA.marketingHub.href}
+            label={CTA.marketingHub.label}
+            product="marketing_hub"
+            placement="ai_employee_hero"
+            className={cn(buttonVariants({ size: "lg" }))}
+          />
         }
       />
 
@@ -68,61 +54,56 @@ export default function AiEmployeePage() {
         <div className="flex flex-col gap-8">
           <h2 className="text-display-m text-text-primary">What it does</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {CAPABILITIES.map((c) => (
-              <Card key={c.title}>
+            {USE_CASES.map((u) => (
+              <Card key={u}>
                 <CardHeader>
-                  <CardTitle className="text-body-l">{c.title}</CardTitle>
+                  <CardTitle className="text-body-l">{u}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-body text-text-secondary">{c.body}</p>
-                </CardContent>
               </Card>
             ))}
           </div>
         </div>
       </Section>
 
+      {/* Guardrail */}
       <Section tone="canvas">
-        <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">Where it fits</h2>
-          <p className="text-body-l text-text-secondary">
-            The AI Employee works inside the same inbox as your unified messaging and the same
-            contact records as your CRM. It is scoped to routine, repeatable conversations.
-            Anything that sends, publishes, or commits you to something still follows Alyvon's
-            standard approval gate.
+        <div className="max-w-[760px] rounded-r-card border-l-4 border-accent bg-accent-wash p-6">
+          <h2 className="text-body-l font-medium text-text-primary">Trained on what you approve</h2>
+          <p className="mt-1 text-body text-text-secondary">
+            Anything outside the approved knowledge base is escalated instead of guessed. The AI
+            Employee answers only what you’ve trained it on, and routes everything else — pricing
+            exceptions, edge cases, anything sensitive — to a human.
           </p>
-        </div>
-      </Section>
-
-      <Section tone="surface">
-        <div className="flex flex-col gap-8">
-          <h2 className="text-display-m text-text-primary">Related</h2>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {RELATED.map((r) => (
-              <Card key={r.href}>
-                <CardHeader>
-                  <CardTitle className="text-body-l">
-                    <Link
-                      href={r.href}
-                      className="transition-colors duration-micro ease-out-standard hover:text-accent-strong"
-                    >
-                      {r.label}
-                    </Link>
-                  </CardTitle>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
         </div>
       </Section>
 
       <CtaBand
         heading="Train it on what you already have."
+        subhead="See the AI Employee answering and booking from your knowledge base on a walkthrough."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <BookingCta
+            href={CTA.marketingHub.href}
+            label={CTA.marketingHub.label}
+            product="marketing_hub"
+            placement="ai_employee_final"
+            className={cn(buttonVariants({ size: "lg" }))}
+          />
         }
+      />
+
+      <Section tone="canvas" spacing="sm">
+        <Breadcrumbs crumbs={crumbs} />
+      </Section>
+
+      <JsonLd
+        data={[
+          softwareApplicationSchema({
+            name: "Alyvon Marketing Hub AI Employee",
+            description: "A trained front-line assistant for routine questions and booking.",
+            url: "/marketing-hub/ai-employee",
+          }),
+          breadcrumbSchema(crumbs),
+        ]}
       />
     </>
   )
