@@ -1,12 +1,15 @@
-import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { List } from "@/components/ui/typography"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { cn } from "@/lib/utils"
 import { buildMetadata } from "@/lib/metadata"
+
+const TRIAL_URL = "https://app.alyvon.com/signup"
 
 // Copy pulled verbatim from Library deliverable 8d4b0d0b-d24b-4e6b-a8f9-e55ea2b7fc34
 // (Ticket 0i, final -- "every department is on every plan" framing). Vertical-neutral
@@ -52,13 +55,52 @@ export default function MarketingOperationsDepartmentPage() {
       <Hero
         eyebrow="Department"
         heading="Marketing Operations"
-        subhead="Plans, buys, tags, and optimizes every paid channel, then proves which dollar actually produced a trial signup."
+        subhead="Plans, buys, tags, and optimizes every paid channel — then proves which dollar actually produced a signup."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <div className="flex flex-col gap-3">
+            <a href={TRIAL_URL} className={cn(buttonVariants({ size: "lg" }))}>
+              Start your 14-day free trial
+            </a>
+            <p className="text-body-s text-text-secondary">No credit card. Cancel anytime.</p>
+          </div>
+        }
+        visual={
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/workforce/board-run.webp"
+              alt="The Alyvon board with the Marketing Operations department running inside a live team run"
+              aspect="4:3"
+              priority
+              sizes="(min-width: 1024px) 520px, 100vw"
+            />
+            <IllustrativeCaption>
+              Marketing Operations, live inside a team run. Data shown is illustrative.
+            </IllustrativeCaption>
+          </div>
         }
       />
+
+      <Section tone="canvas" spacing="sm">
+        <div className="max-w-[860px] rounded-r-card border-l-4 border-accent bg-accent-wash p-6">
+          <p className="text-body-l text-text-primary">
+            Marketing Operations is Alyvon&apos;s performance-marketing department: nine specialists
+            led by a Director of Performance Marketing who plan and buy paid media, wire up tracking,
+            run CRO, and attribute every dollar to a result.
+          </p>
+        </div>
+      </Section>
+
+      <Section tone="canvas">
+        <div className="flex max-w-[720px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">Who this is for</h2>
+          <p className="text-body-l text-text-secondary">
+            For the performance marketer buying media on tracking held together with tape — a
+            campaign live before tracking is wired, a landing page converting at half the rate, a
+            quarter with no channel-level answer. Brief it and get the build, the audit, or the
+            report back.
+          </p>
+        </div>
+      </Section>
 
       <Section tone="surface">
         <div className="flex max-w-[720px] flex-col gap-4">
@@ -147,10 +189,11 @@ export default function MarketingOperationsDepartmentPage() {
 
       <CtaBand
         heading="Brief Marketing Operations this week."
+        subhead="14 days or 10 deliverables, whichever comes first. No credit card."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <a href={TRIAL_URL} className={cn(buttonVariants({ size: "lg" }))}>
+            Start your 14-day free trial
+          </a>
         }
       />
     </>
