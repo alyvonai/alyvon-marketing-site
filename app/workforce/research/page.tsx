@@ -1,12 +1,15 @@
-import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { List } from "@/components/ui/typography"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { cn } from "@/lib/utils"
 import { buildMetadata } from "@/lib/metadata"
+
+const TRIAL_URL = "https://app.alyvon.com/signup"
 
 // Copy pulled verbatim from Library deliverable 8d4b0d0b-d24b-4e6b-a8f9-e55ea2b7fc34
 // (Ticket 0i, final -- "every department is on every plan" framing). Vertical-neutral
@@ -77,13 +80,51 @@ export default function ResearchDepartmentPage() {
       <Hero
         eyebrow="Department"
         heading="Research and Insights"
-        subhead="Owns every number the company reports on itself, so no other department publishes a stat it hasn't checked."
+        subhead="Owns every number the company reports about itself — so no other department ships a stat it hasn't checked."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <div className="flex flex-col gap-3">
+            <a href={TRIAL_URL} className={cn(buttonVariants({ size: "lg" }))}>
+              Start your 14-day free trial
+            </a>
+            <p className="text-body-s text-text-secondary">No credit card. Cancel anytime.</p>
+          </div>
+        }
+        visual={
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/workforce/board-run.webp"
+              alt="The Alyvon board with the Research department running inside a live team run"
+              aspect="4:3"
+              priority
+              sizes="(min-width: 1024px) 520px, 100vw"
+            />
+            <IllustrativeCaption>
+              Research, live inside a team run. Data shown is illustrative.
+            </IllustrativeCaption>
+          </div>
         }
       />
+
+      <Section tone="canvas" spacing="sm">
+        <div className="max-w-[860px] rounded-r-card border-l-4 border-accent bg-accent-wash p-6">
+          <p className="text-body-l text-text-primary">
+            Research &amp; Insights is Alyvon&apos;s analytics department: seven specialists led by
+            an Analytics Director who owns company metrics end to end, from a single SQL answer to a
+            full customer-voice study.
+          </p>
+        </div>
+      </Section>
+
+      <Section tone="canvas">
+        <div className="flex max-w-[720px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">Who this is for</h2>
+          <p className="text-body-l text-text-secondary">
+            For the founder deciding on gut because the data is locked in tools nobody queries — a
+            number everyone repeats but no one has pulled, churn nobody has patterned, a budget call
+            with nothing behind it. Ask in plain language; get the real number back.
+          </p>
+        </div>
+      </Section>
 
       <Section tone="surface">
         <div className="flex max-w-[720px] flex-col gap-4">
@@ -167,19 +208,20 @@ export default function ResearchDepartmentPage() {
             ))}
           </div>
           <p className="max-w-[720px] text-body text-text-secondary">
-            Pairing departments costs nothing extra beyond your plan. Starter already includes
-            three departments working together at no added charge; upgrading unlocks more
-            departments for every seat, not one department at a time.
+            Pairing departments costs nothing extra beyond your plan. Growth already includes eight
+            departments working together at no added charge; every seat can brief any of them, not
+            one department at a time.
           </p>
         </div>
       </Section>
 
       <CtaBand
         heading="Brief Research and Insights this week."
+        subhead="14 days or 10 deliverables, whichever comes first. No credit card."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <a href={TRIAL_URL} className={cn(buttonVariants({ size: "lg" }))}>
+            Start your 14-day free trial
+          </a>
         }
       />
     </>

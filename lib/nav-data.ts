@@ -24,6 +24,7 @@ export interface NavItem {
 // do not get nav entries, routes, or invented names.
 export const DEPARTMENTS: NavChild[] = [
   { label: "Content", href: "/workforce/content" },
+  { label: "Engineering", href: "/workforce/engineering" },
   { label: "Research", href: "/workforce/research" },
   { label: "Brand", href: "/workforce/brand" },
   { label: "Sales Development", href: "/workforce/sales-development" },
@@ -80,6 +81,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: "/login", priority: 0.3, changeFrequency: "monthly" },
   { path: "/workforce", priority: 0.9, changeFrequency: "weekly" },
   { path: "/workforce/content", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/workforce/engineering", priority: 0.8, changeFrequency: "monthly" },
   { path: "/workforce/research", priority: 0.8, changeFrequency: "monthly" },
   { path: "/workforce/brand", priority: 0.8, changeFrequency: "monthly" },
   { path: "/workforce/sales-development", priority: 0.8, changeFrequency: "monthly" },
