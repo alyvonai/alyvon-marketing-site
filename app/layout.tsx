@@ -6,6 +6,7 @@ import "./globals.css"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { PostHogProvider } from "@/components/analytics/posthog-provider"
+import { GTM_ID } from "@/lib/site"
 
 // Brand typography per Ticket 0c Section 2: Archivo (display + body) and
 // JetBrains Mono (labels, eyebrows, timestamps, numeric figures). Fraunces
@@ -44,12 +45,10 @@ export default function RootLayout({
 }: {
   children: ReactNode
 }) {
-  // GTM and PostHog both no-op when their env vars are absent (spec §10). GTM is only
-  // mounted when an id exists so @next/third-parties never injects an empty container.
-  const gtmId = process.env.NEXT_PUBLIC_GTM_ID
+  // GTM mounts from GTM_ID (env override, live default). PostHog no-ops without a key.
   return (
     <html lang="en" className={cnFonts(archivo.variable, jetbrainsMono.variable)}>
-      {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
+      {GTM_ID ? <GoogleTagManager gtmId={GTM_ID} /> : null}
       <body className="flex min-h-screen flex-col">
         <PostHogProvider>
           <SiteHeader />

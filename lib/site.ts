@@ -6,6 +6,11 @@
 export const SITE_URL = "https://www.alyvon.com"
 export const SUPPORT_EMAIL = "hello@alyvon.com"
 
+// Google Tag Manager container. Defaults to the live container so GTM works without
+// per-environment env config; still overridable via NEXT_PUBLIC_GTM_ID. GTM IDs are
+// public (they ship in client HTML), so this is safe to commit.
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-TB6ZP4SH"
+
 export type ProductId = "workforce" | "marketing_hub" | "analytics"
 
 // Booking URLs resolve from env (verified GHL booking/form links) with a mailto fallback,
