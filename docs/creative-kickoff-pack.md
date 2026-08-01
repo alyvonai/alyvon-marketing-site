@@ -46,17 +46,26 @@ single `border-border-subtle` 1px outline, no drop shadow on photography.
 
 ## 2. Drift against the ratified brand canon — read this before picking a swatch
 
-The operator's ratified palette (accent `#d0450f`, background `#FFFFFF`, border
+**Accent color — resolved 2026-07-29:** the operator has confirmed `#DE4B12` is
+the single ratified accent value. The earlier `#d0450f` figure quoted below was
+from a superseded draft of the brand canon and is **wrong** — it must not be
+eyedropped, referenced, or reintroduced anywhere in this repo or in future
+Creative assets. Every occurrence of `#d0450f` has been retired from the
+codebase; `#DE4B12` (already the live repo value, row below) is the sole source
+of truth going forward.
+
+The operator's ratified palette (background `#FFFFFF`, border
 `#D8D6D7`, muted_text `#AEA8A8`, surface `#F6F7F9`, Rust/Orange Accent `#815445`,
-Alt Surface Gray `#EEEEEF`) does **not** match the live repo token-for-token. The
-repo values above are what the product actually renders and are the values to
-build against. Flagging every mismatch so nobody averages the two or guesses:
+Alt Surface Gray `#EEEEEF`) does **not** match the live repo token-for-token on
+every value. The repo values above are what the product actually renders and are
+the values to build against. Flagging every remaining mismatch so nobody averages
+the two or guesses:
 
 | Ratified canon token | Ratified hex | Closest repo token | Repo hex | Match? |
 | --- | --- | --- | --- | --- |
 | background | `#FFFFFF` | `bg-canvas` | `#FFFFFF` | Exact match |
 | surface | `#F6F7F9` | `bg-surface` | `#F6F7F9` | Exact match |
-| accent | `#d0450f` | `accent` | `#DE4B12` | **Drift.** Different hex, same family. Repo's live accent is brighter/more saturated |
+| accent | `#DE4B12` | `accent` | `#DE4B12` | **Resolved — exact match.** `#d0450f` is retired; do not use it |
 | border | `#D8D6D7` | `border-subtle` | `#D4D9E0` | **Drift.** Close but not identical; repo's is a cooler, slightly bluer gray |
 | muted_text | `#AEA8A8` | `text-tertiary` | `#767D88` | **Significant drift.** Ratified value is a warm light gray; repo's is a darker, cooler blue-gray. Not interchangeable at any opacity |
 | Rust/Orange Accent | `#815445` | `accent-strong` | `#B33A0B` | **Significant drift.** Ratified is a muted brown-rust; repo's is a saturated burnt orange. These read as different colors, not a shade variant |

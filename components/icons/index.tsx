@@ -14,9 +14,9 @@
 //
 // Rules encoded here (do not override per-call):
 //   - stroke="currentColor" only -- never pass a hardcoded hex color.
-//   - strokeWidth is fixed at 2 -- this is a *different* convention than the
-//     legacy components/ui/icon-wrapper.tsx (1.5px). See README.md in this
-//     directory for the flagged discrepancy pending an Engineering decision.
+//   - strokeWidth is fixed at 2 -- components/ui/icon-wrapper.tsx was migrated
+//     to the same 2px stroke width (ratified icon-system spec, 2026-07-29), so
+//     this is now the single stroke-width convention sitewide. See README.md.
 //   - Do not scale past 32px (h-8 w-8) without redrawing at a larger optical
 //     size -- this wrapper does not stop you, but the spec prohibits it.
 "use client";
@@ -64,6 +64,8 @@ import {
   GitBranch,
   Globe,
   Handshake,
+  Headphones,
+  HeartHandshake,
   House,
   Image,
   ImagePlus,
@@ -87,6 +89,7 @@ import {
   Paintbrush,
   Palette,
   Pencil,
+  PenTool,
   Phone,
   PhoneOutgoing,
   Plug,
@@ -149,6 +152,24 @@ export const ICON_REGISTRY = {
   "department-marketing-sales": Megaphone,
   "department-customer-people": Handshake,
   "department-product-engineering": Cpu,
+  // The 11 department icons below complete the confirmed canonical 16-department
+  // list (brand positioning: "117 specialists across 16 departments"). Combined
+  // with the 5 confirmed/live-routed icons above (content, research, brand,
+  // sales-development, marketing-operations), the registry now has one icon per
+  // department. The 5 org-chart cluster icons above (brand-content, marketing-sales,
+  // customer-people, product-engineering, strategy-leadership) are left in place
+  // for backward compatibility but are not part of the 16-department count.
+  "department-communications-pr": Megaphone,
+  "department-creative": PenTool,
+  "department-customer-success": HeartHandshake,
+  "department-customer-support": Headphones,
+  "department-engineering": Code,
+  "department-executive-strategy": Compass,
+  "department-finance-accounting": CircleDollarSign,
+  "department-people-hr": UsersRound,
+  "department-product-design": Layers,
+  "department-revenue-operations": TrendingUpDown,
+  "department-security-compliance": ShieldCheck,
   "check": Check,
   "check-circle": CircleCheckBig,
   "close": X,
@@ -244,13 +265,24 @@ export type IconName =
   | "database"
   | "department-brand"
   | "department-brand-content"
+  | "department-communications-pr"
   | "department-content"
+  | "department-creative"
   | "department-customer-people"
+  | "department-customer-success"
+  | "department-customer-support"
+  | "department-engineering"
+  | "department-executive-strategy"
+  | "department-finance-accounting"
   | "department-marketing-operations"
   | "department-marketing-sales"
+  | "department-people-hr"
+  | "department-product-design"
   | "department-product-engineering"
   | "department-research"
+  | "department-revenue-operations"
   | "department-sales-development"
+  | "department-security-compliance"
   | "department-strategy-leadership"
   | "dollar-sign"
   | "download"
