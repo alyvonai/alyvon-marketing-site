@@ -74,13 +74,21 @@ export default function AnalyticsPage() {
         heading="Turn your data into a system your team can actually act on."
         subhead="Alyvon Analytics scopes, builds, and deploys data pipelines, reporting layers, applied AI workflows, and custom agents inside your business environment."
         actions={
-          <BookingCta
-            href={CTA.analytics.href}
-            label={CTA.analytics.label}
-            product="analytics"
-            placement="analytics_hero"
-            className={cn(buttonVariants({ size: "lg" }))}
-          />
+          <div className="flex flex-col gap-3">
+            <BookingCta
+              href={CTA.analytics.href}
+              label={CTA.analytics.label}
+              product="analytics"
+              placement="analytics_hero"
+              className={cn(buttonVariants({ size: "lg" }))}
+            />
+            <Link
+              href="/contact"
+              className="text-body-s font-medium text-accent-strong underline underline-offset-4"
+            >
+              Prefer to send details? Contact us →
+            </Link>
+          </div>
         }
       />
 

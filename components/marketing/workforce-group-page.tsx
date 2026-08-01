@@ -15,6 +15,7 @@ import { Faq } from "@/components/marketing/faq"
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
+import { MobileCtaBar } from "@/components/marketing/mobile-cta-bar"
 import { CTA, WORKFORCE_GROUPS, groupBySlug } from "@/lib/site"
 import { GROUP_CONTENT, DEPARTMENT_DETAILS } from "@/lib/workforce-group-content"
 import {
@@ -196,7 +197,7 @@ export function WorkforceGroupPage({ slug }: { slug: string }) {
         )
       })}
 
-      {/* How Alyvon delivers (routing shot) + integrations + cost framing */}
+      {/* How Alyvon delivers (routing shot) */}
       <Section tone="canvas">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="flex flex-col gap-3">
@@ -212,14 +213,39 @@ export function WorkforceGroupPage({ slug }: { slug: string }) {
             <h2 className="text-display-m text-text-primary">How Alyvon delivers</h2>
             <p className="text-body-l text-text-secondary">
               Brief the Chief of Staff in plain language. It routes to the right Director and
-              specialists, who work inside the tools you already run — Alyvon connects to 1,000+
-              integrations — and a Director reviews the file before it reaches your Library.
-            </p>
-            <p className="text-body text-text-tertiary">
-              Internal telemetry shows recurring work can run at model/runtime costs measured in
-              dollars per week. Examples on this site use illustrative data.
+              specialists, a Director reviews what comes back, and the finished file lands in your
+              Library — with anything that sends, publishes, or spends held for your approval.
             </p>
           </div>
+        </div>
+      </Section>
+
+      {/* Integrations */}
+      <Section tone="surface">
+        <div className="flex max-w-[760px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">Works in the tools you already run</h2>
+          <p className="text-body-l text-text-secondary">
+            Alyvon connects to 1,000+ integrations — Gmail, Slack, HubSpot, GitHub, your CRM and
+            ad platforms — so specialists act inside your systems, not a walled garden you have to
+            export from. The output shows up where the work already lives.
+          </p>
+        </div>
+      </Section>
+
+      {/* Cost comparison */}
+      <Section tone="canvas">
+        <div className="flex max-w-[760px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">The cost math</h2>
+          <p className="text-body-l text-text-secondary">
+            A hire for this work takes ~44 days to fill and ~$4,700 to recruit, then a salary line
+            whether the work is steady or not (SHRM, 2025). A department is briefable today, and
+            internal telemetry shows recurring work can run at model/runtime costs measured in
+            dollars per week.
+          </p>
+          <p className="text-body text-text-tertiary">
+            Figures are model/runtime cost, not total business cost; examples on this site use
+            illustrative data.
+          </p>
         </div>
       </Section>
 
@@ -300,6 +326,8 @@ export function WorkforceGroupPage({ slug }: { slug: string }) {
           breadcrumbSchema(crumbs),
         ]}
       />
+
+      <MobileCtaBar placement={`${slug}_sticky`} />
     </>
   )
 }

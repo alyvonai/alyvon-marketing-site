@@ -74,13 +74,21 @@ export default function MarketingHubPage() {
         heading="Every missed follow-up is a revenue leak."
         subhead="Alyvon Marketing Hub gives you the CRM, automations, and AI Employee that keep leads moving after the first form fill, missed call, or booked meeting."
         actions={
-          <BookingCta
-            href={CTA.marketingHub.href}
-            label={CTA.marketingHub.label}
-            product="marketing_hub"
-            placement="marketing_hub_hero"
-            className={cn(buttonVariants({ size: "lg" }))}
-          />
+          <div className="flex flex-col gap-3">
+            <BookingCta
+              href={CTA.marketingHub.href}
+              label={CTA.marketingHub.label}
+              product="marketing_hub"
+              placement="marketing_hub_hero"
+              className={cn(buttonVariants({ size: "lg" }))}
+            />
+            <Link
+              href="/contact"
+              className="text-body-s font-medium text-accent-strong underline underline-offset-4"
+            >
+              Prefer to send details? Contact us →
+            </Link>
+          </div>
         }
       />
 

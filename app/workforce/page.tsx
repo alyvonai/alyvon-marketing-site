@@ -15,7 +15,8 @@ import { Faq } from "@/components/marketing/faq"
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
-import { CTA, WORKFORCE_GROUPS, WORKFORCE_STATS, ALL_DEPARTMENTS } from "@/lib/site"
+import { MobileCtaBar } from "@/components/marketing/mobile-cta-bar"
+import { CTA, WORKFORCE_GROUPS, ALL_DEPARTMENTS } from "@/lib/site"
 import {
   softwareApplicationSchema,
   faqSchema,
@@ -288,6 +289,8 @@ export default function WorkforcePillarPage() {
           breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Workforce", path: "/workforce" }]),
         ]}
       />
+
+      <MobileCtaBar placement="workforce_index_sticky" />
     </>
   )
 }

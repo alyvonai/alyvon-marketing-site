@@ -8,6 +8,7 @@ import { Faq } from "@/components/marketing/faq"
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
+import { MobileCtaBar } from "@/components/marketing/mobile-cta-bar"
 import { PricingCard } from "@/components/marketing/pricing-card"
 import { CTA } from "@/lib/site"
 import { WORKFORCE_PLANS, CREATIVE_ADDON } from "@/lib/pricing"
@@ -164,6 +165,8 @@ export default function WorkforcePricingPage() {
       </Section>
 
       <JsonLd data={[faqSchema(FAQ_ITEMS), breadcrumbSchema(crumbs)]} />
+
+      <MobileCtaBar placement="workforce_pricing_sticky" />
     </>
   )
 }
