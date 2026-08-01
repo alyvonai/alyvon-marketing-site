@@ -37,7 +37,12 @@ const PRODUCT_HOME: Record<string, { label: string; href: string }> = {
   analytics: { label: "Explore Analytics", href: "/analytics" },
 }
 
-function readBookingContext(): { product?: string; source?: string; plan?: string } {
+function readBookingContext(): {
+  product?: string
+  source?: string
+  plan?: string
+  type?: string
+} {
   if (typeof window === "undefined") return {}
   try {
     return JSON.parse(window.localStorage.getItem("alyvon_booking_context") || "{}") || {}
@@ -51,7 +56,7 @@ export function ThankYouClient() {
   const ctx = readBookingContext()
   // A single generic calendar has one redirect URL, so booking product/source/plan come
   // from the context /book stashed; explicit query params still win when present.
-  const type = params.get("type") || "default"
+  const type = params.get("type") || ctx.type || "default"
   const product = params.get("product") || ctx.product || undefined
   const source = params.get("source") || ctx.source || undefined
   const plan = params.get("plan") || ctx.plan || undefined

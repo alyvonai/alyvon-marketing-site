@@ -89,6 +89,7 @@ export const FOOTER_LINK_GROUPS: { heading: string; links: NavChild[] }[] = [
     heading: "Company",
     links: [
       { label: "Pricing", href: "/pricing" },
+      { label: "Contact", href: "/contact" },
       { label: "Security", href: "/security" },
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
@@ -121,6 +122,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: "/analytics/custom-ai", priority: 0.7, changeFrequency: "monthly" },
   { path: "/analytics/pricing", priority: 0.7, changeFrequency: "monthly" },
   { path: "/pricing", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/contact", priority: 0.5, changeFrequency: "monthly" },
   { path: "/security", priority: 0.6, changeFrequency: "monthly" },
   { path: "/privacy", priority: 0.2, changeFrequency: "monthly" },
   { path: "/terms", priority: 0.2, changeFrequency: "monthly" },
