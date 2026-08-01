@@ -132,7 +132,7 @@ export default function Home() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="flex flex-col gap-3 lg:order-1">
             <MediaFrame
-              src="/images/homepage/how-it-works-flow.jpg"
+              src="/images/homepage/how-it-works-3-step.svg"
               alt="Flow diagram: Alyvon routes one brief to Creative and Content in parallel, both feed into Engineering, which returns a finished website and app"
               aspect="4:3"
               sizes="(min-width: 1024px) 560px, 100vw"
@@ -184,7 +184,7 @@ export default function Home() {
                     <div
                       key={line.name}
                       className="flex flex-col items-center justify-center gap-3 rounded-card border border-border-subtle bg-surface p-6 text-center"
-                    >
+                  >
                       <Icon name={line.icon} className="h-10 w-10 text-accent-strong" aria-hidden="true" />
                       <span className="text-body-s font-medium uppercase tracking-wide text-text-primary">
                         {line.name}
