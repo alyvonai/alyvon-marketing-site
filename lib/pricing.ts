@@ -18,7 +18,8 @@ export interface WorkforcePlan {
 }
 
 const SIGNUP = "https://app.alyvon.com/signup"
-const CONTACT = "mailto:hello@alyvon.com?subject=Enterprise%20plan"
+// Enterprise books a call via the on-site /book embed, tagged as the enterprise placement.
+const BOOK_ENTERPRISE = "/book?product=workforce&plan=enterprise&source=pricing_enterprise"
 
 // Annual is billed as 10× monthly (2 months free), per the pricing spec.
 export const WORKFORCE_PLANS: WorkforcePlan[] = [
@@ -58,14 +59,14 @@ export const WORKFORCE_PLANS: WorkforcePlan[] = [
   },
   {
     name: "Enterprise",
-    priceMonthly: "$5,000+",
+    priceMonthly: "Custom",
     priceAnnual: "Custom",
     departments: "The full Workforce — all 16 departments",
     deliverables: "Committed volume, set with you",
     seats: "Unlimited seats",
     overage: "Negotiated",
     cta: "Talk to us",
-    ctaHref: CONTACT,
+    ctaHref: BOOK_ENTERPRISE,
   },
 ]
 

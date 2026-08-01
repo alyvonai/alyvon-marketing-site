@@ -13,15 +13,19 @@ export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-TB6ZP4SH"
 
 export type ProductId = "workforce" | "marketing_hub" | "analytics"
 
-// Booking URLs resolve from env (verified GHL booking/form links) with a mailto fallback,
-// per spec §5. NEXT_PUBLIC_* vars are inlined at build time so these work in client
-// components too.
+// The GHL booking widget embedded on /book (the generic "Talk to Alyvon" calendar).
+// Overridable via env; per-product calendars can be added later without rewiring since
+// /book is parametrized by ?product & ?source.
+export const BOOKING_CALENDAR_URL =
+  process.env.NEXT_PUBLIC_BOOKING_URL ||
+  "https://api.leadconnectorhq.com/widget/booking/HgkbeF8clhycERoQtWFW"
+
+// Booking CTAs default to the on-site /book embed (keeps people on alyvon.com and lets the
+// booking hand off to /thank-you). A direct GHL/booking URL in env overrides the embed.
 const MARKETING_HUB_BOOKING =
-  process.env.NEXT_PUBLIC_MARKETING_HUB_BOOKING_URL ||
-  `mailto:${SUPPORT_EMAIL}?subject=Marketing%20Hub%20walkthrough`
+  process.env.NEXT_PUBLIC_MARKETING_HUB_BOOKING_URL || "/book?product=marketing_hub&source=cta"
 const ANALYTICS_BOOKING =
-  process.env.NEXT_PUBLIC_ANALYTICS_BOOKING_URL ||
-  `mailto:${SUPPORT_EMAIL}?subject=Analytics%20scoping%20call`
+  process.env.NEXT_PUBLIC_ANALYTICS_BOOKING_URL || "/book?product=analytics&source=cta"
 
 export const CTA = {
   workforce: {

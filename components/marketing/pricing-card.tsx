@@ -9,6 +9,9 @@ import type { WorkforcePlan } from "@/lib/pricing"
 export function PricingCard({ plan }: { plan: WorkforcePlan }) {
   const rows = [plan.departments, plan.deliverables, plan.seats, plan.overage]
   const isSignup = plan.ctaHref.includes("app.alyvon.com")
+  const isBooking = plan.ctaHref.startsWith("/book")
+  const isCustom = plan.priceMonthly === "Custom"
+  const ctaEvent = isSignup ? "trial_cta_clicked" : isBooking ? "book_call_clicked" : "cta_click"
 
   return (
     <div
@@ -28,14 +31,22 @@ export function PricingCard({ plan }: { plan: WorkforcePlan }) {
             </span>
           ) : null}
         </div>
-        <div className="flex items-baseline gap-2">
-          <span className="text-display-m text-text-primary">{plan.priceMonthly}</span>
-          <span className="text-body-s text-text-secondary">/ mo</span>
-        </div>
-        <span className="text-body-s text-text-tertiary">
-          or {plan.priceAnnual}
-          {plan.priceAnnual === "Custom" ? "" : " / yr (2 months free)"}
-        </span>
+        {isCustom ? (
+          <>
+            <span className="text-display-m text-text-primary">Custom</span>
+            <span className="text-body-s text-text-tertiary">Committed volume, set with you</span>
+          </>
+        ) : (
+          <>
+            <div className="flex items-baseline gap-2">
+              <span className="text-display-m text-text-primary">{plan.priceMonthly}</span>
+              <span className="text-body-s text-text-secondary">/ mo</span>
+            </div>
+            <span className="text-body-s text-text-tertiary">
+              or {plan.priceAnnual} / yr (2 months free)
+            </span>
+          </>
+        )}
       </div>
 
       <ul className="flex flex-col gap-3">
@@ -50,7 +61,7 @@ export function PricingCard({ plan }: { plan: WorkforcePlan }) {
       <TrackedCta
         href={plan.ctaHref}
         className={cn(buttonVariants({ variant: plan.highlighted ? "primary" : "secondary", size: "md" }), "w-full")}
-        event={isSignup ? "trial_cta_clicked" : "cta_click"}
+        event={ctaEvent}
         eventProps={{ product: "workforce", placement: "pricing_card", plan: plan.name, tier: plan.name }}
       >
         {plan.cta}

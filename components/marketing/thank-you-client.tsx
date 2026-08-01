@@ -37,11 +37,24 @@ const PRODUCT_HOME: Record<string, { label: string; href: string }> = {
   analytics: { label: "Explore Analytics", href: "/analytics" },
 }
 
+function readBookingContext(): { product?: string; source?: string; plan?: string } {
+  if (typeof window === "undefined") return {}
+  try {
+    return JSON.parse(window.localStorage.getItem("alyvon_booking_context") || "{}") || {}
+  } catch {
+    return {}
+  }
+}
+
 export function ThankYouClient() {
   const params = useSearchParams()
+  const ctx = readBookingContext()
+  // A single generic calendar has one redirect URL, so booking product/source/plan come
+  // from the context /book stashed; explicit query params still win when present.
   const type = params.get("type") || "default"
-  const product = params.get("product") || undefined
-  const source = params.get("source") || undefined
+  const product = params.get("product") || ctx.product || undefined
+  const source = params.get("source") || ctx.source || undefined
+  const plan = params.get("plan") || ctx.plan || undefined
 
   useEffect(() => {
     // Server-confirmed conversion signal — fires once on load.
@@ -49,9 +62,15 @@ export function ThankYouClient() {
       conversion_type: type,
       product: product ?? null,
       source: source ?? null,
+      plan: plan ?? null,
       page_path: "/thank-you",
     })
-  }, [type, product, source])
+    try {
+      window.localStorage.removeItem("alyvon_booking_context")
+    } catch {
+      // best-effort cleanup
+    }
+  }, [type, product, source, plan])
 
   const copy = COPY[type] ?? COPY.default
   const productLink = product ? PRODUCT_HOME[product] : undefined
