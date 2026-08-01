@@ -12,12 +12,25 @@ into the site (they slot into `MediaFrame`/`ProductShot` wrappers already built)
 
 ---
 
+## Existing assets — already in use (do NOT recreate)
+Recovered from the previous build (were unreferenced; now wired in). All on‑brand:
+- `public/images/homepage/hero-brief-director-file.jpg` — Brief → Director → Doc/Deck/Sheet flow. **→ homepage hero.** (covers shot 1)
+- `public/images/homepage/pain-44-days-vs-today.jpg` — 44 days vs. today. **→ homepage + Workforce index pain sections.** (covers shot 5)
+- `public/images/homepage/credibility-org-chart.jpg` — Director over specialists. **→ Workforce index "How Alyvon routes work".** (covers shot 21)
+- `public/images/workforce/{board-run,library-files,approvals-mobile}.webp` — the 3 device shots (board / Library / mobile Approvals).
+
+## Retired assets — do NOT use
+- `product-lines-six-icon-grid.jpg` — old department names + "Marketing Hub" as a department; conflicts with the 6‑group model.
+- `pricing-tiers.jpg` — reflects old pricing.
+- `how-it-works-flow.jpg` — corrupt file (invalid bytes).
+- `how-it-works-3-step.jpg` / `.svg` — superseded by `hero-brief-director-file.jpg`; available if you want a 3‑step variant.
+
 ## Homepage (`/`)
-1. **Hero (optional) — "Brief in → routes → file out"** · *diagram, 16:9.* A single plain‑language brief (a chip) flowing left→right through a Chief‑of‑Staff node to three Director nodes to a stack of finished files. Clean, isometric‑light, orange nodes on white. *(Currently no hero image — this would strengthen it.)*
+1. ✅ **Hero — "Brief in → routes → file out"** — DONE, using `hero-brief-director-file.jpg`.
 2. **How it works — the board** · *device, 4:3.* Keep the existing iMac board shot.
 3. **Proof — the Library** · *device, 4:3.* Keep the existing Library shot.
 4. **Security/control — Approvals** · *phone, 4:5.* Keep the existing iPhone approvals shot.
-5. **Pain — "44 days vs. today"** · *editorial, 16:9.* A calendar with 44 days crossed out on the left vs. a single "today" on the right, orange accent on "today." Ties to the SHRM stat.
+5. ✅ **Pain — "44 days vs. today"** — DONE, using `pain-44-days-vs-today.jpg` (homepage + Workforce index). A refreshed version is welcome but not needed.
 
 ## Workforce index (`/workforce`)
 6. **Finished‑file still life** · *editorial/still-life, 4:3.* A small "shelf" of finished artifacts as objects — a doc, a deck, a spreadsheet, a zipped project, a PR — each with a colored file‑type chip. Communicates "you get a file, not a chat." *(Replaces the reused Library shot in the proof section.)*
@@ -44,7 +57,7 @@ Give each group its **own** visual so they don't repeat. Concepts:
 20. **Custom AI — deployment model** · *diagram, 4:3.* An agent running "inside your environment," a human‑review gate on consequential actions.
 
 ## Reusable brand motifs (nice to have)
-21. **The org chart** — a Director over a bench of specialists (used on homepage credibility + anywhere "team" is the point).
+21. ✅ **The org chart** — DONE, using `credibility-org-chart.jpg` (Workforce index). Reusable anywhere "team" is the point.
 22. **The approval gate** — a "sends / publishes / spends" action paused at a checkpoint (reinforces control).
 
 ---

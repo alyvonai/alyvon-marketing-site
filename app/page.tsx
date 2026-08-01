@@ -73,6 +73,18 @@ export default function Home() {
             <p className="text-body-s text-text-secondary">{CTA.workforce.micro}</p>
           </div>
         }
+        visual={
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/homepage/hero-brief-director-file.jpg"
+              alt="A plain-language brief routed through a Director, returning a document, deck, and spreadsheet"
+              aspect="16:9"
+              priority
+              sizes="(min-width: 1024px) 520px, 100vw"
+            />
+            <IllustrativeCaption>Brief in. Director routes. Finished files out.</IllustrativeCaption>
+          </div>
+        }
       />
 
       <Section tone="surface" spacing="sm">
@@ -81,13 +93,24 @@ export default function Home() {
 
       {/* Hiring / capacity pain */}
       <Section tone="canvas">
-        <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">Hiring is slow, and it’s getting more expensive.</h2>
-          <p className="text-body-l text-text-secondary">
-            The average role takes about 44 days to fill and roughly $4,700 to hire for — then it’s a
-            salary line whether the work is steady or seasonal (SHRM, 2025 Benchmarking Report).
-            Alyvon skips the hire: brief the work today and the output comes back today.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">Hiring is slow, and it’s getting more expensive.</h2>
+            <p className="text-body-l text-text-secondary">
+              The average role takes about 44 days to fill and roughly $4,700 to hire for — then it’s a
+              salary line whether the work is steady or seasonal (SHRM, 2025 Benchmarking Report).
+              Alyvon skips the hire: brief the work today and the output comes back today.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/homepage/pain-44-days-vs-today.jpg"
+              alt="44 days average time to fill a role versus a same-day start with Alyvon"
+              aspect="16:9"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+            <IllustrativeCaption>44 days to fill a role, on average. Alyvon starts today.</IllustrativeCaption>
+          </div>
         </div>
       </Section>
 

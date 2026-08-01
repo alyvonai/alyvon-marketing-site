@@ -99,15 +99,26 @@ export default function WorkforcePillarPage() {
 
       {/* Hiring-cost pain */}
       <Section tone="surface">
-        <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">
-            The work is here now. A hire is six weeks away.
-          </h2>
-          <p className="text-body-l text-text-secondary">
-            The average role takes about 44 days to fill and roughly $4,700 to hire for — then it&apos;s
-            a salary line whether the work is steady or seasonal (SHRM, 2025 Benchmarking Report).
-            Alyvon skips the hire: brief a department today, and the output comes back today.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">
+              The work is here now. A hire is six weeks away.
+            </h2>
+            <p className="text-body-l text-text-secondary">
+              The average role takes about 44 days to fill and roughly $4,700 to hire for — then
+              it&apos;s a salary line whether the work is steady or seasonal (SHRM, 2025 Benchmarking
+              Report). Alyvon skips the hire: brief a department today, and the output comes back today.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/homepage/pain-44-days-vs-today.jpg"
+              alt="44 days average time to fill a role versus a same-day start with Alyvon"
+              aspect="16:9"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+            <IllustrativeCaption>44 days to fill a role, on average. Alyvon starts today.</IllustrativeCaption>
+          </div>
         </div>
       </Section>
 
@@ -180,12 +191,13 @@ export default function WorkforcePillarPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="flex flex-col gap-3 lg:order-1">
             <MediaFrame
-              src="/images/workforce/board-run.webp"
-              alt="The Alyvon board: a Chief of Staff routes one brief to multiple Directors working in parallel"
-              aspect="4:3"
-              sizes="(min-width: 1024px) 560px, 100vw"
+              src="/images/homepage/credibility-org-chart.jpg"
+              alt="An org chart: a Director over a bench of specialists, each scoped to one kind of output"
+              aspect="1:1"
+              containerClassName="mx-auto max-w-[440px]"
+              sizes="(min-width: 1024px) 440px, 100vw"
             />
-            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
+            <IllustrativeCaption>A Director over every specialist. No unreviewed deliverable.</IllustrativeCaption>
           </div>
           <div className="flex flex-col gap-4 lg:order-2">
             <h2 className="text-display-m text-text-primary">How Alyvon routes work</h2>
