@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 686" width="880" height="686" role="img" aria-labelledby="title desc" font-family="Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="title">Alyvon routes one brief across departments</title>
+  <desc id="desc">Alyvon dispatches work to Creative and Content in parallel, both feed into Engineering, and Engineering returns a finished website and app.</desc>
+
+  <!-- Alyvon brand tokens: canvas #FFFFFF, surface #F6F7F9, border #D4D9E0, accent #DE4B12 -->
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 11 10" refX="11" refY="5" markerWidth="11" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L11,5 L0,10 Z" fill="#DE4B12"/>
+    </marker>
+  </defs>
+
+  <rect class="canvas" width="880" height="686" fill="#FFFFFF"/>
+
+  <!-- edges -->
+  <g fill="none" stroke="#DE4B12" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow)">
+    <path d="M440,116 V149 A14,14 0 0 1 426,163 H224 A14,14 0 0 0 210,177 V202"/>
+    <path d="M440,116 V149 A14,14 0 0 0 454,163 H656 A14,14 0 0 1 670,177 V202"/>
+    <path d="M210,286 V329 A14,14 0 0 0 224,343 H386 A14,14 0 0 1 400,357 V382"/>
+    <path d="M670,286 V329 A14,14 0 0 1 656,343 H494 A14,14 0 0 0 480,357 V382"/>
+    <path d="M440,466 V562"/>
+  </g>
+
+  <!-- Alyvon -->
+  <g>
+    <rect x="340" y="40" width="200" height="76" rx="14" fill="#DE4B12"/>
+    <text x="440" y="79" text-anchor="middle" font-size="22" font-weight="600" letter-spacing="-0.2" fill="#FFFFFF">Alyvon</text>
+    <text x="440" y="97" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6" fill="#FFE2D6">CHIEF OF STAFF</text>
+  </g>
+
+  <!-- Creative -->
+  <g>
+    <rect x="100" y="210" width="220" height="76" rx="14" fill="#F6F7F9" stroke="#D4D9E0" stroke-width="1.5"/>
+    <text x="210" y="249" text-anchor="middle" font-size="22" font-weight="600" letter-spacing="-0.2" fill="#101418">Creative</text>
+    <text x="210" y="267" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6" fill="#5C6672">DIRECTOR</text>
+  </g>
+
+  <!-- Content -->
+  <g>
+    <rect x="560" y="210" width="220" height="76" rx="14" fill="#F6F7F9" stroke="#D4D9E0" stroke-width="1.5"/>
+    <text x="670" y="249" text-anchor="middle" font-size="22" font-weight="600" letter-spacing="-0.2" fill="#101418">Content</text>
+    <text x="670" y="267" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6" fill="#5C6672">DIRECTOR</text>
+  </g>
+
+  <!-- Engineering -->
+  <g>
+    <rect x="340" y="390" width="200" height="76" rx="14" fill="#F6F7F9" stroke="#D4D9E0" stroke-width="1.5"/>
+    <text x="440" y="429" text-anchor="middle" font-size="22" font-weight="600" letter-spacing="-0.2" fill="#101418">Engineering</text>
+    <text x="440" y="447" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6" fill="#5C6672">DIRECTOR</text>
+  </g>
+
+  <!-- Output -->
+  <g>
+    <rect x="330" y="570" width="220" height="76" rx="14" fill="#FFFFFF" stroke="#DE4B12" stroke-width="1.5"/>
+    <text x="440" y="609" text-anchor="middle" font-size="22" font-weight="600" letter-spacing="-0.2" fill="#101418">Website &amp; app</text>
+    <text x="440" y="627" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" letter-spacing="1.6" fill="#DE4B12">DELIVERABLE</text>
+  </g>
+</svg>

@@ -17,9 +17,9 @@ const buttonVariants = cva(
         destructive: "bg-error-ink text-text-on-accent hover:opacity-90",
       },
       size: {
-        sm: "h-9 px-3 text-body-s",
-        md: "h-11 px-5",
-        lg: "h-13 px-6 text-body-l",
+        sm: "h-9 px-4 text-body-s",
+        md: "h-11 px-7",
+        lg: "h-13 px-9 text-body-l",
       },
     },
     defaultVariants: {
