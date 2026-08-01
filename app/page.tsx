@@ -152,9 +152,9 @@ export default function Home() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="flex flex-col gap-3 lg:order-2">
             <MediaFrame
-              src="/images/homepage/how-it-works-3-step.jpg"
+              src="/images/homepage/how-it-works-3-step.svg"
               alt="Three-step diagram: brief in, Director routes, file out"
-              aspect="16:9"
+              aspect="4:3"
               sizes="(min-width: 1024px) 560px, 100vw"
             />
             <IllustrativeCaption>Brief in. Director routes. File out.</IllustrativeCaption>
