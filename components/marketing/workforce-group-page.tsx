@@ -16,7 +16,7 @@ import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
 import { CTA, WORKFORCE_GROUPS, groupBySlug } from "@/lib/site"
-import { GROUP_CONTENT } from "@/lib/workforce-group-content"
+import { GROUP_CONTENT, DEPARTMENT_DETAILS } from "@/lib/workforce-group-content"
 import {
   softwareApplicationSchema,
   faqSchema,
@@ -173,7 +173,10 @@ export function WorkforceGroupPage({ slug }: { slug: string }) {
               {d.director ? (
                 <p className="text-body-s text-text-secondary">Led by {d.director}.</p>
               ) : null}
-              <p className="text-body-l text-text-secondary">Produces: {d.produces}.</p>
+              {DEPARTMENT_DETAILS[d.anchor] ? (
+                <p className="text-body-l text-text-secondary">{DEPARTMENT_DETAILS[d.anchor]}</p>
+              ) : null}
+              <p className="text-body text-text-tertiary">Produces: {d.produces}.</p>
               {note ? (
                 <div className="mt-2 rounded-r-card border-l-4 border-accent bg-accent-wash p-6">
                   <h3 className="text-body-l font-medium text-text-primary">{note.title}</h3>

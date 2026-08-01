@@ -21,6 +21,43 @@ export interface GroupContent {
   anchorNotes?: Record<string, { title: string; body: string; ctaLabel?: string; ctaHref?: string }>
 }
 
+// A 2–3 sentence description per department, keyed by anchor. Rendered in each group
+// page's department anchor sections so they read as real sections, not a one-liner.
+export const DEPARTMENT_DETAILS: Record<string, string> = {
+  "executive-strategy":
+    "Executive & Strategy turns a messy quarter into a clear story — the board deck, the competitive read, the scenario planning that says what to do next. Brief the narrative you need to tell and it comes back sourced, sectioned, and ready to present.",
+  "finance-accounting":
+    "Finance & Accounting keeps the numbers current when month-end always loses to client work — models, budgets, variance notes, and investor updates. Connect where your numbers live and it works from the real data, not a guess.",
+  brand:
+    "Brand owns the positioning and the canonical sell — what you are, what you're not, and the voice everything is written in. It sets the rules once so five writers sound like one company.",
+  "content-editorial":
+    "Content & Editorial writes the funnel's words — sales pages, emails, articles, ad variants, and scripts — and edits for one consistent voice. Brief the outcome and a finished, ready-to-publish draft comes back.",
+  "communications-pr":
+    "Communications & PR carries that message into the outside world — announcements, press notes, and internal comms that never drift from the brand. The launch post and the press note read like the same company wrote them.",
+  creative:
+    "Creative produces the visuals paid spend burns through first — ad variants, launch graphics, short-form cuts, and product visuals that match your brand, with a QA pass before anything ships. It's a paid add-on because media generation carries real incremental cost.",
+  "marketing-operations":
+    "Marketing Operations plans and buys media, wires up tracking, runs CRO, and proves which dollar produced a signup. Brief the campaign, the audit, or the report and it works inside your ad platforms and analytics.",
+  "sales-development":
+    "Sales Development builds the account lists, outbound sequences, and enablement that turn demand into meetings — then arms whoever takes the call. Brief the ICP and a ready-to-load list and sequence come back.",
+  "revenue-operations":
+    "Revenue Operations keeps the pipeline and forecast honest — CRM hygiene, stage cleanup, deal-desk support, and reports leadership actually trusts. Hand it a messy export and get a clean, re-staged pipeline with a change log.",
+  "customer-success":
+    "Customer Success keeps accounts moving — onboarding flows, QBR prep, health playbooks, and renewal briefs — so a missing process doesn't become a churned logo. Brief the account and the prep comes back ready.",
+  "customer-support":
+    "Customer Support turns repeat questions into scalable answers — help-center articles, macros, and response templates in your voice. Point it at your top tickets and get the docs that deflect them.",
+  "people-hr":
+    "People & HR handles the hiring and policy work that always slips — job descriptions, interview scorecards, onboarding plans, and policy drafts. It produces the starting points; legal and compliance review stay yours.",
+  engineering:
+    "Engineering ships real product changes as GitHub pull requests your team reviews and merges — landing pages, fixes, and features. Hugo reads the repo's true state, branches, commits, and opens a PR; he never pushes to main or merges his own work.",
+  "product-design":
+    "Product Design specs the interface before it's built — flows, wireframes, and interaction detail — and reviews what ships against it. Brief the feature and get a spec engineering can build from.",
+  "research-insights":
+    "Research & Insights owns the numbers you report on yourself — a SQL answer, a cohort read, a churn pattern, a source audit — so no page ships an unchecked stat. Ask in plain language and get the real number back.",
+  "security-compliance":
+    "Security & Compliance answers the questionnaires that block deals and drafts the policies auditors ask for — control mapping, vendor reviews, and data-handling facts pulled from how you actually operate.",
+}
+
 export const GROUP_CONTENT: Record<string, GroupContent> = {
   "strategy-leadership": {
     rightPlace: [
