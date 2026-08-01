@@ -7,12 +7,16 @@ import { buttonVariants } from "@/components/ui/button"
 import { MediaFrame } from "@/components/ui/media-frame"
 import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { DataTable } from "@/components/ui/typography"
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { Icon, type IconName } from "@/components/icons"
 import { cn } from "@/lib/utils"
 
 // Copy pulled verbatim from Content & Editorial's "Alyvon Homepage Copy — Rewrite"
 // (Library deliverable d7f55e06-dcb8-42b5-813c-82dfc7341bbb). Scope: "/" only.
-// Imagery from Creative, six section-tagged illustrations wired in via MediaFrame.
+// Imagery from Creative, section-tagged illustrations wired in via MediaFrame, except
+// the Product Lines section, which renders the three product-line nav icons directly
+// (no static image) so it can never drift from the real /workforce, /marketing-hub,
+// /analytics product lines.
 
 export const metadata = buildMetadata({
   title: "Direct a team. Not a tool.",
@@ -26,30 +30,30 @@ const TRIAL_URL = "https://app.alyvon.com"
 const TEXT_LINK_CLASSES =
   "text-body font-medium text-accent-strong underline underline-offset-4 hover:text-accent-strong/80"
 
-const PRODUCT_LINES: { name: string; produces: string }[] = [
+const PRODUCT_LINES: { name: string; produces: string; href: string; icon: IconName; cta: string }[] = [
   {
-    name: "Content & Editorial",
-    produces: "Briefs, articles, page copy, email sequences, and edited final drafts.",
-  },
-  {
-    name: "Research & Insights",
-    produces: "Market scans, competitor audits, and customer and data research.",
-  },
-  {
-    name: "Brand",
-    produces: "Identity systems, voice and copy rules, campaign concepts, and design tokens.",
-  },
-  {
-    name: "Sales Development",
-    produces: "Prospect research, outbound sequences, and call and meeting prep.",
-  },
-  {
-    name: "Marketing Operations",
-    produces: "Campaign builds, funnel copy, CRM and automation work, and reporting.",
+    name: "Workforce",
+    produces:
+      "117 specialists across 16 departments, each led by a Director who turns a plain-language brief into a finished, ready-to-use file.",
+    href: "/workforce",
+    icon: "nav-workforce",
+    cta: "Explore Workforce",
   },
   {
     name: "Marketing Hub",
-    produces: "A CRM, automations, and an AI Employee running day-to-day marketing operations.",
+    produces:
+      "A CRM, follow-up automations, and an AI Employee that runs day-to-day marketing operations and every conversation with a lead or client.",
+    href: "/marketing-hub",
+    icon: "nav-marketing-hub",
+    cta: "Explore Marketing Hub",
+  },
+  {
+    name: "Analytics",
+    produces:
+      "Data engineering and analysis, plus agentic AI development and deployment built on top of the data pipeline once it's solid.",
+    href: "/analytics",
+    icon: "nav-analytics",
+    cta: "Explore Analytics",
   },
 ]
 
@@ -187,34 +191,46 @@ export default function Home() {
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10">
             <div className="flex max-w-[560px] flex-col gap-4">
-              <h2 className="text-display-m text-text-primary">Six product lines. One way of working.</h2>
+              <h2 className="text-display-m text-text-primary">Three product lines. One way of working.</h2>
+              <p className="text-body-l text-text-secondary">
+                Workforce, Marketing Hub, and Analytics each run on the same Director-led model: brief
+                in, Director routes, finished file out.
+              </p>
             </div>
             <div className="flex flex-col gap-3">
-              <MediaFrame
-                src="/images/homepage/product-lines-six-icon-grid.jpg"
-                alt="Six product line icons: Content & Editorial, Research & Insights, Brand, Sales Development, Marketing Operations, Marketing Hub"
-                aspect="4:3"
-                sizes="(min-width: 1024px) 560px, 100vw"
-              />
-              <IllustrativeCaption>Every product line, one system of work.</IllustrativeCaption>
+              <div className="rounded-card border border-border-subtle bg-canvas p-6 sm:p-8">
+                <div className="grid grid-cols-3 gap-4">
+                  {PRODUCT_LINES.map((line) => (
+                    <div
+                      key={line.name}
+                      className="flex flex-col items-center justify-center gap-3 rounded-card border border-border-subtle bg-surface p-6 text-center"
+                    >
+                      <Icon name={line.icon} className="h-10 w-10 text-accent-strong" aria-hidden="true" />
+                      <span className="text-body-s font-medium uppercase tracking-wide text-text-primary">
+                        {line.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <IllustrativeCaption>Workforce, Marketing Hub, and Analytics &mdash; one system of work.</IllustrativeCaption>
             </div>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-3">
             {PRODUCT_LINES.map((line) => (
-              <Card key={line.name} className="bg-surface">
+              <Card key={line.name} className="flex flex-col justify-between bg-surface">
                 <CardHeader>
                   <CardTitle className="text-body-l">{line.name}</CardTitle>
                   <CardDescription>{line.produces}</CardDescription>
                 </CardHeader>
+                <CardContent>
+                  <Link href={line.href} className={buttonVariants({ variant: "secondary", size: "md" })}>
+                    {line.cta}
+                  </Link>
+                </CardContent>
               </Card>
             ))}
-          </div>
-
-          <div>
-            <Link href="/workforce" className={buttonVariants({ variant: "secondary", size: "md" })}>
-              Explore departments
-            </Link>
           </div>
         </div>
       </Section>
