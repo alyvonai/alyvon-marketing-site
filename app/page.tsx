@@ -6,10 +6,8 @@ import { CtaBand } from "@/components/marketing/cta-band"
 import { buttonVariants } from "@/components/ui/button"
 import { MediaFrame } from "@/components/ui/media-frame"
 import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
-import { DataTable } from "@/components/ui/typography"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Icon, type IconName } from "@/components/icons"
-import { cn } from "@/lib/utils"
 
 // Copy pulled verbatim from Content & Editorial's "Alyvon Homepage Copy — Rewrite"
 // (Library deliverable d7f55e06-dcb8-42b5-813c-82dfc7341bbb). Scope: "/" only.
@@ -54,24 +52,6 @@ const PRODUCT_LINES: { name: string; produces: string; href: string; icon: IconN
     href: "/analytics",
     icon: "nav-analytics",
     cta: "Explore Analytics",
-  },
-]
-
-const PRICING_TABLE: { plan: string; price: string; included: string }[] = [
-  {
-    plan: "Starter",
-    price: "$299/mo",
-    included: "40 deliverables/month, 3 departments, 2 seats",
-  },
-  {
-    plan: "Growth",
-    price: "$899/mo",
-    included: "150 deliverables/month, 8 departments, 8 seats",
-  },
-  {
-    plan: "Scale",
-    price: "$2,400/mo",
-    included: "400 deliverables/month, all 16 departments, 25 seats",
   },
 ]
 
@@ -150,16 +130,16 @@ export default function Home() {
       {/* 3. How It Works */}
       <Section tone="canvas" id="how-it-works">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="flex flex-col gap-3 lg:order-2">
+          <div className="flex flex-col gap-3 lg:order-1">
             <MediaFrame
-              src="/images/homepage/how-it-works-3-step.svg"
-              alt="Three-step diagram: brief in, Director routes, file out"
+              src="/images/homepage/how-it-works-flow.jpg"
+              alt="Flow diagram: Alyvon routes one brief to Creative and Content in parallel, both feed into Engineering, which returns a finished website and app"
               aspect="4:3"
               sizes="(min-width: 1024px) 560px, 100vw"
             />
-            <IllustrativeCaption>Brief in. Director routes. File out.</IllustrativeCaption>
+            <IllustrativeCaption>One brief, routed across departments, comes back a finished file.</IllustrativeCaption>
           </div>
-          <div className="flex flex-col gap-6 lg:order-1">
+          <div className="flex flex-col gap-6 lg:order-2">
             <h2 className="text-display-m text-text-primary">Brief in. Director routes. File out.</h2>
             <ol className="flex flex-col gap-5 text-body-l">
               <li>
@@ -238,7 +218,16 @@ export default function Home() {
       {/* 5. Credibility (operating model) */}
       <Section tone="canvas">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-3 lg:order-1">
+            <MediaFrame
+              src="/images/homepage/credibility-org-chart.jpg"
+              alt="An org chart showing a Director over a team of specialists"
+              aspect="1:1"
+              sizes="(min-width: 1024px) 480px, 100vw"
+            />
+            <IllustrativeCaption>A Director over every specialist. No unreviewed deliverable.</IllustrativeCaption>
+          </div>
+          <div className="flex flex-col gap-5 lg:order-2">
             <h2 className="text-display-m text-text-primary">
               The credibility is in how it&apos;s built, not who else uses it.
             </h2>
@@ -254,80 +243,10 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="flex flex-col gap-3">
-            <MediaFrame
-              src="/images/homepage/credibility-org-chart.jpg"
-              alt="An org chart showing a Director over a team of specialists"
-              aspect="1:1"
-              sizes="(min-width: 1024px) 480px, 100vw"
-            />
-            <IllustrativeCaption>A Director over every specialist. No unreviewed deliverable.</IllustrativeCaption>
-          </div>
         </div>
       </Section>
 
-      {/* 6. Pricing Overview */}
-      <Section tone="surface">
-        <div className="flex flex-col gap-10">
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
-            <div className="flex max-w-[560px] flex-col gap-4">
-              <h2 className="text-display-m text-text-primary">Three plans. No contracts. Cancel anytime.</h2>
-            </div>
-            <div className="flex flex-col gap-3">
-              <MediaFrame
-                src="/images/homepage/pricing-tiers.jpg"
-                alt="Three-column pricing table showing Starter, Growth, and Scale plans"
-                aspect="4:3"
-                sizes="(min-width: 1024px) 560px, 100vw"
-              />
-              <IllustrativeCaption>Starter, Growth, and Scale — Scale unlocks every department.</IllustrativeCaption>
-            </div>
-          </div>
-
-          <DataTable>
-            <DataTable.Head>
-              <DataTable.Row>
-                <DataTable.HeaderCell>Plan</DataTable.HeaderCell>
-                <DataTable.HeaderCell>Price</DataTable.HeaderCell>
-                <DataTable.HeaderCell>What&apos;s included</DataTable.HeaderCell>
-              </DataTable.Row>
-            </DataTable.Head>
-            <DataTable.Body>
-              {PRICING_TABLE.map((row) => (
-                <DataTable.Row key={row.plan}>
-                  <DataTable.Cell
-                    className={cn(
-                      "font-medium text-text-primary",
-                      row.plan === "Scale" && "text-accent-strong"
-                    )}
-                  >
-                    {row.plan}
-                  </DataTable.Cell>
-                  <DataTable.Cell>{row.price}</DataTable.Cell>
-                  <DataTable.Cell>{row.included}</DataTable.Cell>
-                </DataTable.Row>
-              ))}
-            </DataTable.Body>
-          </DataTable>
-
-          <p className="max-w-[720px] text-body-l text-text-primary">
-            Every plan starts with a 14-day free trial. No credit card, no contract, cancel
-            anytime. Need more department access or bring-your-own API key? That&apos;s what
-            Scale and Enterprise are for.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4">
-            <a href={TRIAL_URL} className={buttonVariants({ variant: "primary", size: "lg" })}>
-              Start free — no card required
-            </a>
-            <Link href="/pricing" className={TEXT_LINK_CLASSES}>
-              See full pricing details
-            </Link>
-          </div>
-        </div>
-      </Section>
-
-      {/* 7. Final CTA */}
+      {/* 6. Final CTA */}
       <CtaBand
         heading="Direct a team. Not a tool."
         subhead="117 specialists. 16 departments. Every brief comes back a finished file. Start free for 14 days — no card, no contract."
