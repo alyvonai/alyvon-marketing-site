@@ -2,6 +2,8 @@ import Link from "next/link"
 import { History, LayoutList, UserCheck } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
@@ -72,14 +74,25 @@ export default function CrmDetailPage() {
       </Section>
 
       <Section tone="canvas">
-        <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">How it connects</h2>
-          <p className="text-body-l text-text-secondary">
-            The CRM is the record Automations and the AI Employee both write to and read from. A
-            booked appointment, an inbound text, or an AI Employee conversation all land on the
-            same contact record, so a lead&apos;s history is never split across three separate
-            systems.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">How it connects</h2>
+            <p className="text-body-l text-text-secondary">
+              The CRM is the record Automations and the AI Employee both write to and read from. A
+              booked appointment, an inbound text, or an AI Employee conversation all land on the
+              same contact record, so a lead&apos;s history is never split across three separate
+              systems.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/marketing-hub/crm-contact-record.webp"
+              alt="A CRM contact record showing a lead's full history in one place: messages, bookings, and notes on a single timeline"
+              aspect="4:3"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+            <IllustrativeCaption>Product interface. Data shown is illustrative.</IllustrativeCaption>
+          </div>
         </div>
       </Section>
 
