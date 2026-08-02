@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
@@ -83,14 +85,25 @@ export default function AiEmployeePage() {
       </Section>
 
       <Section tone="canvas">
-        <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">Where it fits</h2>
-          <p className="text-body-l text-text-secondary">
-            The AI Employee works inside the same inbox as your unified messaging and the same
-            contact records as your CRM. It is scoped to routine, repeatable conversations.
-            Anything that sends, publishes, or commits you to something still follows Alyvon's
-            standard approval gate.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">Where it fits</h2>
+            <p className="text-body-l text-text-secondary">
+              The AI Employee works inside the same inbox as your unified messaging and the same
+              contact records as your CRM. It is scoped to routine, repeatable conversations.
+              Anything that sends, publishes, or commits you to something still follows Alyvon's
+              standard approval gate.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/marketing-hub/ai-employee-chat.webp"
+              alt="The AI Employee answering a routine customer question in a branded chat conversation"
+              aspect="4:5"
+              sizes="(min-width: 1024px) 480px, 100vw"
+            />
+            <IllustrativeCaption>Product interface. Data shown is illustrative.</IllustrativeCaption>
+          </div>
         </div>
       </Section>
 
