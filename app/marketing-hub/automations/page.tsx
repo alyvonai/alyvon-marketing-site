@@ -2,6 +2,8 @@ import Link from "next/link"
 import { CalendarClock, Inbox, MessageCircle, PhoneMissed, Share2, Star } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
@@ -93,14 +95,25 @@ export default function AutomationsDetailPage() {
       </Section>
 
       <Section tone="canvas">
-        <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">How it connects</h2>
-          <p className="text-body-l text-text-secondary">
-            Every automated touch, a booked appointment, a text sent after a missed call, a
-            message answered in web chat, writes back to the same CRM record. The AI Employee can
-            also act inside these same conversations when a routine question comes in outside
-            business hours.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">How it connects</h2>
+            <p className="text-body-l text-text-secondary">
+              Every automated touch, a booked appointment, a text sent after a missed call, a
+              message answered in web chat, writes back to the same CRM record. The AI Employee can
+              also act inside these same conversations when a routine question comes in outside
+              business hours.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/marketing-hub/automations-flow.webp"
+              alt="An automation flow showing a missed call, follow-up text, and booked appointment writing back to one contact record"
+              aspect="4:3"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+            <IllustrativeCaption>Product interface. Data shown is illustrative.</IllustrativeCaption>
+          </div>
         </div>
       </Section>
 
