@@ -86,6 +86,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: "/workforce/brand", priority: 0.8, changeFrequency: "monthly" },
   { path: "/workforce/sales-development", priority: 0.8, changeFrequency: "monthly" },
   { path: "/workforce/marketing-ops", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/workforce/creative", priority: 0.7, changeFrequency: "monthly" },
   { path: "/marketing-hub", priority: 0.8, changeFrequency: "monthly" },
   { path: "/marketing-hub/crm", priority: 0.7, changeFrequency: "monthly" },
   { path: "/marketing-hub/automations", priority: 0.7, changeFrequency: "monthly" },
