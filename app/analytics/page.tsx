@@ -10,6 +10,8 @@ import { Faq } from "@/components/marketing/faq"
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { BookingCta } from "@/components/marketing/booking-cta"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { CTA } from "@/lib/site"
 import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
@@ -90,6 +92,18 @@ export default function AnalyticsPage() {
             </Link>
           </div>
         }
+        visual={
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/analytics/dashboard-reporting-layer.webp"
+              alt="A reporting dashboard with clean charts built on top of a reliable data pipeline"
+              aspect="4:3"
+              priority
+              sizes="(min-width: 1024px) 520px, 100vw"
+            />
+            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
+          </div>
+        }
       />
 
       <Section tone="surface">
@@ -116,6 +130,15 @@ export default function AnalyticsPage() {
                 <p className="text-body text-text-secondary">{s.copy}</p>
               </Card>
             ))}
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/analytics/four-part-system-diagram.webp"
+              alt="A four-part system stacked on reliable data at the base: data engineering, analysis, data science, and applied AI"
+              aspect="16:9"
+              sizes="(min-width: 1024px) 1000px, 100vw"
+            />
+            <IllustrativeCaption>Illustrative.</IllustrativeCaption>
           </div>
         </div>
       </Section>

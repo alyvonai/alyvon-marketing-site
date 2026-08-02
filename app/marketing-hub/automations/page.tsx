@@ -8,6 +8,8 @@ import { CtaBand } from "@/components/marketing/cta-band"
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { BookingCta } from "@/components/marketing/booking-cta"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { CTA } from "@/lib/site"
 import { softwareApplicationSchema, breadcrumbSchema } from "@/lib/jsonld"
 
@@ -48,6 +50,18 @@ export default function AutomationsPage() {
             placement="automations_hero"
             className={cn(buttonVariants({ size: "lg" }))}
           />
+        }
+        visual={
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/marketing-hub/automations-flow.webp"
+              alt="An automation flow: a missed call triggering an automatic text-back, then a follow-up step"
+              aspect="4:3"
+              priority
+              sizes="(min-width: 1024px) 520px, 100vw"
+            />
+            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
+          </div>
         }
       />
 

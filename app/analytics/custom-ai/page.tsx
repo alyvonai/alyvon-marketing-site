@@ -9,6 +9,8 @@ import { Faq } from "@/components/marketing/faq"
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { BookingCta } from "@/components/marketing/booking-cta"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { CTA } from "@/lib/site"
 import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
@@ -78,6 +80,18 @@ export default function CustomAiPage() {
             placement="custom_ai_hero"
             className={cn(buttonVariants({ size: "lg" }))}
           />
+        }
+        visual={
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/analytics/custom-ai-deployment-diagram.webp"
+              alt="A custom AI agent deployed inside your environment on top of your data pipeline, with a human-review gate on consequential actions"
+              aspect="4:3"
+              priority
+              sizes="(min-width: 1024px) 520px, 100vw"
+            />
+            <IllustrativeCaption>Illustrative.</IllustrativeCaption>
+          </div>
         }
       />
 

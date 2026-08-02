@@ -171,12 +171,12 @@ export default function WorkforcePillarPage() {
           </div>
           <div className="flex flex-col gap-3">
             <MediaFrame
-              src="/images/workforce/library-files.webp"
-              alt="The Alyvon Library: real delivered files — documents, spreadsheets, decks, code, and projects"
+              src="/images/workforce/finished-file-still-life.webp"
+              alt="Finished deliverables as objects — a document, deck, spreadsheet, zip, and pull request, each tagged with its file type"
               aspect="4:3"
               sizes="(min-width: 1024px) 560px, 100vw"
             />
-            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
+            <IllustrativeCaption>Illustrative.</IllustrativeCaption>
           </div>
         </div>
       </Section>

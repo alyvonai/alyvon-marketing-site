@@ -10,6 +10,8 @@ import { Faq } from "@/components/marketing/faq"
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { BookingCta } from "@/components/marketing/booking-cta"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { CTA } from "@/lib/site"
 import { softwareApplicationSchema, faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
@@ -128,14 +130,25 @@ export default function MarketingHubPage() {
       </Section>
 
       <Section tone="surface">
-        <div className="flex max-w-[760px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">How the loop works</h2>
-          <ol className="flex flex-col gap-3 text-body-l text-text-primary">
-            <li><strong>Capture.</strong> The lead lands in the CRM with its source and context.</li>
-            <li><strong>Respond.</strong> Automations fire on the event — a text-back, a reminder, a nurture.</li>
-            <li><strong>Converse.</strong> The AI Employee answers routine questions and books the meeting.</li>
-            <li><strong>Escalate.</strong> Anything outside the approved knowledge base routes to a human.</li>
-          </ol>
+        <div className="flex flex-col gap-8">
+          <div className="flex max-w-[760px] flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">How the loop works</h2>
+            <ol className="flex flex-col gap-3 text-body-l text-text-primary">
+              <li><strong>Capture.</strong> The lead lands in the CRM with its source and context.</li>
+              <li><strong>Respond.</strong> Automations fire on the event — a text-back, a reminder, a nurture.</li>
+              <li><strong>Converse.</strong> The AI Employee answers routine questions and books the meeting.</li>
+              <li><strong>Escalate.</strong> Anything outside the approved knowledge base routes to a human.</li>
+            </ol>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/marketing-hub/overview-loop-diagram.webp"
+              alt="A closed loop diagram: capture, respond, converse, and escalate feeding back into each other"
+              aspect="16:9"
+              sizes="(min-width: 1024px) 1000px, 100vw"
+            />
+            <IllustrativeCaption>Illustrative.</IllustrativeCaption>
+          </div>
         </div>
       </Section>
 

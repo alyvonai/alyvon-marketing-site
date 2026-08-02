@@ -52,6 +52,37 @@ function trialActions(placement: string) {
   )
 }
 
+// Per-group hero concept image so each group reads as its own thing (not the same shot
+// repeated). Creative has no entry on purpose — its hero visual is the sample gallery
+// lower on the page — so it falls back to the generic Library shot.
+const GROUP_HERO: Record<string, { src: string; alt: string; caption: string }> = {
+  "strategy-leadership": {
+    src: "/images/workforce/groups/strategy-leadership.webp",
+    alt: "A board deck open on a laptop beside a scenario line chart",
+    caption: "Illustrative.",
+  },
+  "brand-content": {
+    src: "/images/workforce/groups/brand-content.webp",
+    alt: "One brand voice carried across a page, an email, a press note, and an ad in one color system",
+    caption: "Illustrative.",
+  },
+  "marketing-sales": {
+    src: "/images/workforce/groups/marketing-sales.webp",
+    alt: "An account list flowing into an outbound sequence and booked meetings",
+    caption: "Illustrative.",
+  },
+  "customer-people": {
+    src: "/images/workforce/groups/customer-people.webp",
+    alt: "A split scene: a customer onboarding flow beside a job description and interview scorecard",
+    caption: "Illustrative.",
+  },
+  "product-engineering": {
+    src: "/images/workforce/groups/product-engineering.webp",
+    alt: "A GitHub pull-request view with a diff and a Merge button",
+    caption: "Illustrative.",
+  },
+}
+
 // Shared 17-section Workforce group template (spec §17). Structure is identical across
 // groups; copy comes from lib/site (H1/subhead/CTA + departments) and
 // lib/workforce-group-content (bullets, use cases, FAQ, anchor notes).
@@ -59,6 +90,8 @@ export function WorkforceGroupPage({ slug }: { slug: string }) {
   const group = groupBySlug(slug)
   const content = GROUP_CONTENT[slug]
   if (!group || !content) return null
+
+  const hero = GROUP_HERO[slug]
 
   const crumbs = [
     { name: "Home", path: "/" },
@@ -78,13 +111,15 @@ export function WorkforceGroupPage({ slug }: { slug: string }) {
         visual={
           <div className="flex flex-col gap-3">
             <MediaFrame
-              src="/images/workforce/library-files.webp"
-              alt={`Finished files produced by the ${group.label} group`}
+              src={hero ? hero.src : "/images/workforce/library-files.webp"}
+              alt={hero ? hero.alt : `Finished files produced by the ${group.label} group`}
               aspect="4:3"
               priority
               sizes="(min-width: 1024px) 520px, 100vw"
             />
-            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
+            <IllustrativeCaption>
+              {hero ? hero.caption : "Product UI. Illustrative data."}
+            </IllustrativeCaption>
           </div>
         }
       />

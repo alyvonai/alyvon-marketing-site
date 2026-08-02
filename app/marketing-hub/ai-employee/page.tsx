@@ -8,6 +8,8 @@ import { CtaBand } from "@/components/marketing/cta-band"
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { BookingCta } from "@/components/marketing/booking-cta"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { CTA } from "@/lib/site"
 import { softwareApplicationSchema, breadcrumbSchema } from "@/lib/jsonld"
 
@@ -47,6 +49,18 @@ export default function AiEmployeePage() {
             placement="ai_employee_hero"
             className={cn(buttonVariants({ size: "lg" }))}
           />
+        }
+        visual={
+          <div className="mx-auto flex max-w-[320px] flex-col gap-3">
+            <MediaFrame
+              src="/images/marketing-hub/ai-employee-chat.webp"
+              alt="A chat thread where the AI Employee answers routine questions, with one message escalated to a human highlighted"
+              aspect="4:5"
+              priority
+              sizes="(min-width: 1024px) 320px, 80vw"
+            />
+            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
+          </div>
         }
       />
 
