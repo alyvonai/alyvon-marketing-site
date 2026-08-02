@@ -400,6 +400,88 @@ export default function WorkforcePillarPage() {
         </div>
       </Section>
 
+      {/* Strategy & Leadership group shot */}
+      <Section tone="surface">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">
+              Every department starts with a Director who sets the direction.
+            </h2>
+            <p className="text-body-l text-text-secondary">
+              Before a specialist writes a word or opens a tool, a Director reads the brief, decides
+              who on the team should take it, and sets the strategy the work has to match. That
+              review happens on every department, every time — it&apos;s the layer that keeps 117
+              specialists pointed at one plan instead of 117 different ones.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/workforce/groups/strategy-leadership.webp"
+              alt="Directors and strategists reviewing a brief together before routing it to specialists"
+              aspect="4:3"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+            <IllustrativeCaption>
+              Product interface. Data shown is illustrative.
+            </IllustrativeCaption>
+          </div>
+        </div>
+      </Section>
+
+      {/* Customer & People group shot */}
+      <Section tone="canvas">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-3 lg:order-1">
+            <MediaFrame
+              src="/images/workforce/groups/customer-people.webp"
+              alt="Specialists working on customer-facing and people-facing briefs across departments"
+              aspect="4:3"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+            <IllustrativeCaption>
+              Product interface. Data shown is illustrative.
+            </IllustrativeCaption>
+          </div>
+          <div className="flex flex-col gap-4 lg:order-2">
+            <h2 className="text-display-m text-text-primary">
+              And departments that work directly with your customers and your team.
+            </h2>
+            <p className="text-body-l text-text-secondary">
+              Not every department&apos;s work stays behind the scenes. Some briefs are customer-facing
+              from the start — outbound, support replies, onboarding copy — and some are about the
+              people running the business day to day. Every one of them still passes through the same
+              Director review before it reaches you.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Finished-file still life */}
+      <Section tone="surface">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">
+              This is what a brief turns into.
+            </h2>
+            <p className="text-body-l text-text-secondary">
+              Not a chat transcript — a real, finished deliverable. Documents, spreadsheets, decks,
+              and code, ready to open and use the moment a Director signs off on them.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/workforce/finished-file-still-life.webp"
+              alt="A still life of finished deliverables Alyvon produces: documents, spreadsheets, and decks"
+              aspect="4:3"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+            <IllustrativeCaption>
+              A still life of the finished files a brief becomes.
+            </IllustrativeCaption>
+          </div>
+        </div>
+      </Section>
+
       <CtaBand
         heading="Direct your first department this week."
         subhead="14 days or 10 deliverables, whichever comes first. No credit card."
