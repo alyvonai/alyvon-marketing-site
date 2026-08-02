@@ -103,12 +103,25 @@ export default function MarketingOperationsDepartmentPage() {
       </Section>
 
       <Section tone="surface">
-        <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">Who runs it</h2>
-          <p className="text-body-l text-text-secondary">
-            Tobias, Director of Performance Marketing, plans paid media and routes work to
-            channel specialists, creative strategists, CRO, attribution, and ops.
-        </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex max-w-[720px] flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">Who runs it</h2>
+            <p className="text-body-l text-text-secondary">
+              Tobias, Director of Performance Marketing, plans paid media and routes work to
+              channel specialists, creative strategists, CRO, attribution, and ops.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/workforce/groups/marketing-sales.webp"
+              alt="A visual of the Marketing Operations funnel: a target account list, a campaign sequence, and booked meetings as the tracked outcome"
+              aspect="4:3"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+            <IllustrativeCaption>
+              Target list in, campaign sequence out, meetings booked and attributed. Data shown is illustrative.
+            </IllustrativeCaption>
+          </div>
         </div>
       </Section>
 
