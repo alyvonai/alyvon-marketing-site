@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { MARKETING_HUB_FEATURES } from "@/lib/nav-data"
 import { cn } from "@/lib/utils"
 import { buildMetadata } from "@/lib/metadata"
@@ -65,6 +67,16 @@ export default function MarketingHubPillarPage() {
           <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
             Start your free trial
           </Link>
+        }
+        visual={
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/marketing-hub/overview-loop-diagram.webp"
+              alt="Diagram of the Marketing Hub loop: the CRM tracks every lead and client, automations run the follow-up sequences, and the AI Employee handles routine conversations, feeding activity back into the CRM."
+              aspect="16:9"
+            />
+            <IllustrativeCaption>Product interface. Data shown is illustrative.</IllustrativeCaption>
+          </div>
         }
       />
 
