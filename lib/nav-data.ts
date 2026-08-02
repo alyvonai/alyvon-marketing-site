@@ -93,6 +93,7 @@ export const FOOTER_LINK_GROUPS: { heading: string; links: NavChild[] }[] = [
       { label: "Security", href: "/security" },
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
+      { label: "Subprocessors", href: "/subprocessors" },
     ],
   },
 ]
@@ -126,4 +127,5 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: "/security", priority: 0.6, changeFrequency: "monthly" },
   { path: "/privacy", priority: 0.2, changeFrequency: "monthly" },
   { path: "/terms", priority: 0.2, changeFrequency: "monthly" },
+  { path: "/subprocessors", priority: 0.2, changeFrequency: "monthly" },
 ]
