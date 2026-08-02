@@ -228,6 +228,32 @@ export default function BrandDepartmentPage() {
         </div>
       </Section>
 
+      <Section tone="canvas">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">
+              Brand sets the rules Content writes by.
+            </h2>
+            <p className="text-body-l text-text-secondary">
+              Positioning, naming, and voice don&apos;t stay on a shelf — Brand hands them straight
+              to Content and Editorial before a single page or email gets written, so every
+              specialist across both departments is working from the same rulebook.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/workforce/groups/brand-content.webp"
+              alt="Brand and Content and Editorial specialists reviewing voice rules and positioning together"
+              aspect="4:3"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+            <IllustrativeCaption>
+              Product interface. Data shown is illustrative.
+            </IllustrativeCaption>
+          </div>
+        </div>
+      </Section>
+
       <CtaBand
         heading="Brief Brand this week."
         subhead="14 days or 10 deliverables, whichever comes first. No credit card."
