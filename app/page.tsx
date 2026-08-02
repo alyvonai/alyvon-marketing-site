@@ -29,21 +29,21 @@ const PRODUCT_LINES = [
     name: "Workforce",
     href: "/workforce",
     produces:
-      "16 AI departments and 102 specialists across 6 groups. Brief a Director; a finished file comes back to your Library.",
+      "16 departments and 102 specialists across 6 groups, each led by a Director who turns a plain-language brief into a finished, ready-to-use file.",
     cta: "trial" as const,
   },
   {
     name: "Marketing Hub",
     href: "/marketing-hub",
     produces:
-      "A CRM, automations, and an AI Employee that keep leads moving after the first form fill, missed call, or booked meeting.",
+      "A CRM, follow-up automations, and an AI Employee that runs day-to-day marketing operations and every conversation with a lead or client.",
     cta: "walkthrough" as const,
   },
   {
     name: "Analytics",
     href: "/analytics",
     produces:
-      "Custom data pipelines, reporting, and applied AI — scoped and deployed inside your own environment.",
+      "Data engineering and analysis, plus applied AI development and deployment built on top of the pipeline once it's solid — deployed in your own environment.",
     cta: "scoping" as const,
   },
 ]
@@ -54,7 +54,7 @@ export default function Home() {
       <Hero
         eyebrow="AI workforce platform"
         heading="Direct a team. Not a tool."
-        subhead="Alyvon routes plain-language work to AI departments, marketing systems, and custom analytics builds that produce usable business outputs."
+        subhead="Alyvon gives you AI departments, marketing systems, and custom analytics builds — each turning a plain-language brief into a finished, ready-to-use file. No prompting. No assembly. You direct the work; the work ships."
         actions={
           <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center gap-3">
@@ -70,7 +70,7 @@ export default function Home() {
                 See how it works
               </Link>
             </div>
-            <p className="text-body-s text-text-secondary">{CTA.workforce.micro}</p>
+            <p className="text-body-s text-text-secondary">No credit card required. Cancel anytime. No contracts.</p>
           </div>
         }
         visual={
@@ -97,10 +97,24 @@ export default function Home() {
           <div className="flex flex-col gap-4">
             <h2 className="text-display-m text-text-primary">Hiring is slow, and it’s getting more expensive.</h2>
             <p className="text-body-l text-text-secondary">
-              The average role takes about 44 days to fill and roughly $4,700 to hire for — then it’s a
-              salary line whether the work is steady or seasonal (SHRM, 2025 Benchmarking Report).
-              Alyvon skips the hire: brief the work today and the output comes back today.
+              Average cost-per-hire in the U.S. is now roughly $4,700–$4,800, up from $4,129 in 2019 —
+              and the average open role takes about 44 days to fill (SHRM, 2025 Benchmarking Report).
+              That’s six weeks without the work getting done, then a new salary line whether the work is
+              steady or seasonal.
             </p>
+            <p className="text-body-l text-text-primary">
+              Alyvon skips the hire: you get the department’s output starting today, not in six weeks.
+            </p>
+            <div>
+              <TrackedCta
+                href={CTA.workforce.href}
+                className={cn(buttonVariants({ size: "lg" }))}
+                event="trial_cta_clicked"
+                eventProps={{ product: "workforce", placement: "home_pain" }}
+              >
+                Skip the hire — start free
+              </TrackedCta>
+            </div>
           </div>
           <div className="flex flex-col gap-3">
             <MediaFrame
@@ -128,12 +142,24 @@ export default function Home() {
             <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
           </div>
           <div className="flex flex-col gap-4 lg:order-2">
-            <h2 className="text-display-m text-text-primary">Brief in. Alyvon routes. File out.</h2>
-            <ol className="flex flex-col gap-3 text-body-l text-text-primary">
-              <li><strong>Brief in.</strong> Describe the work in plain language.</li>
-              <li><strong>Alyvon routes.</strong> A Chief of Staff picks the right Director and specialists.</li>
-              <li><strong>File out.</strong> A finished, reviewed deliverable lands in your Library.</li>
-              <li><strong>You approve.</strong> Anything that sends, publishes, or spends waits for you.</li>
+            <h2 className="text-display-m text-text-primary">Brief in. Director routes. File out.</h2>
+            <ol className="flex flex-col gap-4 text-body-l text-text-primary">
+              <li>
+                <strong>Brief in</strong> — Tell a Director what you need, in plain language. No prompt
+                engineering, no back-and-forth with a chatbot.
+              </li>
+              <li>
+                <strong>Director routes</strong> — The Director assigns it to the right specialist and
+                owns it end to end, not a ticket in a queue.
+              </li>
+              <li>
+                <strong>File out</strong> — You get a finished, ready-to-use deliverable, not a draft
+                that still needs assembly.
+              </li>
+              <li>
+                <strong>You approve</strong> — Anything that sends, publishes, or spends waits for your
+                go-ahead.
+              </li>
             </ol>
           </div>
         </div>
@@ -231,11 +257,15 @@ export default function Home() {
             <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
           </div>
           <div className="flex flex-col gap-4 lg:order-2">
-            <h2 className="text-display-m text-text-primary">You direct the work. You approve what ships.</h2>
+            <h2 className="text-display-m text-text-primary">
+              The credibility is in how it’s built, not who else uses it.
+            </h2>
             <p className="text-body-l text-text-secondary">
-              Specialists work inside the tools you already run, every deliverable passes a quality
-              and security gate, and anything that sends, publishes, or spends money waits for your
-              approval — from your desk or your phone.
+              Every specialist works under a Director — briefed, reviewed, and accountable for the
+              file that goes out. Alyvon connects to 1,000+ integrations, so specialists work inside
+              the tools you already run, and every deliverable passes a quality and security gate.
+              Anything that sends, publishes, or spends waits for your approval — from your desk or
+              your phone.
             </p>
             <div>
               <Link href="/security" className={cn(buttonVariants({ variant: "secondary", size: "md" }))}>
@@ -248,7 +278,7 @@ export default function Home() {
 
       <CtaBand
         heading="Direct a team. Not a tool."
-        subhead="16 departments, 102 specialists, one workforce. Start free for 14 days — no card, no contract."
+        subhead="16 departments, 102 specialists. Every brief comes back a finished file. Start free for 14 days — no card, no contract."
         actions={
           <TrackedCta
             href={CTA.workforce.href}

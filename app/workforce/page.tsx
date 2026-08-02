@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Palette, Database, Plug, Blocks, Sparkles, CalendarClock } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { buildMetadata } from "@/lib/metadata"
 import { buttonVariants } from "@/components/ui/button"
@@ -34,6 +35,39 @@ export const metadata = buildMetadata({
 const STATS = ["16 departments", "102 specialists", "6 groups", "finished files, not transcripts"]
 
 const ROLE_CHIPS = WORKFORCE_GROUPS.map((g) => ({ label: g.label, href: g.href }))
+
+const DIFFERENTIATORS = [
+  {
+    icon: Palette,
+    title: "Writes in your voice, not a generic one",
+    body: "Every specialist works from your brand — voice, positioning, colors, products, pricing, and ICP. The output sounds like your company wrote it, because it's briefed the way your company would. No re-explaining who you are on every task.",
+  },
+  {
+    icon: Database,
+    title: "Remembers everything you've told it",
+    body: "Feed it your docs, past work, and data. Alyvon embeds it all as searchable org knowledge, so every specialist pulls the right context into every brief — the way a good hire remembers how you do things.",
+  },
+  {
+    icon: Plug,
+    title: "Works where your work already lives",
+    body: "1,000+ integrations — Gmail, Slack, HubSpot, GitHub, your CRM — so specialists act inside the tools you already run, not a walled garden you have to export from.",
+  },
+  {
+    icon: Blocks,
+    title: "If the catalog doesn't fit, build your own",
+    body: "102 specialists not quite right? Create a custom agent — its role, its tools, its voice — and put it to work beside the rest. No engineering, no waiting on a roadmap.",
+  },
+  {
+    icon: Sparkles,
+    title: "The Improvement Engine comes back with ideas",
+    body: "Alyvon watches your growth and surfaces ranked recommendations: fixes, proven plays, and experiments to A/B test. You approve what runs; it measures the result and reports back.",
+  },
+  {
+    icon: CalendarClock,
+    title: "Routines put the work on a schedule",
+    body: "Brief once, receive forever. Put any department on a cadence — the Monday performance deck, the monthly content calendar, the quarterly churn read — delivered on time without re-briefing.",
+  },
+]
 
 const FAQ_ITEMS = [
   {
@@ -186,8 +220,42 @@ export default function WorkforcePillarPage() {
         </div>
       </Section>
 
-      {/* How Alyvon routes work */}
+      {/* Differentiators — what a tool can't copy */}
       <Section tone="canvas">
+        <div className="flex flex-col gap-10">
+          <div className="flex max-w-[720px] flex-col gap-4">
+            <span className="font-mono text-label uppercase text-accent-strong">
+              What a tool can&apos;t copy
+            </span>
+            <h2 className="text-display-m text-text-primary">
+              It works like it already knows your business.
+            </h2>
+            <p className="text-body-l text-text-secondary">
+              Most AI tools start from zero every session. Alyvon starts from you — your brand, your
+              knowledge, your tools — and gets better at your business over time.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {DIFFERENTIATORS.map((d) => {
+              const Icon = d.icon
+              return (
+                <Card key={d.title} className="flex flex-col gap-4 p-6">
+                  <span className="flex size-11 items-center justify-center rounded-card bg-accent-wash text-accent-strong">
+                    <Icon className="size-5" aria-hidden="true" />
+                  </span>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-body-l font-medium text-text-primary">{d.title}</h3>
+                    <p className="text-body text-text-secondary">{d.body}</p>
+                  </div>
+                </Card>
+              )
+            })}
+          </div>
+        </div>
+      </Section>
+
+      {/* How Alyvon routes work */}
+      <Section tone="surface">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="flex flex-col gap-3 lg:order-1">
             <MediaFrame
