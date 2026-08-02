@@ -9,11 +9,15 @@
 // no new variant was introduced. Tier 1 hero screenshots that need the browser frame
 // use <ProductShot> instead; Tier 3 device renders and Tier 2 composed art use
 // MediaFrame directly with the new ratios.
+//
+// Creative imagery integration addendum (docs/creative-imagery-integration-manifest.md):
+// added "9:16" (vertical Reel/Story video posters) and "ad" (1200:627 static ad units,
+// e.g. LinkedIn/consult ad creative). Additive only, same contract as above.
 import * as React from "react"
 import Image, { type ImageProps } from "next/image"
 import { cn } from "@/lib/utils"
 
-export type MediaFrameAspect = "16:9" | "1:1" | "4:3" | "16:10" | "3:2" | "4:5"
+export type MediaFrameAspect = "16:9" | "1:1" | "4:3" | "16:10" | "3:2" | "4:5" | "9:16" | "ad"
 
 const aspectClassMap: Record<MediaFrameAspect, string> = {
   "16:9": "aspect-video",
@@ -22,6 +26,8 @@ const aspectClassMap: Record<MediaFrameAspect, string> = {
   "16:10": "aspect-[16/10]",
   "3:2": "aspect-[3/2]",
   "4:5": "aspect-[4/5]",
+  "9:16": "aspect-[9/16]",
+  "ad": "aspect-[1200/627]",
 }
 
 export interface MediaFrameProps extends Omit<ImageProps, "fill"> {
