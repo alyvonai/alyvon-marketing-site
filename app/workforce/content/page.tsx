@@ -231,6 +231,32 @@ export default function ContentDepartmentPage() {
         </div>
       </Section>
 
+      <Section tone="canvas">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-3 lg:order-1">
+            <MediaFrame
+              src="/images/workforce/groups/brand-content.webp"
+              alt="Content and Editorial specialists writing from Brand's voice rules and positioning spine"
+              aspect="4:3"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+            <IllustrativeCaption>
+              Product interface. Data shown is illustrative.
+            </IllustrativeCaption>
+          </div>
+          <div className="flex flex-col gap-4 lg:order-2">
+            <h2 className="text-display-m text-text-primary">
+              Every draft starts from Brand&apos;s rulebook, not a blank page.
+            </h2>
+            <p className="text-body-l text-text-secondary">
+              Before Content writes a word, Brand has already set the voice rules and the
+              positioning spine. That handoff is why a sales page, an email, and an ad variant
+              all read like the same company wrote them.
+            </p>
+          </div>
+        </div>
+      </Section>
+
       <CtaBand
         heading="Brief Content and Editorial this week."
         subhead="14 days or 10 deliverables, whichever comes first. No credit card."
