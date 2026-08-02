@@ -4,6 +4,8 @@ import { List } from "@/components/ui/typography"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { cn } from "@/lib/utils"
 import { buildMetadata } from "@/lib/metadata"
 
@@ -34,6 +36,16 @@ export default function CustomAiPage() {
           <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
             Start your free trial
           </Link>
+        }
+        visual={
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/analytics/custom-ai-deployment-diagram.webp"
+              alt="Diagram of a custom AI model deployed on top of an existing data pipeline, applied to one defined business problem rather than a generic off-the-shelf tool."
+              aspect="4:3"
+            />
+            <IllustrativeCaption>Product interface. Data shown is illustrative.</IllustrativeCaption>
+          </div>
         }
       />
 
