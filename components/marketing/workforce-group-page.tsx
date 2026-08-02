@@ -16,6 +16,7 @@ import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
 import { MobileCtaBar } from "@/components/marketing/mobile-cta-bar"
+import { CreativeShowcase } from "@/components/marketing/creative-showcase"
 import { CTA, WORKFORCE_GROUPS, groupBySlug } from "@/lib/site"
 import { GROUP_CONTENT, DEPARTMENT_DETAILS } from "@/lib/workforce-group-content"
 import {
@@ -144,6 +145,9 @@ export function WorkforceGroupPage({ slug }: { slug: string }) {
           </div>
         </div>
       </Section>
+
+      {/* Creative-only showcase gallery */}
+      {slug === "creative" ? <CreativeShowcase /> : null}
 
       {/* Mid CTA */}
       <Section tone="canvas" spacing="sm">
