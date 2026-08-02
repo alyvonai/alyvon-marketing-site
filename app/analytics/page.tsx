@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { cn } from "@/lib/utils"
 import { buildMetadata } from "@/lib/metadata"
 
@@ -49,6 +51,16 @@ export default function AnalyticsPillarPage() {
             Start your free trial
           </Link>
         }
+        visual={
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/analytics/four-part-system-diagram.webp"
+              alt="Diagram of the four-part analytics system: data engineering feeding data analysis, which feeds data science, which feeds custom AI applied to a specific business problem."
+              aspect="16:9"
+            />
+            <IllustrativeCaption>Product interface. Data shown is illustrative.</IllustrativeCaption>
+          </div>
+        }
       />
 
       <Section tone="surface">
@@ -87,6 +99,14 @@ export default function AnalyticsPillarPage() {
           >
             See custom AI
           </Link>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/analytics/dashboard-reporting-layer.webp"
+              alt="Dashboard and reporting layer showing analytics output surfaced as charts and tables for the business to act on."
+              aspect="4:3"
+            />
+            <IllustrativeCaption>Product interface. Data shown is illustrative.</IllustrativeCaption>
+          </div>
         </div>
       </Section>
 
