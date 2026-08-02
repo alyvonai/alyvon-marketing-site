@@ -13,7 +13,9 @@ import * as React from "react"
 import Image, { type ImageProps } from "next/image"
 import { cn } from "@/lib/utils"
 
-export type MediaFrameAspect = "16:9" | "1:1" | "4:3" | "16:10" | "3:2" | "4:5"
+// Creative-gallery addendum: "9:16" (vertical Reel/Story posters) and "ad" (1200×627 ad
+// units) added for the /workforce/creative sample gallery — additive, aspect-ratio only.
+export type MediaFrameAspect = "16:9" | "1:1" | "4:3" | "16:10" | "3:2" | "4:5" | "9:16" | "ad"
 
 const aspectClassMap: Record<MediaFrameAspect, string> = {
   "16:9": "aspect-video",
@@ -22,6 +24,8 @@ const aspectClassMap: Record<MediaFrameAspect, string> = {
   "16:10": "aspect-[16/10]",
   "3:2": "aspect-[3/2]",
   "4:5": "aspect-[4/5]",
+  "9:16": "aspect-[9/16]",
+  ad: "aspect-[1200/627]",
 }
 
 export interface MediaFrameProps extends Omit<ImageProps, "fill"> {

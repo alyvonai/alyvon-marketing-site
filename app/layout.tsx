@@ -1,9 +1,12 @@
 import type { Metadata } from "next"
 import type { ReactNode } from "react"
 import { Archivo, JetBrains_Mono } from "next/font/google"
+import { GoogleTagManager } from "@next/third-parties/google"
 import "./globals.css"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { PostHogProvider } from "@/components/analytics/posthog-provider"
+import { GTM_ID } from "@/lib/site"
 
 // Brand typography per Ticket 0c Section 2: Archivo (display + body) and
 // JetBrains Mono (labels, eyebrows, timestamps, numeric figures). Fraunces
@@ -42,12 +45,16 @@ export default function RootLayout({
 }: {
   children: ReactNode
 }) {
+  // GTM mounts from GTM_ID (env override, live default). PostHog no-ops without a key.
   return (
     <html lang="en" className={cnFonts(archivo.variable, jetbrainsMono.variable)}>
+      {GTM_ID ? <GoogleTagManager gtmId={GTM_ID} /> : null}
       <body className="flex min-h-screen flex-col">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <PostHogProvider>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </PostHogProvider>
       </body>
     </html>
   )

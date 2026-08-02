@@ -1,157 +1,227 @@
 import Link from "next/link"
-import { Bot, MessageSquareText, Users, Workflow } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { buildMetadata } from "@/lib/metadata"
 import { buttonVariants } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
-import { MARKETING_HUB_FEATURES } from "@/lib/nav-data"
-import { cn } from "@/lib/utils"
-import { buildMetadata } from "@/lib/metadata"
-
-// Copy pulled verbatim from Library deliverable e0adc23e-9115-4d27-ab08-b1cd1896e9b2
-// (Ticket 0h, final -- the /marketing-hub section, lines 44-80 of the source docx,
-// including the "three parts" table). Vertical-neutral per
-// docs/tickets-2-21-manifest.md.
+import { Faq } from "@/components/marketing/faq"
+import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
+import { JsonLd } from "@/components/marketing/json-ld"
+import { BookingCta } from "@/components/marketing/booking-cta"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
+import { CTA } from "@/lib/site"
+import { softwareApplicationSchema, faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
   title: "Marketing Hub - Alyvon",
   description:
-    "Alyvon Marketing Hub: the CRM, automations, and AI Employee behind your lead and client messaging, in one connected system.",
+    "Alyvon Marketing Hub is the operating layer for leads, follow-up, automations, and routine conversations — a CRM, automations, and an AI Employee that keep leads moving after the first form fill, missed call, or booked meeting.",
   path: "/marketing-hub",
 })
 
-// "Part | What it does" table from the source docx. Icons are decorative --
-// each card already carries a visible label, so a bare lucide icon is used
-// instead of IconWrapper per docs/tickets-2-21-manifest.md.
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Marketing Hub", path: "/marketing-hub" },
+]
+
 const PARTS = [
   {
-    icon: Users,
-    title: "CRM",
-    description: "Tracks every lead and client in one pipeline, from first contact through close.",
+    name: "CRM",
+    href: "/marketing-hub/crm",
+    copy: "One record for every lead, from first contact to close — capture, stage, and hand off without losing context.",
   },
   {
-    icon: Workflow,
-    title: "Automations",
-    description:
-      "Runs the follow-up sequences and appointment reminders your team would otherwise send by hand.",
+    name: "Automations",
+    href: "/marketing-hub/automations",
+    copy: "Follow-up that runs on time without someone remembering — missed-call text-back, nurture, reminders, reactivation.",
   },
   {
-    icon: Bot,
-    title: "AI Employee",
-    description: "Answers routine questions and books time on your calendar, trained on your business.",
+    name: "AI Employee",
+    href: "/marketing-hub/ai-employee",
+    copy: "A trained front-line assistant that answers routine questions, qualifies leads, and books meetings — and escalates the rest.",
   },
 ]
 
-const CAPABILITIES = [
-  "Two-way SMS conversations with leads and clients",
-  "Reputation management: requesting and tracking reviews",
-  "Appointment automation and reminders",
-  "Social media management from one place",
-  "Unified messaging across channels in a single inbox",
-  "Automated web chat on your site",
-  "Missed call text back, so a missed call still starts a conversation",
-  "Lead management from first contact to close",
+const FAQ_ITEMS = [
+  {
+    q: "What is Alyvon Marketing Hub?",
+    a: "Marketing Hub is the operating layer for leads and conversations: a CRM, follow-up automations, and an AI Employee that keep leads moving after the first form fill, missed call, or booked meeting.",
+  },
+  {
+    q: "Is Marketing Hub a CRM?",
+    a: "It includes a CRM, but it’s more than a database. The CRM holds the record; automations and the AI Employee act on it so follow-up actually happens.",
+  },
+  {
+    q: "How are automations different from email sequences?",
+    a: "Sequences send email on a timer. Automations respond to events across channels — a missed call triggers a text-back, a no-show triggers recovery, a stale lead triggers reactivation — not just a scheduled email drip.",
+  },
+  {
+    q: "What can the AI Employee answer?",
+    a: "It answers routine questions from your approved knowledge base, qualifies inbound leads, and books or reschedules meetings. Anything outside the approved knowledge base is escalated instead of guessed.",
+  },
+  {
+    q: "Does Marketing Hub replace GoHighLevel?",
+    a: "Marketing Hub is built to run your CRM, automations, and conversations as one system. Where you already use GoHighLevel, we connect to it rather than forcing a rip-and-replace.",
+  },
 ]
 
-export default function MarketingHubPillarPage() {
+export default function MarketingHubPage() {
   return (
     <>
       <Hero
         eyebrow="Product line: marketing hub"
-        heading="One system for every conversation with a lead or a client."
-        subhead="Marketing Hub runs your CRM, your follow-up automations, and an AI Employee that handles routine conversations, so nothing sits unanswered."
+        heading="Every missed follow-up is a revenue leak."
+        subhead="Alyvon Marketing Hub gives you the CRM, automations, and AI Employee that keep leads moving after the first form fill, missed call, or booked meeting."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <div className="flex flex-col gap-3">
+            <BookingCta
+              href={CTA.marketingHub.href}
+              label={CTA.marketingHub.label}
+              product="marketing_hub"
+              placement="marketing_hub_hero"
+              className={cn(buttonVariants({ size: "lg" }))}
+            />
+            <Link
+              href="/contact"
+              className="text-body-s font-medium text-accent-strong underline underline-offset-4"
+            >
+              Prefer to send details? Contact us →
+            </Link>
+          </div>
         }
       />
 
       <Section tone="surface">
+        <div className="flex max-w-[720px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">
+            The lead arrived. Then nothing happened.
+          </h2>
+          <p className="text-body-l text-text-secondary">
+            A form fills at 9pm. A call gets missed during a demo. A meeting gets booked and never
+            confirmed. Every one of those is a lead that cools while the follow-up waits on someone
+            to remember. Marketing Hub makes the follow-up automatic and the record complete.
+          </p>
+        </div>
+      </Section>
+
+      <Section tone="canvas">
         <div className="flex flex-col gap-8">
-          <div className="flex max-w-[720px] flex-col gap-4">
-            <h2 className="text-display-m text-text-primary">What&apos;s inside</h2>
-            <p className="text-body-l text-text-secondary">
-              Marketing Hub is built around three parts, each documented on its own page.
-            </p>
+          <h2 className="text-display-m text-text-primary">Three parts, one system</h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            {PARTS.map((p) => (
+              <Card key={p.name} className="flex flex-col justify-between gap-4 p-6">
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-body-l font-semibold text-text-primary">{p.name}</h3>
+                  <p className="text-body text-text-secondary">{p.copy}</p>
+                </div>
+                <Link
+                  href={p.href}
+                  className={cn(buttonVariants({ variant: "secondary", size: "sm" }), "w-fit")}
+                >
+                  Explore {p.name}
+                </Link>
+              </Card>
+            ))}
           </div>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {PARTS.map((part) => {
-              const feature = MARKETING_HUB_FEATURES.find((f) => f.label === part.title)
-              return (
-                <Card key={part.title}>
-                  <CardHeader>
-                    <part.icon
-                      className="mb-2 h-6 w-6 text-text-primary"
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    />
-                    <CardTitle className="text-body-l">{part.title}</CardTitle>
-                    <CardDescription>{part.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    {feature ? (
-                      <Link
-                        href={feature.href}
-                        className="font-mono text-label uppercase text-accent-strong transition-colors duration-micro ease-out-standard hover:text-accent"
-                      >
-                        Learn more &rarr;
-                      </Link>
-                    ) : null}
-                  </CardContent>
-                </Card>
-              )
-            })}
+        </div>
+      </Section>
+
+      <Section tone="surface">
+        <div className="flex flex-col gap-8">
+          <div className="flex max-w-[760px] flex-col gap-4">
+            <h2 className="text-display-m text-text-primary">How the loop works</h2>
+            <ol className="flex flex-col gap-3 text-body-l text-text-primary">
+              <li><strong>Capture.</strong> The lead lands in the CRM with its source and context.</li>
+              <li><strong>Respond.</strong> Automations fire on the event — a text-back, a reminder, a nurture.</li>
+              <li><strong>Converse.</strong> The AI Employee answers routine questions and books the meeting.</li>
+              <li><strong>Escalate.</strong> Anything outside the approved knowledge base routes to a human.</li>
+            </ol>
+          </div>
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/marketing-hub/overview-loop-diagram.webp"
+              alt="A closed loop diagram: capture, respond, converse, and escalate feeding back into each other"
+              aspect="16:9"
+              sizes="(min-width: 1024px) 1000px, 100vw"
+            />
+            <IllustrativeCaption>Illustrative.</IllustrativeCaption>
           </div>
         </div>
       </Section>
 
       <Section tone="canvas">
         <div className="flex flex-col gap-8">
-          <h2 className="text-display-m text-text-primary">Capabilities</h2>
-          <ul className="grid gap-4 sm:grid-cols-2">
-            {CAPABILITIES.map((capability) => (
-              <li key={capability} className="flex items-start gap-3">
-                <MessageSquareText
-                  className="mt-1 h-6 w-6 shrink-0 text-accent-strong"
-                  strokeWidth={1.5}
-                  aria-hidden="true"
-                />
-                <span className="text-body text-text-primary">{capability}</span>
-              </li>
+          <h2 className="text-display-m text-text-primary">What teams run on it</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              "Recover a missed call with an instant text-back",
+              "Nurture a new lead until it’s ready to talk",
+              "Confirm and remind bookings to cut no-shows",
+              "Reactivate a stale pipeline segment",
+              "Qualify inbound before it reaches a rep",
+              "Request reviews after a win",
+            ].map((u) => (
+              <Card key={u}>
+                <CardHeader>
+                  <CardTitle className="text-body-l">{u}</CardTitle>
+                </CardHeader>
+              </Card>
             ))}
-          </ul>
+          </div>
         </div>
       </Section>
 
       <Section tone="surface">
         <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">Who it&apos;s for</h2>
+          <h2 className="text-display-m text-text-primary">Pricing</h2>
           <p className="text-body-l text-text-secondary">
-            Any team fielding inbound leads and client questions faster than a small staff can
-            answer them by hand. The pain is the same whether you run an agency, a SaaS business,
-            or a professional service firm: messages pile up, and the CRM and the follow-up have
-            to move together or leads go cold.
+            Marketing Hub pricing depends on your CRM setup, automation volume, AI Employee scope,
+            and the systems you need connected. We scope it with you on a walkthrough.
           </p>
+          <div>
+            <Link href="/marketing-hub/pricing" className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}>
+              See Marketing Hub pricing
+            </Link>
+          </div>
         </div>
+      </Section>
+
+      <Section tone="canvas">
+        <Faq items={FAQ_ITEMS} />
       </Section>
 
       <CtaBand
         heading="Put your follow-up on a system."
+        subhead="See the CRM, automations, and AI Employee working together on a walkthrough."
         actions={
-          <>
-            <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-              Start your free trial
-            </Link>
-            <Link
-              href="/login"
-              className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}
-            >
-              Log in to Marketing Hub
-            </Link>
-          </>
+          <BookingCta
+            href={CTA.marketingHub.href}
+            label={CTA.marketingHub.label}
+            product="marketing_hub"
+            placement="marketing_hub_final"
+            className={cn(buttonVariants({ size: "lg" }))}
+          />
         }
+      />
+
+      <Section tone="canvas" spacing="sm">
+        <Breadcrumbs crumbs={crumbs} />
+      </Section>
+
+      <JsonLd
+        data={[
+          softwareApplicationSchema({
+            name: "Alyvon Marketing Hub",
+            description:
+              "A CRM, follow-up automations, and an AI Employee that keep leads moving after the first touch.",
+            url: "/marketing-hub",
+          }),
+          faqSchema(FAQ_ITEMS),
+          breadcrumbSchema(crumbs),
+        ]}
       />
     </>
   )

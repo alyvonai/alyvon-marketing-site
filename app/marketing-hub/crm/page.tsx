@@ -1,117 +1,122 @@
-import Link from "next/link"
-import { History, LayoutList, UserCheck } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { buildMetadata } from "@/lib/metadata"
 import { buttonVariants } from "@/components/ui/button"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
-import { MARKETING_HUB_FEATURES } from "@/lib/nav-data"
-import { cn } from "@/lib/utils"
-import { buildMetadata } from "@/lib/metadata"
-
-// Copy pulled verbatim from Library deliverable 21aa1393-4494-42ec-b221-c01ada1bfcea
-// (Ticket 0j, only version -- the /marketing-hub/crm section, lines 7-38 of the
-// source docx). Mined from the real service.alyvon.com audit per the manifest.
+import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
+import { JsonLd } from "@/components/marketing/json-ld"
+import { BookingCta } from "@/components/marketing/booking-cta"
+import { MediaFrame } from "@/components/ui/media-frame"
+import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
+import { CTA } from "@/lib/site"
+import { softwareApplicationSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "CRM - Alyvon Marketing Hub",
+  title: "Marketing Hub CRM - Alyvon",
   description:
-    "The CRM inside Alyvon Marketing Hub: one pipeline for every lead and client, from first contact through close.",
+    "A CRM for the work that happens after the lead arrives — one record from first contact to close, with capture, staging, handoff, and pipeline recovery built in.",
   path: "/marketing-hub/crm",
 })
 
-const WHAT_IT_DOES = [
-  {
-    icon: UserCheck,
-    text: "Lead management: organizes, tracks, and nurtures every lead from the moment they reach you.",
-  },
-  {
-    icon: LayoutList,
-    text: "One pipeline view across every stage, from first contact through a closed deal.",
-  },
-  {
-    icon: History,
-    text: "Every contact record carries its full history: messages, bookings, and notes in one place.",
-  },
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Marketing Hub", path: "/marketing-hub" },
+  { name: "CRM", path: "/marketing-hub/crm" },
 ]
 
-// "Related" links pulled from MARKETING_HUB_FEATURES rather than hardcoded,
-// filtering out this page's own entry.
-const RELATED = MARKETING_HUB_FEATURES.filter((f) => f.label !== "CRM")
+const USE_CASES = [
+  "Capture new leads with their source and context",
+  "Update opportunity stage as deals move",
+  "Route the handoff to sales cleanly",
+  "Recover stale pipeline before it dies",
+  "Segment contacts for the right follow-up",
+]
 
-export default function CrmDetailPage() {
+export default function CrmPage() {
   return (
     <>
       <Hero
         eyebrow="Marketing Hub / CRM"
-        heading="One record for every lead, from first contact to close."
-        subhead="Every conversation, booking, and note lives on one contact record, so nothing about a lead lives only in someone's inbox."
+        heading="A CRM for the work that happens after the lead arrives."
+        subhead="One record for every lead, from first contact to close — so automations and your team always act on the same context."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <BookingCta
+            href={CTA.marketingHub.href}
+            label={CTA.marketingHub.label}
+            product="marketing_hub"
+            placement="crm_hero"
+            className={cn(buttonVariants({ size: "lg" }))}
+          />
+        }
+        visual={
+          <div className="flex flex-col gap-3">
+            <MediaFrame
+              src="/images/marketing-hub/crm-contact-record.webp"
+              alt="A CRM contact record showing lead source, pipeline stage, and an activity timeline"
+              aspect="4:3"
+              priority
+              sizes="(min-width: 1024px) 520px, 100vw"
+            />
+            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
+          </div>
         }
       />
 
       <Section tone="surface">
         <div className="flex flex-col gap-8">
           <h2 className="text-display-m text-text-primary">What it does</h2>
-          <ul className="flex flex-col gap-4">
-            {WHAT_IT_DOES.map((item) => (
-              <li key={item.text} className="flex items-start gap-3">
-                <item.icon
-                  className="mt-1 h-6 w-6 shrink-0 text-accent-strong"
-                  strokeWidth={1.5}
-                  aria-hidden="true"
-                />
-                <span className="text-body-l text-text-primary">{item.text}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Section>
-
-      <Section tone="canvas">
-        <div className="flex max-w-[720px] flex-col gap-4">
-          <h2 className="text-display-m text-text-primary">How it connects</h2>
-          <p className="text-body-l text-text-secondary">
-            The CRM is the record Automations and the AI Employee both write to and read from. A
-            booked appointment, an inbound text, or an AI Employee conversation all land on the
-            same contact record, so a lead&apos;s history is never split across three separate
-            systems.
-          </p>
-        </div>
-      </Section>
-
-      <Section tone="surface">
-        <div className="flex flex-col gap-8">
-          <h2 className="text-display-m text-text-primary">Related</h2>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {RELATED.map((item) => (
-              <Link key={item.href} href={item.href} className="group">
-                <Card className="transition-colors duration-micro ease-out-standard group-hover:bg-surface">
-                  <CardHeader>
-                    <CardTitle className="text-body-l">{item.label}</CardTitle>
-                    <CardDescription>
-                      <span className="font-mono text-label uppercase text-accent-strong">
-                        Marketing Hub
-                      </span>
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {USE_CASES.map((u) => (
+              <Card key={u}>
+                <CardHeader>
+                  <CardTitle className="text-body-l">{u}</CardTitle>
+                </CardHeader>
+              </Card>
             ))}
           </div>
         </div>
       </Section>
 
+      <Section tone="canvas">
+        <div className="flex max-w-[720px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">One record, everything acts on it</h2>
+          <p className="text-body-l text-text-secondary">
+            The CRM is the source of truth Marketing Hub runs on. Automations fire against it and the
+            AI Employee reads from it, so a missed call, a booking, and a stage change all update the
+            same record — no exports, no drift between tools.
+          </p>
+        </div>
+      </Section>
+
       <CtaBand
         heading="Put every lead in one place."
+        subhead="See the CRM working with automations and the AI Employee on a walkthrough."
         actions={
-          <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <BookingCta
+            href={CTA.marketingHub.href}
+            label={CTA.marketingHub.label}
+            product="marketing_hub"
+            placement="crm_final"
+            className={cn(buttonVariants({ size: "lg" }))}
+          />
         }
+      />
+
+      <Section tone="canvas" spacing="sm">
+        <Breadcrumbs crumbs={crumbs} />
+      </Section>
+
+      <JsonLd
+        data={[
+          softwareApplicationSchema({
+            name: "Alyvon Marketing Hub CRM",
+            description: "A CRM for the work that happens after the lead arrives.",
+            url: "/marketing-hub/crm",
+          }),
+          breadcrumbSchema(crumbs),
+        ]}
       />
     </>
   )
