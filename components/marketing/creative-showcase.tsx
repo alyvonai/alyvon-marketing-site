@@ -1,6 +1,5 @@
 import { Section } from "@/components/marketing/section"
 import { MediaFrame, type MediaFrameAspect } from "@/components/ui/media-frame"
-import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { CreativeVideoTile } from "@/components/marketing/creative-video-tile"
 
 // Creative-only showcase (rendered for the /workforce/creative group page): the output
@@ -106,16 +105,9 @@ export function CreativeShowcase() {
               <figcaption className="font-mono text-label uppercase text-text-tertiary">
                 {item.label}
               </figcaption>
-              {item.kind === "image" && item.caption ? (
-                <IllustrativeCaption>{item.caption}</IllustrativeCaption>
-              ) : null}
             </figure>
           ))}
         </div>
-
-        <IllustrativeCaption>
-          Illustrative gallery — fake brands. The point is the range, not the authorship.
-        </IllustrativeCaption>
       </div>
     </Section>
   )

@@ -1,7 +1,6 @@
 import * as React from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
-import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 
 export type ProductShotAspect = "tier1Hero" | "tier3Device"
 
@@ -22,9 +21,6 @@ export interface ProductShotProps {
   /** Heroes on /, /workforce, /marketing-hub get this. Everything else lazy loads (spec Section 7). */
   priority?: boolean
   sizes?: string
-  /** Renders the standard shared caption for any screenshot carrying demo-workspace
-   * numbers (prelaunch brief Section 4.1). Additive to `caption`, not a replacement. */
-  illustrative?: boolean
   /** Optional descriptive caption, e.g. what the shot demonstrates. */
   caption?: React.ReactNode
   /** Blur placeholder -- hero images only per spec Section 7. Omit below the fold. */
@@ -37,9 +33,8 @@ export interface ProductShotProps {
  * Tier 1 "product truth" wrapper: browser frame, subtle shadow, no device
  * chrome, no perspective, no background scene (imagery spec Section 2 Tier 1;
  * Section 7 "Engineering handles" -- "the ProductShot wrapper: browser
- * frame, shadow, optional caption, and an illustrative flag"). Use this for
- * every real, unretouched product screenshot that carries a page hero or a
- * primary product section.
+ * frame, shadow, optional caption"). Use this for every real, unretouched
+ * product screenshot that carries a page hero or a primary product section.
  *
  * The chrome bar deliberately renders no address-bar text. The spec's
  * Section 1 rule -- no legible generated text anywhere in an Alyvon asset --
@@ -55,7 +50,6 @@ const ProductShot = React.forwardRef<HTMLDivElement, ProductShotProps>(
       aspect = "tier1Hero",
       priority = false,
       sizes = "(min-width: 1024px) 720px, 100vw",
-      illustrative = false,
       caption,
       blurDataURL,
       className,
@@ -99,12 +93,11 @@ const ProductShot = React.forwardRef<HTMLDivElement, ProductShotProps>(
             />
           </div>
         </div>
-        {(caption || illustrative) && (
+        {caption ? (
           <figcaption className="flex flex-col gap-1">
-            {caption ? <span className="text-body-s text-text-secondary">{caption}</span> : null}
-            {illustrative ? <IllustrativeCaption /> : null}
+            <span className="text-body-s text-text-secondary">{caption}</span>
           </figcaption>
-        )}
+        ) : null}
       </figure>
     )
   }

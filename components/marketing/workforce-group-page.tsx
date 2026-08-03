@@ -8,7 +8,6 @@ import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
 import { MediaFrame } from "@/components/ui/media-frame"
-import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { StatBar } from "@/components/marketing/stat-bar"
 import { RoleSelector } from "@/components/marketing/role-selector"
 import { Faq } from "@/components/marketing/faq"
@@ -123,7 +122,6 @@ export function WorkforceGroupPage({ slug }: { slug: string }) {
                 priority
                 sizes="(min-width: 1024px) 520px, 100vw"
               />
-              <IllustrativeCaption>{hero.caption}</IllustrativeCaption>
             </div>
           ) : undefined
         }
