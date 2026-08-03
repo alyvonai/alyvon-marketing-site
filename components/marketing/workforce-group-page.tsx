@@ -78,7 +78,12 @@ const GROUP_HERO: Record<string, { src: string; alt: string; caption: string }> 
   },
   "product-engineering": {
     src: "/images/workforce/groups/product-engineering.webp",
-    alt: "A GitHub pull-request view with a diff and a Merge button",
+    alt: "A GitHub pull request ready to merge — Open, checks passed, with a Confirm merge button",
+    caption: "Illustrative.",
+  },
+  creative: {
+    src: "/images/workforce/groups/creative.webp",
+    alt: "A creative studio desk — a drawing tablet with character art in progress, a design app open on a laptop, sketchbooks, cameras, and a campaign board",
     caption: "Illustrative.",
   },
 }
@@ -109,18 +114,18 @@ export function WorkforceGroupPage({ slug }: { slug: string }) {
         subhead={group.subhead}
         actions={trialActions(`${slug}_hero`)}
         visual={
-          <div className="flex flex-col gap-3">
-            <MediaFrame
-              src={hero ? hero.src : "/images/workforce/library-files.webp"}
-              alt={hero ? hero.alt : `Finished files produced by the ${group.label} group`}
-              aspect="4:3"
-              priority
-              sizes="(min-width: 1024px) 520px, 100vw"
-            />
-            <IllustrativeCaption>
-              {hero ? hero.caption : "Product UI. Illustrative data."}
-            </IllustrativeCaption>
-          </div>
+          hero ? (
+            <div className="flex flex-col gap-3">
+              <MediaFrame
+                src={hero.src}
+                alt={hero.alt}
+                aspect="4:3"
+                priority
+                sizes="(min-width: 1024px) 520px, 100vw"
+              />
+              <IllustrativeCaption>{hero.caption}</IllustrativeCaption>
+            </div>
+          ) : undefined
         }
       />
 

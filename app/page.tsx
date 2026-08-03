@@ -134,31 +134,30 @@ export default function Home() {
           <div className="flex flex-col gap-3 lg:order-1">
             <MediaFrame
               src="/images/workforce/board-run.webp"
-              alt="The Alyvon board: a Chief of Staff routes one brief to multiple Directors working in parallel"
+              alt="The Alyvon board: Alyvon, the Chief of Staff, routes one brief to the right Directors working in parallel"
               aspect="4:3"
               priority
               sizes="(min-width: 1024px) 560px, 100vw"
             />
-            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
           </div>
           <div className="flex flex-col gap-4 lg:order-2">
-            <h2 className="text-display-m text-text-primary">Brief in. Director routes. File out.</h2>
+            <h2 className="text-display-m text-text-primary">Brief in. Alyvon routes. File out.</h2>
             <ol className="flex flex-col gap-4 text-body-l text-text-primary">
               <li>
-                <strong>Brief in</strong> — Tell a Director what you need, in plain language. No prompt
+                <strong>Brief in</strong> — Tell Alyvon what you need, in plain language. No prompt
                 engineering, no back-and-forth with a chatbot.
               </li>
               <li>
-                <strong>Director routes</strong> — The Director assigns it to the right specialist and
-                owns it end to end, not a ticket in a queue.
+                <strong>Alyvon routes</strong> — Alyvon, your Chief of Staff, sends the brief to the
+                right Director — across departments when the work spans more than one.
               </li>
               <li>
-                <strong>File out</strong> — You get a finished, ready-to-use deliverable, not a draft
-                that still needs assembly.
+                <strong>The Director assigns and reviews</strong> — a Director assigns the right
+                specialist and checks the work before it reaches you, so nothing lands unreviewed.
               </li>
               <li>
-                <strong>You approve</strong> — Anything that sends, publishes, or spends waits for your
-                go-ahead.
+                <strong>File out</strong> — you get a finished, ready-to-use deliverable. Anything that
+                sends, publishes, or spends still waits for your go-ahead.
               </li>
             </ol>
           </div>
@@ -238,7 +237,6 @@ export default function Home() {
               aspect="4:3"
               sizes="(min-width: 1024px) 560px, 100vw"
             />
-            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
           </div>
         </div>
       </Section>
@@ -254,7 +252,6 @@ export default function Home() {
               containerClassName="mx-auto max-w-[300px]"
               sizes="(min-width: 1024px) 300px, 60vw"
             />
-            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
           </div>
           <div className="flex flex-col gap-4 lg:order-2">
             <h2 className="text-display-m text-text-primary">

@@ -54,8 +54,8 @@ export default function CrmPage() {
           <div className="flex flex-col gap-3">
             <MediaFrame
               src="/images/marketing-hub/crm-contact-record.webp"
-              alt="A CRM contact record showing lead source, pipeline stage, and an activity timeline"
-              aspect="4:3"
+              alt="The Marketing Hub contacts list — every lead in one place with source, stage, and tags (contact details blurred)"
+              aspect="16:9"
               priority
               sizes="(min-width: 1024px) 520px, 100vw"
             />

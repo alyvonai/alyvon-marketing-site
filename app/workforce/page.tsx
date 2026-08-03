@@ -17,6 +17,7 @@ import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
 import { MobileCtaBar } from "@/components/marketing/mobile-cta-bar"
+import { WorkingBoard } from "@/components/marketing/working-board"
 import { CTA, WORKFORCE_GROUPS, ALL_DEPARTMENTS, WORKFORCE_STATS } from "@/lib/site"
 import {
   softwareApplicationSchema,
@@ -133,6 +134,9 @@ export default function WorkforcePillarPage() {
         <RoleSelector items={ROLE_CHIPS} label="Jump to where you need capacity" />
       </Section>
 
+      {/* Moving working board (lifted + restyled from the live site) */}
+      <WorkingBoard />
+
       {/* Hiring-cost pain */}
       <Section tone="surface">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
@@ -174,8 +178,8 @@ export default function WorkforcePillarPage() {
           <div className="flex flex-col gap-3">
             <MediaFrame
               src="/images/workforce/finished-file-still-life.webp"
-              alt="Finished deliverables as objects — a document, deck, spreadsheet, zip, and pull request, each tagged with its file type"
-              aspect="4:3"
+              alt="A desk of finished deliverables produced by Alyvon — a marketing-strategy deck, a financial-forecast spreadsheet, and a competitor-research report"
+              aspect="16:9"
               sizes="(min-width: 1024px) 560px, 100vw"
             />
             <IllustrativeCaption>Illustrative.</IllustrativeCaption>
