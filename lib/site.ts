@@ -1,7 +1,7 @@
 // Single source of truth for product motions, CTAs, and the Workforce group/department
-// model. Counts here are canonical: 16 departments, 102 specialists, 6 groups (master
-// launch spec §4/§15). Pages, nav, and the sitemap all read from here so a count or a
-// route only changes in one place.
+// model. The department/specialist/group counts are canonical and COMPUTED from the data
+// below (see WORKFORCE_STATS at the end of this file). Pages, nav, and the sitemap all read
+// from here so a count or a route only changes in one place.
 
 export const SITE_URL = "https://www.alyvon.com"
 export const SUPPORT_EMAIL = "hello@alyvon.com"
@@ -44,12 +44,6 @@ export const CTA = {
     href: ANALYTICS_BOOKING,
     product: "analytics" as ProductId,
   },
-} as const
-
-export const WORKFORCE_STATS = {
-  departments: 16,
-  specialists: 102,
-  groups: 6,
 } as const
 
 export interface Department {
@@ -250,8 +244,19 @@ export function groupBySlug(slug: string): WorkforceGroup | undefined {
   return WORKFORCE_GROUPS.find((g) => g.slug === slug)
 }
 
-// All 16 departments flattened, for the Workforce index directory + ItemList schema.
+// Every department flattened, for the Workforce index directory + ItemList schema.
 export const ALL_DEPARTMENTS: (Department & { group: string; groupHref: string })[] =
   WORKFORCE_GROUPS.flatMap((g) =>
     g.departments.map((d) => ({ ...d, group: g.label, groupHref: g.href }))
   )
+
+// Canonical counts — COMPUTED from the arrays above, never typed by hand, so a count can
+// only change by changing the data. Every page reads these; no count is a string literal
+// in a page file. The 102-vs-117 divergence that reached production came from hand-typed
+// literals drifting from the data — these three lines are the fix. `__tests__/claims.test.ts`
+// asserts the invariants (specialist sum, department length) and that no page hardcodes a count.
+export const WORKFORCE_STATS = {
+  departments: ALL_DEPARTMENTS.length,
+  specialists: WORKFORCE_GROUPS.reduce((sum, g) => sum + g.specialists, 0),
+  groups: WORKFORCE_GROUPS.length,
+} as const

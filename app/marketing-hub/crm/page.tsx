@@ -14,7 +14,7 @@ import { CTA } from "@/lib/site"
 import { softwareApplicationSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "Marketing Hub CRM - Alyvon",
+  title: "Marketing Hub CRM",
   description:
     "A CRM for the work that happens after the lead arrives — one record from first contact to close, with capture, staging, handoff, and pipeline recovery built in.",
   path: "/marketing-hub/crm",

@@ -236,26 +236,17 @@ export function WorkforceGroupPage({ slug }: { slug: string }) {
         )
       })}
 
-      {/* How Alyvon delivers (routing shot) */}
+      {/* How Alyvon delivers — text only. The board-run.webp shot was removed here (S2): it
+          duplicated the homepage instance across all six group pages, and each group already
+          has its own unique hero above. */}
       <Section tone="canvas">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="flex flex-col gap-3">
-            <MediaFrame
-              src="/images/workforce/board-run.webp"
-              alt="The Alyvon board routing a brief across Directors"
-              aspect="4:3"
-              sizes="(min-width: 1024px) 560px, 100vw"
-            />
-            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
-          </div>
-          <div className="flex flex-col gap-4">
-            <h2 className="text-display-m text-text-primary">How Alyvon delivers</h2>
-            <p className="text-body-l text-text-secondary">
-              Brief the Chief of Staff in plain language. It routes to the right Director and
-              specialists, a Director reviews what comes back, and the finished file lands in your
-              Library — with anything that sends, publishes, or spends held for your approval.
-            </p>
-          </div>
+        <div className="flex max-w-[720px] flex-col gap-4">
+          <h2 className="text-display-m text-text-primary">How Alyvon delivers</h2>
+          <p className="text-body-l text-text-secondary">
+            Brief the Chief of Staff in plain language. It routes to the right Director and
+            specialists, a Director reviews what comes back, and the finished file lands in your
+            Library — with anything that sends, publishes, or spends held for your approval.
+          </p>
         </div>
       </Section>
 

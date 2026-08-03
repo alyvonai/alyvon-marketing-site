@@ -12,13 +12,14 @@ import { StatBar } from "@/components/marketing/stat-bar"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
 import { BookingCta } from "@/components/marketing/booking-cta"
-import { CTA } from "@/lib/site"
+import { CTA, WORKFORCE_STATS } from "@/lib/site"
 import { organizationSchema, websiteSchema } from "@/lib/jsonld"
+
+const { departments: DEPTS, specialists: SPECIALISTS, groups: GROUPS } = WORKFORCE_STATS
 
 export const metadata = buildMetadata({
   title: "Direct a team. Not a tool.",
-  description:
-    "Alyvon routes plain-language work to AI departments, marketing systems, and custom analytics builds that produce usable business outputs. 16 departments, 102 specialists, one workforce.",
+  description: `Alyvon routes plain-language work to AI departments, marketing systems, and custom analytics builds that produce usable business outputs. ${DEPTS} departments, ${SPECIALISTS} specialists, one workforce.`,
   path: "/",
 })
 
@@ -28,8 +29,7 @@ const PRODUCT_LINES = [
   {
     name: "Workforce",
     href: "/workforce",
-    produces:
-      "16 departments and 102 specialists across 6 groups, each led by a Director who turns a plain-language brief into a finished, ready-to-use file.",
+    produces: `${DEPTS} departments and ${SPECIALISTS} specialists across ${GROUPS} groups, each led by a Director who turns a plain-language brief into a finished, ready-to-use file.`,
     cta: "trial" as const,
   },
   {
@@ -88,7 +88,7 @@ export default function Home() {
       />
 
       <Section tone="surface" spacing="sm">
-        <StatBar items={["16 departments", "102 specialists", "6 groups", "finished files, not transcripts"]} />
+        <StatBar items={[`${DEPTS} departments`, `${SPECIALISTS} specialists`, `${GROUPS} groups`, "finished files, not transcripts"]} />
       </Section>
 
       {/* Hiring / capacity pain */}
@@ -278,7 +278,7 @@ export default function Home() {
 
       <CtaBand
         heading="Direct a team. Not a tool."
-        subhead="16 departments, 102 specialists. Every brief comes back a finished file. Start free for 14 days — no card, no contract."
+        subhead={`${DEPTS} departments, ${SPECIALISTS} specialists. Every brief comes back a finished file. Start free for 14 days — no card, no contract.`}
         actions={
           <TrackedCta
             href={CTA.workforce.href}

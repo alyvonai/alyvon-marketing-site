@@ -5,6 +5,7 @@
 import Link from "next/link"
 import { Logo } from "@/components/brand/logo"
 import { FOOTER_LINK_GROUPS } from "@/lib/nav-data"
+import { SUPPORT_EMAIL } from "@/lib/site"
 
 export function SiteFooter() {
   const year = new Date().getFullYear()
@@ -34,13 +35,27 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-border-subtle pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <Link href="/" aria-label="Alyvon home" className="text-text-primary">
-            <Logo size={22} />
-          </Link>
-          <p className="text-body-s text-text-secondary">
-            &copy; {year} Alyvon. Direct a team. Not a tool.
-          </p>
+        <div className="mt-12 flex flex-col gap-4 border-t border-border-subtle pt-6">
+          <div className="flex flex-col gap-1 text-body-s text-text-secondary sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2">
+            <span>Skyyr Digital LLC, dba Alyvon</span>
+            <span className="hidden sm:inline" aria-hidden="true">·</span>
+            <span>13256 Strode Ln, Windermere, FL 34786</span>
+            <span className="hidden sm:inline" aria-hidden="true">·</span>
+            <a
+              href={`mailto:${SUPPORT_EMAIL}`}
+              className="transition-colors duration-micro ease-out-standard hover:text-text-primary"
+            >
+              {SUPPORT_EMAIL}
+            </a>
+          </div>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <Link href="/" aria-label="Alyvon home" className="text-text-primary">
+              <Logo size={22} />
+            </Link>
+            <p className="text-body-s text-text-secondary">
+              &copy; {year} Alyvon. Direct a team. Not a tool.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

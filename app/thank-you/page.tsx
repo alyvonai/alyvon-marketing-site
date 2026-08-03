@@ -7,7 +7,7 @@ import { ThankYouClient } from "@/components/marketing/thank-you-client"
 // post-conversion destination, not an entry point, so it's kept out of the sitemap too.
 export const metadata = {
   ...buildMetadata({
-    title: "Thank you - Alyvon",
+    title: "Thank you",
     description: "Thanks — we’ve received your request.",
     path: "/thank-you",
   }),

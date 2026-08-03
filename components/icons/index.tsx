@@ -153,7 +153,8 @@ export const ICON_REGISTRY = {
   "department-customer-people": Handshake,
   "department-product-engineering": Cpu,
   // The 11 department icons below complete the confirmed canonical 16-department
-  // list (brand positioning: "117 specialists across 16 departments"). Combined
+  // list (canonical counts live in lib/site.ts WORKFORCE_STATS — do not hardcode a
+  // specialist number in comments; it drifts). Combined
   // with the 5 confirmed/live-routed icons above (content, research, brand,
   // sales-development, marketing-operations), the registry now has one icon per
   // department. The 5 org-chart cluster icons above (brand-content, marketing-sales,

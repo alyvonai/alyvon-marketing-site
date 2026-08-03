@@ -60,9 +60,9 @@ alternate convention.
 
 ## Department icons -- canonical 16, confirmed 2026-07-29
 
-The operator confirmed the canonical, exactly-16 department list (matching the
-brand positioning "117 specialists across 16 departments" and the app's "Your
-Team" section):
+The operator confirmed the canonical, exactly-16 department list (the specialist
+and department counts are computed in `lib/site.ts` `WORKFORCE_STATS` — never
+hardcode them here; that is what drifted before):
 
 Brand; Communications & PR; Content & Editorial; Creative; Customer Success;
 Customer Support; Engineering; Executive & Strategy; Finance & Accounting;

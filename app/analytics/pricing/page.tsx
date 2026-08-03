@@ -13,7 +13,7 @@ import { CTA } from "@/lib/site"
 import { faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "Analytics pricing & engagements - Alyvon",
+  title: "Analytics pricing & engagements",
   description:
     "Analytics engagements are scoped after a discovery call because data access, deployment environment, and workflow risk change the build. See engagement types and what affects scope.",
   path: "/analytics/pricing",

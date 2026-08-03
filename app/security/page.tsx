@@ -7,6 +7,8 @@ import { CtaBand } from "@/components/marketing/cta-band"
 import { List } from "@/components/ui/typography"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { TrackedCta } from "@/components/marketing/tracked-cta"
+import { CTA, SUPPORT_EMAIL } from "@/lib/site"
 import Link from "next/link"
 
 // Copy source: Library deliverable 4ccea028-0024-42f6-92f2-92db2276cd9d
@@ -20,7 +22,7 @@ import Link from "next/link"
 // operating practice only. If a certification exists, add it with the
 // auditor named -- do not add a certification claim without that.
 export const metadata = buildMetadata({
-  title: "Security - Alyvon",
+  title: "Security",
   description:
     "How Alyvon handles your data and credentials: isolated sandboxes, approval gates on every send or spend, and no use of customer data to train models.",
   path: "/security",
@@ -75,10 +77,9 @@ export default function SecurityPage() {
             <h2 className="text-display-m text-text-primary">Credentials and integrations</h2>
           </div>
           <p className="max-w-[70ch] text-body-l text-text-secondary">
-            Alyvon connects to roughly 200 apps you already use, covering more than 1,000
-            individual actions across them. Those connections are managed through our
-            integrations provider, which holds the OAuth credentials on your behalf. Alyvon does
-            not store your third-party passwords directly.
+            Alyvon connects to 1,000+ integrations across the tools you already use. Those
+            connections are managed through our integrations provider, which holds the OAuth
+            credentials on your behalf. Alyvon does not store your third-party passwords directly.
           </p>
         </div>
       </Section>
@@ -115,19 +116,31 @@ export default function SecurityPage() {
             <h2 className="text-display-m text-text-primary">Questions</h2>
           </div>
           <p className="max-w-[70ch] text-body-l text-text-secondary">
-            Security questions go to the same team behind the product. Reach us at the contact
-            details on this site.
+            Security questions go to the same team behind the product. Email us at{" "}
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="text-accent-strong underline-offset-4 hover:underline">
+              {SUPPORT_EMAIL}
+            </a>{" "}
+            or use our{" "}
+            <Link href="/contact" className="text-accent-strong underline-offset-4 hover:underline">
+              contact form
+            </Link>
+            .
           </p>
         </div>
       </Section>
 
       <CtaBand
         heading="Direct your first team this week."
-        subhead="14 days or 10 deliverables, whichever comes first. No credit card. Cancel anytime."
+        subhead={CTA.workforce.micro}
         actions={
-          <Link href="/pricing" className={cn(buttonVariants({ size: "lg" }))}>
-            Start your free trial
-          </Link>
+          <TrackedCta
+            href={CTA.workforce.href}
+            className={cn(buttonVariants({ size: "lg" }))}
+            event="trial_cta_clicked"
+            eventProps={{ product: "workforce", placement: "security_final_cta" }}
+          >
+            {CTA.workforce.label}
+          </TrackedCta>
         }
       />
     </>

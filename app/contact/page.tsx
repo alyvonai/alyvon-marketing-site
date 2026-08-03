@@ -4,6 +4,7 @@ import { Hero } from "@/components/marketing/hero"
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { FormEmbed } from "@/components/marketing/form-embed"
+import { SUPPORT_EMAIL } from "@/lib/site"
 import { breadcrumbSchema } from "@/lib/jsonld"
 
 // The GHL "Alyvon Form" (contact / lead form). Embedded on-site so the /thank-you handoff
@@ -12,7 +13,7 @@ import { breadcrumbSchema } from "@/lib/jsonld"
 const FORM_ID = "If4MhRWDecZbR6xVnRAx"
 
 export const metadata = buildMetadata({
-  title: "Contact - Alyvon",
+  title: "Contact",
   description:
     "Talk to the Alyvon team. Tell us what you’re trying to get done and we’ll point you to the fastest path — a self-serve department, a marketing system, or a custom build.",
   path: "/contact",
@@ -46,6 +47,13 @@ export default async function ContactPage({
           <div className="mx-auto w-full max-w-[720px] overflow-hidden rounded-card border border-border-subtle bg-canvas">
             <FormEmbed formId={FORM_ID} formName="Alyvon Form" product={product} source={source} />
           </div>
+          <p className="text-center text-body-s text-text-secondary">
+            Prefer email? Reach us at{" "}
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="text-accent-strong underline-offset-4 hover:underline">
+              {SUPPORT_EMAIL}
+            </a>
+            .
+          </p>
           <Breadcrumbs crumbs={crumbs} />
         </div>
       </Section>

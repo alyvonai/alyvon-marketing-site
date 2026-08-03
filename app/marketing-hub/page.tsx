@@ -16,7 +16,7 @@ import { CTA } from "@/lib/site"
 import { softwareApplicationSchema, faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "Marketing Hub - Alyvon",
+  title: "Marketing Hub",
   description:
     "Alyvon Marketing Hub is the operating layer for leads, follow-up, automations, and routine conversations — a CRM, automations, and an AI Employee that keep leads moving after the first form fill, missed call, or booked meeting.",
   path: "/marketing-hub",

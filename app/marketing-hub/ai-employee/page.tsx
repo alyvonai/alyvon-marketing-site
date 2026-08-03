@@ -14,7 +14,7 @@ import { CTA } from "@/lib/site"
 import { softwareApplicationSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "Marketing Hub AI Employee - Alyvon",
+  title: "Marketing Hub AI Employee",
   description:
     "A trained front-line assistant for routine questions and booking — it answers from your approved knowledge base, qualifies inbound, books and reschedules meetings, and escalates anything outside its scope.",
   path: "/marketing-hub/ai-employee",

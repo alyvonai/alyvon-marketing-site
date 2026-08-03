@@ -7,10 +7,13 @@ import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
+import { WORKFORCE_PLANS } from "@/lib/pricing"
 import { breadcrumbSchema } from "@/lib/jsonld"
 
+const [STARTER, GROWTH, SCALE] = WORKFORCE_PLANS
+
 export const metadata = buildMetadata({
-  title: "Pricing - Alyvon",
+  title: "Pricing",
   description:
     "Alyvon pricing lives inside each product line. Workforce is a self-serve plan, Marketing Hub is scoped on a walkthrough, and Analytics engagements are scoped after a discovery call.",
   path: "/pricing",
@@ -25,7 +28,7 @@ const CARDS = [
   {
     name: "Workforce pricing",
     href: "/workforce/pricing",
-    copy: "Self-serve plans priced around deliverables and departments. Starter $299, Growth $899, Scale $2,400, or Enterprise. Start with a 14-day free trial.",
+    copy: `Self-serve plans priced around deliverables and departments. Starter ${STARTER.priceMonthly}, Growth ${GROWTH.priceMonthly}, Scale ${SCALE.priceMonthly}, or Enterprise. Start with a 14-day free trial.`,
     cta: "See Workforce pricing",
   },
   {
