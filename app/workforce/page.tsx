@@ -174,8 +174,8 @@ export default function WorkforcePillarPage() {
           <div className="flex flex-col gap-3">
             <MediaFrame
               src="/images/workforce/finished-file-still-life.webp"
-              alt="Finished deliverables as objects — a document, deck, spreadsheet, zip, and pull request, each tagged with its file type"
-              aspect="4:3"
+              alt="A desk of finished deliverables produced by Alyvon — a marketing-strategy deck, a financial-forecast spreadsheet, and a competitor-research report"
+              aspect="16:9"
               sizes="(min-width: 1024px) 560px, 100vw"
             />
             <IllustrativeCaption>Illustrative.</IllustrativeCaption>
