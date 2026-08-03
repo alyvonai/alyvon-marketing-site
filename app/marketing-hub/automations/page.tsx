@@ -55,8 +55,8 @@ export default function AutomationsPage() {
           <div className="flex flex-col gap-3">
             <MediaFrame
               src="/images/marketing-hub/automations-flow.webp"
-              alt="An automation flow: a missed call triggering an automatic text-back, then a follow-up step"
-              aspect="4:3"
+              alt="A Marketing Hub automation in the workflow builder — a cold-outreach sequence branching across email, SMS, waits, and booking"
+              aspect="16:9"
               priority
               sizes="(min-width: 1024px) 520px, 100vw"
             />

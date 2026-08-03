@@ -51,13 +51,13 @@ export default function AiEmployeePage() {
           />
         }
         visual={
-          <div className="mx-auto flex max-w-[320px] flex-col gap-3">
+          <div className="flex flex-col gap-3">
             <MediaFrame
               src="/images/marketing-hub/ai-employee-chat.webp"
-              alt="A chat thread where the AI Employee answers routine questions, with one message escalated to a human highlighted"
-              aspect="4:5"
+              alt="The Marketing Hub AI Employee handling a lead conversation and turning it into a booked next step, on autopilot"
+              aspect="16:9"
               priority
-              sizes="(min-width: 1024px) 320px, 80vw"
+              sizes="(min-width: 1024px) 520px, 100vw"
             />
             <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
           </div>
