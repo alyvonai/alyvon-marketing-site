@@ -17,6 +17,7 @@ import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
 import { MobileCtaBar } from "@/components/marketing/mobile-cta-bar"
+import { WorkingBoard } from "@/components/marketing/working-board"
 import { CTA, WORKFORCE_GROUPS, ALL_DEPARTMENTS, WORKFORCE_STATS } from "@/lib/site"
 import {
   softwareApplicationSchema,
@@ -132,6 +133,9 @@ export default function WorkforcePillarPage() {
       <Section tone="canvas">
         <RoleSelector items={ROLE_CHIPS} label="Jump to where you need capacity" />
       </Section>
+
+      {/* Moving working board (lifted + restyled from the live site) */}
+      <WorkingBoard />
 
       {/* Hiring-cost pain */}
       <Section tone="surface">
