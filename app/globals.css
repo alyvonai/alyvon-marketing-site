@@ -180,22 +180,21 @@ body {
   filter: none !important;
 }
 
-/* Moving "working board" (/workforce). Cards slide Queued -> Working -> Shipped (position
-   transitions in the component); new cards fade/slide in at Queued; the Working card's
-   progress bar sweeps. Lifted in spirit from the live site's animated board, restyled to
-   the new UI. Motion is disabled under prefers-reduced-motion below (the component also
-   skips its timer, leaving a static snapshot). */
-@keyframes card-enter {
-  from { opacity: 0; transform: translateX(-14px); }
-  to { opacity: 1; transform: translateX(0); }
+/* Moving "working board" (/workforce). A faithful replica of the live site's animated
+   kanban: cards appear in "In Progress", advance to "Needs You" or straight to "Shipped",
+   and the Shipped column grows before old cards retire — column-to-column motion handled by
+   framer-motion's layout/AnimatePresence in the component. The working card's status dot
+   uses this pulse. Motion is disabled under prefers-reduced-motion below (the component also
+   skips its timer, leaving a static seeded snapshot). */
+@keyframes workingPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
 }
-.animate-card-enter { animation: card-enter 0.6s ease-out; }
-@keyframes board-progress {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(320%); }
-}
-.animate-board-progress { animation: board-progress 1.9s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
-  .animate-card-enter,
-  .animate-board-progress { animation: none; }
+  [style*="workingPulse"] { animation: none !important; }
 }

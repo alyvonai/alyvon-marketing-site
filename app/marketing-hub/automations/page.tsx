@@ -9,7 +9,6 @@ import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { BookingCta } from "@/components/marketing/booking-cta"
 import { MediaFrame } from "@/components/ui/media-frame"
-import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { CTA } from "@/lib/site"
 import { softwareApplicationSchema, breadcrumbSchema } from "@/lib/jsonld"
 
@@ -60,7 +59,6 @@ export default function AutomationsPage() {
               priority
               sizes="(min-width: 1024px) 520px, 100vw"
             />
-            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
           </div>
         }
       />

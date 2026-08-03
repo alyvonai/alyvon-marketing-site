@@ -7,7 +7,6 @@ import { Section } from "@/components/marketing/section"
 import { Hero } from "@/components/marketing/hero"
 import { CtaBand } from "@/components/marketing/cta-band"
 import { MediaFrame } from "@/components/ui/media-frame"
-import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { StatBar } from "@/components/marketing/stat-bar"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
@@ -82,7 +81,6 @@ export default function Home() {
               priority
               sizes="(min-width: 1024px) 520px, 100vw"
             />
-            <IllustrativeCaption>Brief in. Director routes. Finished files out.</IllustrativeCaption>
           </div>
         }
       />
@@ -123,7 +121,6 @@ export default function Home() {
               aspect="16:9"
               sizes="(min-width: 1024px) 560px, 100vw"
             />
-            <IllustrativeCaption>44 days to fill a role, on average. Alyvon starts today.</IllustrativeCaption>
           </div>
         </div>
       </Section>

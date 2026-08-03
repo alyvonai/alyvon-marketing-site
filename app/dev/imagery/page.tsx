@@ -6,7 +6,6 @@
 import type { Metadata } from "next"
 import { ProductShot } from "@/components/ui/product-shot"
 import { MediaFrame } from "@/components/ui/media-frame"
-import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { WEIGHT_BUDGET_BYTES, MAX_RENDERED_WIDTH_PX } from "@/lib/imagery"
 
 export const metadata: Metadata = {
@@ -51,20 +50,19 @@ export default function ImageryQaPage() {
         </p>
       </header>
 
-      <Section title="ProductShot -- Tier 1, illustrative data" note="Hero use: priority load, blur placeholder, disclaimer caption shown.">
+      <Section title="ProductShot -- Tier 1, with caption" note="Hero use: priority load, blur placeholder, optional descriptive caption.">
         <div className="max-w-[720px]">
           <ProductShot
             src={PLACEHOLDER.tier1}
             alt="Placeholder product interface screenshot"
             aspect="tier1Hero"
             priority
-            illustrative
             caption="Live conversation view"
           />
         </div>
       </Section>
 
-      <Section title="ProductShot -- Tier 1, real data (no disclaimer)" note="illustrative={false}: caption renders only if explicitly passed.">
+      <Section title="ProductShot -- Tier 1, no caption" note="Caption renders only if explicitly passed.">
         <div className="max-w-[720px]">
           <ProductShot src={PLACEHOLDER.tier1} alt="Placeholder product interface screenshot" aspect="tier1Hero" />
         </div>
@@ -72,7 +70,7 @@ export default function ImageryQaPage() {
 
       <Section title="ProductShot -- Tier 3 device aspect (16:9)">
         <div className="max-w-[560px]">
-          <ProductShot src={PLACEHOLDER.tier3} alt="Placeholder device-context screenshot" aspect="tier3Device" illustrative />
+          <ProductShot src={PLACEHOLDER.tier3} alt="Placeholder device-context screenshot" aspect="tier3Device" />
         </div>
       </Section>
 
@@ -97,10 +95,6 @@ export default function ImageryQaPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={PLACEHOLDER.og} alt="Placeholder Open Graph share image" className="w-full" />
         </div>
-      </Section>
-
-      <Section title="Illustrative caption -- standalone">
-        <IllustrativeCaption />
       </Section>
     </main>
   )

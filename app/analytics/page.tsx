@@ -11,7 +11,6 @@ import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { BookingCta } from "@/components/marketing/booking-cta"
 import { MediaFrame } from "@/components/ui/media-frame"
-import { IllustrativeCaption } from "@/components/ui/illustrative-caption"
 import { CTA } from "@/lib/site"
 import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
@@ -101,7 +100,6 @@ export default function AnalyticsPage() {
               priority
               sizes="(min-width: 1024px) 520px, 100vw"
             />
-            <IllustrativeCaption>Product UI. Illustrative data.</IllustrativeCaption>
           </div>
         }
       />
@@ -138,7 +136,6 @@ export default function AnalyticsPage() {
               aspect="16:9"
               sizes="(min-width: 1024px) 1000px, 100vw"
             />
-            <IllustrativeCaption>Illustrative.</IllustrativeCaption>
           </div>
         </div>
       </Section>
