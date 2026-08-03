@@ -15,11 +15,12 @@ import { cn } from "@/lib/utils"
 
 // Creative-gallery addendum: "9:16" (vertical Reel/Story posters) and "ad" (1200×627 ad
 // units) added for the /workforce/creative sample gallery — additive, aspect-ratio only.
-export type MediaFrameAspect = "16:9" | "1:1" | "4:3" | "16:10" | "3:2" | "4:5" | "9:16" | "ad"
+export type MediaFrameAspect = "16:9" | "1:1" | "9:8" | "4:3" | "16:10" | "3:2" | "4:5" | "9:16" | "ad"
 
 const aspectClassMap: Record<MediaFrameAspect, string> = {
   "16:9": "aspect-video",
   "1:1": "aspect-square",
+  "9:8": "aspect-[9/8]",
   "4:3": "aspect-[4/3]",
   "16:10": "aspect-[16/10]",
   "3:2": "aspect-[3/2]",

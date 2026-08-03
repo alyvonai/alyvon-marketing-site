@@ -264,7 +264,7 @@ export default function WorkforcePillarPage() {
             <MediaFrame
               src="/images/homepage/credibility-org-chart.jpg"
               alt="An org chart: a Director over a bench of specialists, each scoped to one kind of output"
-              aspect="1:1"
+              aspect="9:8"
               containerClassName="mx-auto max-w-[440px]"
               sizes="(min-width: 1024px) 440px, 100vw"
             />
