@@ -13,7 +13,7 @@ import { CTA } from "@/lib/site"
 import { faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "Marketing Hub pricing - Alyvon",
+  title: "Marketing Hub pricing",
   description:
     "Marketing Hub pricing depends on CRM setup, automation volume, AI Employee scope, and the systems you need connected. Book a walkthrough to scope it.",
   path: "/marketing-hub/pricing",

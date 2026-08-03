@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils"
 // router (Workforce vs. Marketing Hub) with no form fields -- it only routes
 // the visitor to the right subdomain. No real auth form lives here.
 export const metadata = buildMetadata({
-  title: "Log in - Alyvon",
+  title: "Log in",
   description: "Choose which Alyvon product to log in to: Workforce or Marketing Hub.",
   path: "/login",
 })

@@ -1,6 +1,11 @@
 // Pricing data. Workforce carries real published prices (master spec §4/§19 + the
 // current pricing config). Marketing Hub and Analytics are sales-assisted — never invent
-// dollar amounts (spec §22/§25).
+// dollar amounts (spec §22/§25). This module is the ONLY place a price or an
+// all-departments count is written; pages read from here (see `__tests__/claims.test.ts`).
+
+import { WORKFORCE_STATS } from "@/lib/site"
+
+const ALL_DEPARTMENTS_PHRASE = `The full Workforce — all ${WORKFORCE_STATS.departments} departments`
 
 export interface WorkforcePlan {
   name: string
@@ -50,7 +55,7 @@ export const WORKFORCE_PLANS: WorkforcePlan[] = [
     name: "Scale",
     priceMonthly: "$2,400",
     priceAnnual: "$24,000",
-    departments: "The full Workforce — all 16 departments",
+    departments: ALL_DEPARTMENTS_PHRASE,
     deliverables: "400 deliverables / mo",
     seats: "25 seats",
     overage: "$5 per additional deliverable",
@@ -61,7 +66,7 @@ export const WORKFORCE_PLANS: WorkforcePlan[] = [
     name: "Enterprise",
     priceMonthly: "Custom",
     priceAnnual: "Custom",
-    departments: "The full Workforce — all 16 departments",
+    departments: ALL_DEPARTMENTS_PHRASE,
     deliverables: "Committed volume, set with you",
     seats: "Unlimited seats",
     overage: "Negotiated",

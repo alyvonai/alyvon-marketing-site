@@ -16,7 +16,7 @@ import { CTA } from "@/lib/site"
 import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "Analytics - Alyvon",
+  title: "Analytics",
   description:
     "Alyvon Analytics scopes, builds, and deploys data pipelines, reporting layers, applied AI workflows, and custom agents inside your business environment. A custom build engagement, not a self-serve product.",
   path: "/analytics",

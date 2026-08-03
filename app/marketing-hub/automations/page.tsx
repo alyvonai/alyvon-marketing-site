@@ -14,7 +14,7 @@ import { CTA } from "@/lib/site"
 import { softwareApplicationSchema, breadcrumbSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "Marketing Hub Automations - Alyvon",
+  title: "Marketing Hub Automations",
   description:
     "Follow-up that happens on time without someone remembering — missed-call text-back, lead nurture, appointment reminders, no-show recovery, review requests, and reactivation.",
   path: "/marketing-hub/automations",

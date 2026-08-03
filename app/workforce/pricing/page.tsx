@@ -10,14 +10,16 @@ import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
 import { MobileCtaBar } from "@/components/marketing/mobile-cta-bar"
 import { PricingCard } from "@/components/marketing/pricing-card"
-import { CTA } from "@/lib/site"
+import { CTA, WORKFORCE_STATS } from "@/lib/site"
 import { WORKFORCE_PLANS, CREATIVE_ADDON } from "@/lib/pricing"
 import { faqSchema, breadcrumbSchema } from "@/lib/jsonld"
 
+const DEPTS = WORKFORCE_STATS.departments
+const [STARTER, GROWTH, SCALE] = WORKFORCE_PLANS
+
 export const metadata = buildMetadata({
-  title: "Workforce pricing - Alyvon",
-  description:
-    "Alyvon Workforce pricing: Starter at $299 (core routing + 2 departments), Growth at $899 (+7), Scale at $2,400 (all 16), and Enterprise. Priced around deliverables, not seats. Creative is a paid add-on.",
+  title: "Workforce pricing",
+  description: `Alyvon Workforce pricing: Starter at ${STARTER.priceMonthly} (core routing + 2 departments), Growth at ${GROWTH.priceMonthly} (+7), Scale at ${SCALE.priceMonthly} (all ${DEPTS}), and Enterprise. Priced around deliverables, not seats. Creative is a paid add-on.`,
   path: "/workforce/pricing",
 })
 
@@ -34,7 +36,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "How does department selection work?",
-    a: "Starter includes Alyvon core routing plus 2 selected departments; Growth plus 7. Scale and Enterprise include the full Workforce — all 16 departments. Every seat on your plan can brief any activated department.",
+    a: `Starter includes Alyvon core routing plus 2 selected departments; Growth plus 7. Scale and Enterprise include the full Workforce — all ${DEPTS} departments. Every seat on your plan can brief any activated department.`,
   },
   {
     q: "What happens if I go over my deliverables?",
@@ -89,7 +91,7 @@ export default function WorkforcePricingPage() {
           <p className="text-body-l text-text-secondary">
             Starter includes Alyvon core routing plus 2 selected departments. Growth includes Alyvon
             core routing plus 7 selected departments. Scale and Enterprise include the full
-            Workforce — all 16 departments. Creative carries separate add-on pricing where
+            Workforce — all {DEPTS} departments. Creative carries separate add-on pricing where
             applicable.
           </p>
           <p className="text-body text-text-tertiary">

@@ -17,7 +17,7 @@ import { Breadcrumbs } from "@/components/marketing/breadcrumbs"
 import { JsonLd } from "@/components/marketing/json-ld"
 import { TrackedCta } from "@/components/marketing/tracked-cta"
 import { MobileCtaBar } from "@/components/marketing/mobile-cta-bar"
-import { CTA, WORKFORCE_GROUPS, ALL_DEPARTMENTS } from "@/lib/site"
+import { CTA, WORKFORCE_GROUPS, ALL_DEPARTMENTS, WORKFORCE_STATS } from "@/lib/site"
 import {
   softwareApplicationSchema,
   faqSchema,
@@ -25,14 +25,16 @@ import {
   itemListSchema,
 } from "@/lib/jsonld"
 
+const { departments: DEPTS, specialists: SPECIALISTS, groups: GROUPS } = WORKFORCE_STATS
+
 export const metadata = buildMetadata({
-  title: "Workforce - Alyvon",
+  title: "Workforce",
   description:
-    "Alyvon Workforce: 16 departments and 102 specialists across 6 groups, each routed by a Chief of Staff who turns a plain-language brief into a finished file. No 44-day search, no salary line before the work proves itself.",
+    `Alyvon Workforce: ${DEPTS} departments and ${SPECIALISTS} specialists across ${GROUPS} groups, each routed by a Chief of Staff who turns a plain-language brief into a finished file. No 44-day search, no salary line before the work proves itself.`,
   path: "/workforce",
 })
 
-const STATS = ["16 departments", "102 specialists", "6 groups", "finished files, not transcripts"]
+const STATS = [`${DEPTS} departments`, `${SPECIALISTS} specialists`, `${GROUPS} groups`, "finished files, not transcripts"]
 
 const ROLE_CHIPS = WORKFORCE_GROUPS.map((g) => ({ label: g.label, href: g.href }))
 
@@ -55,7 +57,7 @@ const DIFFERENTIATORS = [
   {
     icon: Blocks,
     title: "If the catalog doesn't fit, build your own",
-    body: "102 specialists not quite right? Create a custom agent — its role, its tools, its voice — and put it to work beside the rest. No engineering, no waiting on a roadmap.",
+    body: `${SPECIALISTS} specialists not quite right? Create a custom agent — its role, its tools, its voice — and put it to work beside the rest. No engineering, no waiting on a roadmap.`,
   },
   {
     icon: Sparkles,
@@ -72,7 +74,7 @@ const DIFFERENTIATORS = [
 const FAQ_ITEMS = [
   {
     q: "What is Alyvon Workforce?",
-    a: "Alyvon Workforce is a team of AI departments — 16 in total, 102 specialists across 6 groups — that turn a plain-language brief into a finished file. A Chief of Staff routes each brief to the right Director and specialists, and the deliverable comes back to your Library.",
+    a: `Alyvon Workforce is a team of AI departments — ${DEPTS} in total, ${SPECIALISTS} specialists across ${GROUPS} groups — that turn a plain-language brief into a finished file. A Chief of Staff routes each brief to the right Director and specialists, and the deliverable comes back to your Library.`,
   },
   {
     q: "What is an agentic workforce?",
@@ -88,11 +90,11 @@ const FAQ_ITEMS = [
   },
   {
     q: "Which departments are included?",
-    a: "All 16 departments are live in the product. Your plan sets how many you can select: Starter includes core routing plus 2 departments, Growth plus 7, and Scale and Enterprise include the full Workforce.",
+    a: `All ${DEPTS} departments are live in the product. Your plan sets how many you can select: Starter includes core routing plus 2 departments, Growth plus 7, and Scale and Enterprise include the full Workforce.`,
   },
   {
     q: "How does department selection work?",
-    a: "On Starter and Growth you choose which departments to activate (2 and 7 respectively). Every seat on the plan can brief any activated department. Scale and Enterprise unlock all 16.",
+    a: `On Starter and Growth you choose which departments to activate (2 and 7 respectively). Every seat on the plan can brief any activated department. Scale and Enterprise unlock all ${DEPTS}.`,
   },
   {
     q: "Why is Creative priced separately?",
@@ -358,7 +360,7 @@ export default function WorkforcePillarPage() {
           softwareApplicationSchema({
             name: "Alyvon Workforce",
             description:
-              "16 AI departments and 102 specialists across 6 groups that turn a plain-language brief into a finished file.",
+              `${DEPTS} AI departments and ${SPECIALISTS} specialists across ${GROUPS} groups that turn a plain-language brief into a finished file.`,
             url: "/workforce",
           }),
           itemListSchema({

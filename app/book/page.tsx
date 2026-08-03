@@ -8,7 +8,7 @@ import { BOOKING_CALENDAR_URL } from "@/lib/site"
 // Noindexed and kept out of the sitemap (utility page, not an entry point).
 export const metadata = {
   ...buildMetadata({
-    title: "Book a call - Alyvon",
+    title: "Book a call",
     description: "Book time with the Alyvon team.",
     path: "/book",
   }),

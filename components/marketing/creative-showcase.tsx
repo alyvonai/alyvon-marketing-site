@@ -33,12 +33,12 @@ const GALLERY: GalleryItem[] = [
   { kind: "image", src: `${B}/tile-06-campaign-key-visual-halcyon-16x9.webp`, alt: "Campaign key visual by a fictional agency for its client, Halcyon Air", aspect: "16:9", label: "Agency campaign key visual · 16:9" },
   { kind: "image", src: `${B}/tile-08-consult-ad-cobalt-1200x627.webp`, alt: "“Book a consult” ad for a fictional consultancy, Cobalt Advisory", aspect: "ad", label: "Book-a-consult ad · 1200×627" },
   { kind: "image", src: `${B}/tile-02-saas-ad-pathwise-4x5.webp`, alt: "Product ad variant for a fictional workflow-analytics SaaS, Pathwise", aspect: "4:5", label: "SaaS product ad · 4:5 · IG feed" },
-  { kind: "image", src: `${B}/tile-10-photoreal-composite-1x1.webp`, alt: "Photoreal AI product-in-scene composite of a candle in a styled setting", aspect: "1:1", label: "Nano-Banana edit · photoreal composite · 1:1" },
+  { kind: "image", src: `${B}/tile-10-photoreal-composite-1x1.webp`, alt: "Photoreal AI product-in-scene composite of a candle in a styled setting", aspect: "1:1", label: "Photoreal composite edit · 1:1" },
   { kind: "video", videoSrc: `${B}/video-motion-ad-orbital-16x9.mp4`, posterSrc: `${B}/video-motion-ad-orbital-16x9-poster.webp`, aspect: "16:9", title: "Motion ad for a fictional SaaS, Orbital", label: "Motion ad · 16:9 · video" },
   { kind: "image", src: `${B}/tile-07-carousel-halcyon-1x1.webp`, alt: "Case-study carousel tile by a fictional agency for its client, Halcyon Air", aspect: "1:1", label: "Case-study carousel · 1:1" },
   { kind: "image", src: `${B}/tile-04-ui-demo-orbit-metrics-16x9.webp`, alt: "Clean SaaS dashboard UI demo for a fictional analytics product, Orbit Metrics", aspect: "16:9", label: "SaaS UI demo · 16:9", caption: "Product UI. Illustrative data." },
   { kind: "image", src: `${B}/tile-09-linkedin-post-cobalt-1200x627.webp`, alt: "LinkedIn single-image credibility post for a fictional consultancy, Cobalt Advisory", aspect: "ad", label: "LinkedIn post · 1200×627" },
-  { kind: "image", src: `${B}/tile-11-before-after-fleetrun-4x5.webp`, alt: "Before/after background-swap product edit for a fictional brand, Fleet Run Co.", aspect: "4:5", label: "Nano-Banana edit · before/after · 4:5" },
+  { kind: "image", src: `${B}/tile-11-before-after-fleetrun-4x5.webp`, alt: "Before/after background-swap product edit for a fictional brand, Fleet Run Co.", aspect: "4:5", label: "Before/after product edit · 4:5" },
 ]
 
 const TILE_SIZES = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
