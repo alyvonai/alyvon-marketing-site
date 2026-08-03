@@ -1,92 +1,60 @@
+"use client"
+
+import { useEffect, useRef, useState } from "react"
 import { Check } from "lucide-react"
 import { Section } from "@/components/marketing/section"
 
-// The moving "working board" — a restyled lift of the live site's floating specialist
-// cards. Task cards sit across Queued / Working / Shipped and gently float (CSS only, no
-// client JS); the Working card's progress bar sweeps. Motion is disabled under
-// prefers-reduced-motion (see globals.css). Content is illustrative.
+// The moving "working board" — a restyled lift of the live site's animated board. Cards
+// enter at Queued and slide Queued -> Working -> Shipped on a loop; the status pill,
+// progress bar, and check update as each card advances. Two horizontal lanes, driven by a
+// timer with CSS position transitions. Motion is skipped under prefers-reduced-motion (a
+// static snapshot is shown instead). Content is illustrative.
 
-type Status = "queued" | "working" | "shipped"
-
-interface Task {
+interface Brief {
   initials: string
   color: string
   name: string
   role: string
-  status: Status
-  line: string
-  /** chip shown on shipped cards, e.g. "In your Library" */
-  chip?: string
+  task: string
 }
 
-const COLUMNS: { key: Status; label: string; tasks: Task[] }[] = [
-  {
-    key: "queued",
-    label: "Queued",
-    tasks: [
-      {
-        initials: "PE",
-        color: "#7C3AED",
-        name: "Pemberton",
-        role: "Analytics Director",
-        status: "queued",
-        line: "Pull the Q3 renewal cohort and flag the churn risk.",
-      },
-    ],
-  },
-  {
-    key: "working",
-    label: "Working",
-    tasks: [
-      {
-        initials: "VE",
-        color: "#2563EB",
-        name: "Vera",
-        role: "Insights Analyst",
-        status: "working",
-        line: "Pulled 12 months of BigQuery data. Found a 23% drop in enterprise renewals — drafting the narrative.",
-      },
-      {
-        initials: "QU",
-        color: "#DE4B12",
-        name: "Quinn",
-        role: "Executive Asst.",
-        status: "working",
-        line: "Sent calendar polls to 8 execs. Booked Conference Room B. Drafting the agenda.",
-      },
-    ],
-  },
-  {
-    key: "shipped",
-    label: "Shipped",
-    tasks: [
-      {
-        initials: "CL",
-        color: "#0F9D6B",
-        name: "Clio",
-        role: "Content Writer",
-        status: "shipped",
-        line: "Draft complete — 1,840 words on SEO strategy.",
-        chip: "In your Library",
-      },
-      {
-        initials: "HU",
-        color: "#0E7490",
-        name: "Hugo",
-        role: "Head of Engineering",
-        status: "shipped",
-        line: "Pricing-page change opened for your team to review.",
-        chip: "PR opened",
-      },
-    ],
-  },
+const POOL: Brief[] = [
+  { initials: "VE", color: "#2563EB", name: "Vera", role: "Insights Analyst", task: "Q3 enterprise renewal cohort — find what's driving the churn." },
+  { initials: "QU", color: "#DE4B12", name: "Quinn", role: "Executive Asst.", task: "Schedule the exec offsite and draft the agenda." },
+  { initials: "CL", color: "#0F9D6B", name: "Clio", role: "Content Writer", task: "1,840-word SEO strategy article, ready to publish." },
+  { initials: "HU", color: "#0E7490", name: "Hugo", role: "Head of Engineering", task: "Open a pricing-page pull request for the team to review." },
+  { initials: "PE", color: "#7C3AED", name: "Pemberton", role: "Analytics Director", task: "Weekly performance readout, every number checked." },
+  { initials: "TO", color: "#DB2777", name: "Tobias", role: "Marketing Ops", task: "Multi-touch attribution report for last quarter's spend." },
+  { initials: "AV", color: "#E11D48", name: "Avery", role: "Brand Director", task: "Refresh the brand voice guide with wrong/right examples." },
+  { initials: "CA", color: "#0891B2", name: "Casey", role: "Sales Development", task: "Build a 200-account target list matching our ICP." },
+  { initials: "CY", color: "#4F46E5", name: "Cyrus", role: "Editorial Director", task: "Edit the launch sequence into one consistent voice." },
+  { initials: "NI", color: "#16A34A", name: "Niall", role: "Customer Success", task: "QBR deck for the top account, ready to present." },
 ]
 
-function StatusPill({ status }: { status: Status }) {
+// station 0 = Queued, 1 = Working, 2 = Shipped, 3 = exiting (off-board right)
+const LEFT = ["1%", "35%", "69%", "106%"]
+const ROW_TOP = [56, 210] // px offsets for the two lanes (below the column headers)
+const TICK_MS = 2400
+
+interface LiveCard {
+  key: number
+  brief: Brief
+  row: number
+  station: number
+  fresh: boolean
+}
+
+function statusFor(station: number): "queued" | "working" | "shipped" {
+  if (station <= 0) return "queued"
+  if (station === 1) return "working"
+  return "shipped"
+}
+
+function StatusPill({ status }: { status: "queued" | "working" | "shipped" }) {
   if (status === "working") {
     return (
       <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-wash px-2.5 py-0.5 font-mono text-label uppercase text-accent-strong">
-        <span className="size-1.5 animate-float-y rounded-full bg-accent-strong" />
+        <span className="size-1.5 rounded-full bg-accent-strong" />
         Working
       </span>
     )
@@ -106,41 +74,78 @@ function StatusPill({ status }: { status: Status }) {
   )
 }
 
-function TaskCard({ task, delay }: { task: Task; delay: number }) {
+function CardBody({ brief, station }: { brief: Brief; station: number }) {
+  const status = statusFor(station)
   return (
-    <div
-      className="animate-float-y rounded-card border border-border-subtle bg-canvas p-4 shadow-[0_12px_32px_-16px_rgba(11,13,17,0.18)]"
-      style={{ animationDelay: `${delay}s` }}
-    >
+    <div className="flex h-full flex-col rounded-card border border-border-subtle bg-canvas p-4 shadow-[0_12px_32px_-16px_rgba(11,13,17,0.18)]">
       <div className="flex items-center gap-3">
         <span
           className="flex size-8 shrink-0 items-center justify-center rounded-full font-mono text-[11px] font-semibold text-white"
-          style={{ backgroundColor: task.color }}
+          style={{ backgroundColor: brief.color }}
         >
-          {task.initials}
+          {brief.initials}
         </span>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-body-s font-semibold text-text-primary">{task.name}</p>
-          <p className="truncate text-label text-text-tertiary">{task.role}</p>
+          <p className="truncate text-body-s font-semibold text-text-primary">{brief.name}</p>
+          <p className="truncate text-label text-text-tertiary">{brief.role}</p>
         </div>
-        <StatusPill status={task.status} />
+        <StatusPill status={status} />
       </div>
-      <p className="mt-3 text-body-s leading-snug text-text-secondary">{task.line}</p>
-      {task.status === "working" ? (
-        <div className="mt-3 h-1 overflow-hidden rounded-full bg-surface-sunken">
-          <div className="animate-board-progress h-full w-1/3 rounded-full bg-accent" />
+      <p className="mt-3 line-clamp-2 text-body-s leading-snug text-text-secondary">{brief.task}</p>
+      {status === "working" ? (
+        <div className="mt-auto pt-3">
+          <div className="h-1 overflow-hidden rounded-full bg-surface-sunken">
+            <div className="animate-board-progress h-full w-1/3 rounded-full bg-accent" />
+          </div>
         </div>
       ) : null}
-      {task.status === "shipped" && task.chip ? (
-        <span className="mt-3 inline-flex items-center gap-1 rounded-full bg-surface-sunken px-2.5 py-0.5 font-mono text-label uppercase text-text-secondary">
-          {task.chip}
+      {status === "shipped" ? (
+        <span className="mt-auto inline-flex w-fit items-center gap-1 pt-3 font-mono text-label uppercase text-text-tertiary">
+          In your Library
         </span>
       ) : null}
     </div>
   )
 }
 
+const COLUMNS = ["Queued", "Working", "Shipped"]
+
 export function WorkingBoard() {
+  // Seed: each lane starts with a card in Queued, Working, and Shipped.
+  const seed: LiveCard[] = []
+  let k = 0
+  for (let row = 0; row < 2; row++) {
+    for (let station = 0; station < 3; station++) {
+      seed.push({ key: k, brief: POOL[k % POOL.length], row, station, fresh: false })
+      k++
+    }
+  }
+  const [cards, setCards] = useState<LiveCard[]>(seed)
+  const nextKey = useRef(k)
+  const nextBrief = useRef(k)
+
+  useEffect(() => {
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return
+    const id = setInterval(() => {
+      setCards((prev) => {
+        const advanced = prev
+          .map((c) => ({ ...c, station: c.station + 1, fresh: false }))
+          .filter((c) => c.station <= 3) // keep the exiting frame, drop after
+        for (let row = 0; row < 2; row++) {
+          advanced.push({
+            key: nextKey.current++,
+            brief: POOL[nextBrief.current++ % POOL.length],
+            row,
+            station: 0,
+            fresh: true,
+          })
+        }
+        return advanced
+      })
+    }, TICK_MS)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <Section tone="surface">
       <div className="flex flex-col gap-8">
@@ -153,21 +158,46 @@ export function WorkingBoard() {
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
-          {COLUMNS.map((col, ci) => (
-            <div key={col.key} className="flex flex-col gap-4">
-              <div className="flex items-center justify-between px-1">
-                <span className="font-mono text-label uppercase text-text-secondary">{col.label}</span>
-                <span className="font-mono text-label text-text-tertiary">{col.tasks.length}</span>
-              </div>
-              {col.tasks.map((task, ti) => (
-                <TaskCard key={task.name} task={task} delay={ci * 0.6 + ti * 1.2} />
-              ))}
+        {/* Animated board (md+) */}
+        <div className="relative hidden h-[350px] md:block">
+          {/* Column headers */}
+          {COLUMNS.map((label, i) => (
+            <div key={label} className="absolute top-0 flex w-[30%] items-center justify-between px-1" style={{ left: LEFT[i] }}>
+              <span className="font-mono text-label uppercase text-text-secondary">{label}</span>
+            </div>
+          ))}
+          <div className="absolute inset-x-0 top-9 h-px bg-border-subtle" />
+          {cards.map((c) => (
+            <div
+              key={c.key}
+              className={`absolute w-[30%] ${c.fresh ? "animate-card-enter" : ""}`}
+              style={{
+                left: LEFT[c.station],
+                top: ROW_TOP[c.row],
+                height: 126,
+                opacity: c.station >= 3 ? 0 : 1,
+                transition: "left 900ms cubic-bezier(0.4,0,0.2,1), opacity 600ms ease",
+                zIndex: 3 - c.station,
+              }}
+            >
+              <CardBody brief={c.brief} station={c.station} />
             </div>
           ))}
         </div>
 
-        <p className="text-body-s text-text-tertiary">Illustrative. Live board shown in the product.</p>
+        {/* Static stacked version (mobile) */}
+        <div className="flex flex-col gap-4 md:hidden">
+          {[0, 1, 2].map((station) => (
+            <div key={station} className="flex flex-col gap-2">
+              <span className="font-mono text-label uppercase text-text-secondary">{COLUMNS[station]}</span>
+              <div className="h-[126px]">
+                <CardBody brief={POOL[station]} station={station} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-body-s text-text-tertiary">Illustrative. The live board is in the product.</p>
       </div>
     </Section>
   )

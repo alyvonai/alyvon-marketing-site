@@ -180,20 +180,22 @@ body {
   filter: none !important;
 }
 
-/* Moving "working board" (/workforce). Cards gently float; the Working card's progress
-   bar sweeps. Lifted in spirit from the live site's floatY hero cards, restyled to the
-   new UI. All motion is disabled under prefers-reduced-motion below. */
-@keyframes float-y {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+/* Moving "working board" (/workforce). Cards slide Queued -> Working -> Shipped (position
+   transitions in the component); new cards fade/slide in at Queued; the Working card's
+   progress bar sweeps. Lifted in spirit from the live site's animated board, restyled to
+   the new UI. Motion is disabled under prefers-reduced-motion below (the component also
+   skips its timer, leaving a static snapshot). */
+@keyframes card-enter {
+  from { opacity: 0; transform: translateX(-14px); }
+  to { opacity: 1; transform: translateX(0); }
 }
-.animate-float-y { animation: float-y 6s ease-in-out infinite; }
+.animate-card-enter { animation: card-enter 0.6s ease-out; }
 @keyframes board-progress {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(320%); }
 }
 .animate-board-progress { animation: board-progress 1.9s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
-  .animate-float-y,
+  .animate-card-enter,
   .animate-board-progress { animation: none; }
 }
