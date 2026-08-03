@@ -83,7 +83,7 @@ const GROUP_HERO: Record<string, { src: string; alt: string; caption: string }> 
   },
   creative: {
     src: "/images/workforce/groups/creative.webp",
-    alt: "A spread of ad formats — social, launch, display, story, and video — each sized for where it runs",
+    alt: "A creative studio desk — a drawing tablet with character art in progress, a design app open on a laptop, sketchbooks, cameras, and a campaign board",
     caption: "Illustrative.",
   },
 }
