@@ -55,7 +55,7 @@ describe("no drifting claim literals in app/ or components/", () => {
   })
 
   it("never hardcodes a Workforce plan price — prices live in lib/pricing.ts", () => {
-    expect(offenders(/\$299|\$899|\$2,?400|\$5,?000/)).toEqual([])
+    expect(offenders(/\$399|\$1,?499|\$2,?999/)).toEqual([])
   })
 })
 
