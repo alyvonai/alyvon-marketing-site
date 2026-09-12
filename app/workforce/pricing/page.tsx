@@ -156,63 +156,79 @@ export default function WorkforcePricingPage() {
               </DataTable.Row>
               <DataTable.Row>
                 <DataTable.Cell>Departments</DataTable.Cell>
-                <DataTable.Cell colSpan={4} className="text-center">
-                  All {DEPTS}
-                </DataTable.Cell>
+                {WORKFORCE_PLANS.map((plan) => (
+                  <DataTable.Cell key={plan.name} className="text-center">
+                    All {DEPTS}
+                  </DataTable.Cell>
+                ))}
               </DataTable.Row>
               <DataTable.Row>
                 <DataTable.Cell>Specialists</DataTable.Cell>
-                <DataTable.Cell colSpan={4} className="text-center">
-                  {WORKFORCE_STATS.specialists}
-                </DataTable.Cell>
+                {WORKFORCE_PLANS.map((plan) => (
+                  <DataTable.Cell key={plan.name} className="text-center">
+                    {WORKFORCE_STATS.specialists}
+                  </DataTable.Cell>
+                ))}
               </DataTable.Row>
               <DataTable.Row>
                 <DataTable.Cell>
                   Alyvon, your Chief of Staff
                   <span className="block text-text-tertiary">Routes every brief to the right Director</span>
                 </DataTable.Cell>
-                <DataTable.Cell colSpan={4} className="text-center">
-                  <Yes />
-                </DataTable.Cell>
+                {WORKFORCE_PLANS.map((plan) => (
+                  <DataTable.Cell key={plan.name} className="text-center">
+                    <Yes />
+                  </DataTable.Cell>
+                ))}
               </DataTable.Row>
               <DataTable.Row>
                 <DataTable.Cell>
                   Finished files
                   <span className="block text-text-tertiary">Word, PowerPoint, Excel, PDF, web pages, code</span>
                 </DataTable.Cell>
-                <DataTable.Cell colSpan={4} className="text-center">
-                  <Yes />
-                </DataTable.Cell>
+                {WORKFORCE_PLANS.map((plan) => (
+                  <DataTable.Cell key={plan.name} className="text-center">
+                    <Yes />
+                  </DataTable.Cell>
+                ))}
               </DataTable.Row>
               <DataTable.Row>
                 <DataTable.Cell>Library and board</DataTable.Cell>
-                <DataTable.Cell colSpan={4} className="text-center">
-                  <Yes />
-                </DataTable.Cell>
+                {WORKFORCE_PLANS.map((plan) => (
+                  <DataTable.Cell key={plan.name} className="text-center">
+                    <Yes />
+                  </DataTable.Cell>
+                ))}
               </DataTable.Row>
               <DataTable.Row>
                 <DataTable.Cell>
                   Approvals
                   <span className="block text-text-tertiary">Send, publish, and spend actions wait for you</span>
                 </DataTable.Cell>
-                <DataTable.Cell colSpan={4} className="text-center">
-                  <Yes />
-                </DataTable.Cell>
+                {WORKFORCE_PLANS.map((plan) => (
+                  <DataTable.Cell key={plan.name} className="text-center">
+                    <Yes />
+                  </DataTable.Cell>
+                ))}
               </DataTable.Row>
               <DataTable.Row>
                 <DataTable.Cell>Brand voice</DataTable.Cell>
-                <DataTable.Cell colSpan={4} className="text-center">
-                  <Yes />
-                </DataTable.Cell>
+                {WORKFORCE_PLANS.map((plan) => (
+                  <DataTable.Cell key={plan.name} className="text-center">
+                    <Yes />
+                  </DataTable.Cell>
+                ))}
               </DataTable.Row>
               <DataTable.Row>
                 <DataTable.Cell>
                   Org memory
                   <span className="block text-text-tertiary">Context and decisions carry across tasks</span>
                 </DataTable.Cell>
-                <DataTable.Cell colSpan={4} className="text-center">
-                  <Yes />
-                </DataTable.Cell>
+                {WORKFORCE_PLANS.map((plan) => (
+                  <DataTable.Cell key={plan.name} className="text-center">
+                    <Yes />
+                  </DataTable.Cell>
+                ))}
               </DataTable.Row>
 
               <DataTable.Row>
@@ -324,9 +340,11 @@ export default function WorkforcePricingPage() {
               </DataTable.Row>
               <DataTable.Row>
                 <DataTable.Cell>Image generation</DataTable.Cell>
-                <DataTable.Cell colSpan={4} className="text-center">
-                  <Yes />
-                </DataTable.Cell>
+                {WORKFORCE_PLANS.map((plan) => (
+                  <DataTable.Cell key={plan.name} className="text-center">
+                    <Yes />
+                  </DataTable.Cell>
+                ))}
               </DataTable.Row>
               <DataTable.Row>
                 <DataTable.Cell>Video generation</DataTable.Cell>
