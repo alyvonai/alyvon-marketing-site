@@ -31,7 +31,7 @@ export const CTA = {
   workforce: {
     label: "Start your 14-day free trial",
     href: "https://app.alyvon.com/signup",
-    micro: "14 days or 10 deliverables, whichever comes first. No credit card.",
+    micro: "14 days or 15 credits, whichever comes first. No credit card.",
     product: "workforce" as ProductId,
   },
   marketingHub: {

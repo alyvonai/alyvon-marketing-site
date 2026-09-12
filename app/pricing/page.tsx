@@ -28,7 +28,7 @@ const CARDS = [
   {
     name: "Workforce pricing",
     href: "/workforce/pricing",
-    copy: `Self-serve plans priced around deliverables and departments. Starter ${STARTER.priceMonthly}, Growth ${GROWTH.priceMonthly}, Scale ${SCALE.priceMonthly}, or Enterprise. Start with a 14-day free trial.`,
+    copy: `Self-serve plans priced around task credits, not seats. Starter ${STARTER.priceMonthly}, Growth ${GROWTH.priceMonthly}, Scale ${SCALE.priceMonthly}, or Enterprise. Start with a 14-day free trial.`,
     cta: "See Workforce pricing",
   },
   {
