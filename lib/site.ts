@@ -27,6 +27,16 @@ const MARKETING_HUB_BOOKING =
 const ANALYTICS_BOOKING =
   process.env.NEXT_PUBLIC_ANALYTICS_BOOKING_URL || "/book?product=analytics&source=cta"
 
+// The GHL webinar registration form embedded on /webinar. Title/date are placeholder
+// copy -- confirm real webinar details before launch and update here (single source of
+// truth for the page + FAQ + JSON-LD).
+export const WEBINAR = {
+  formId: process.env.NEXT_PUBLIC_WEBINAR_FORM_ID || "ixL3cwZVxqPtzeALVHOE",
+  title: "How Agencies Are Replacing Their Next Hire With an AI Workforce",
+  dateLabel: "Date & time -- TBD, confirm before launch",
+  duration: "45 minutes",
+}
+
 export const CTA = {
   workforce: {
     label: "Start your 14-day free trial",

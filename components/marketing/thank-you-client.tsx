@@ -25,6 +25,10 @@ const COPY: Record<string, { title: string; body: string }> = {
     title: "Your trial is on its way.",
     body: "Check your email to finish setting up. You can brief your first department the moment you’re in.",
   },
+  webinar: {
+    title: "You're registered.",
+    body: "Check your inbox for your confirmation email — it has the join link and a calendar invite. We'll also send a reminder before it starts.",
+  },
   default: {
     title: "Thanks — we’ve got it.",
     body: "We’ve received your request and will be in touch shortly.",
