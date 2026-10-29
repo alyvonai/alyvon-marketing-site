@@ -5,7 +5,8 @@ import Link from "next/link"
 import { Download, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { track } from "@/lib/analytics"
+import { formSubmitted, formViewed, track } from "@/lib/analytics"
+import { useFormStart } from "@/components/analytics/use-form-start"
 
 // Email gate for one template. On success the download is revealed in place (no redirect),
 // and both the lead and the download are recorded as PostHog/dataLayer goals.
@@ -16,10 +17,11 @@ export function TemplateDownloadForm({ slug, file, title }: { slug: string; file
   const startedAt = React.useRef(Date.now())
   const emailRef = React.useRef<HTMLInputElement>(null)
   const errorId = `${slug}-email-error`
+  const onEmailInput = useFormStart("template_download", slug)
 
   React.useEffect(() => {
     startedAt.current = Date.now()
-    track("template_form_viewed", { template: slug })
+    formViewed({ form_name: "template_download", template: slug })
   }, [slug])
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -50,7 +52,7 @@ export function TemplateDownloadForm({ slug, file, title }: { slug: string; file
       if (!res.ok) throw new Error(json.error ?? "Something went wrong. Try again.")
       setFileUrl(json.file ?? file)
       setStatus("done")
-      track("template_lead_submitted", { template: slug })
+      formSubmitted({ form_name: "template_download", template: slug })
     } catch (err) {
       setStatus("idle")
       setError(err instanceof Error ? err.message : "Something went wrong. Try again.")
@@ -111,6 +113,7 @@ export function TemplateDownloadForm({ slug, file, title }: { slug: string; file
           id={`${slug}-email`}
           name="email"
           type="email"
+          onInput={onEmailInput}
           inputMode="email"
           autoComplete="email"
           spellCheck={false}
