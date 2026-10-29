@@ -25,7 +25,8 @@ import { getAllPosts } from "@/lib/blog"
 import { organizationSchema, websiteSchema } from "@/lib/jsonld"
 
 export const metadata = buildMetadata({
-  title: "The AI workforce for AI agencies",
+  // The root page does not get the layout's "%s | Alyvon" template, so the brand is written in.
+  title: "Alyvon: the AI workforce for AI agencies",
   description:
     "Alyvon is the AI workforce for AI agencies: stakeholder interviews, AI readiness checks, signed scopes and custom agents. From discovery to building in days.",
   path: "/",
