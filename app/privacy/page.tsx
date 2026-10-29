@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Section } from "@/components/marketing/section"
+import { PageHero } from "@/components/marketing/page-hero"
 import { List, DataTable } from "@/components/ui/typography"
 import { buildMetadata } from "@/lib/metadata"
 
@@ -13,11 +14,16 @@ export const metadata = buildMetadata({
 export default function PrivacyPage() {
   return (
     <>
-      <Section tone="canvas" spacing="lg">
-        <span className="font-mono text-label uppercase text-text-secondary">Legal</span>
-        <h1 className="mt-3 text-display-l text-text-primary">Privacy Policy</h1>
-        <p className="mt-4 text-body text-text-secondary">Effective date: August 2, 2026</p>
-      </Section>
+      <PageHero
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Privacy Policy", path: "/privacy" },
+        ]}
+        eyebrow="Legal"
+        title="Privacy Policy"
+        meta="Effective date: August 2, 2026"
+        size="md"
+      />
 
       <Section tone="surface" spacing="lg">
         <div className="mx-auto flex max-w-[72ch] flex-col gap-12">

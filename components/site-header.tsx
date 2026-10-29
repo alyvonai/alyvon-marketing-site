@@ -22,7 +22,7 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border-subtle bg-canvas/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border-subtle bg-canvas">
       <div className="mx-auto flex h-16 max-w-content-lg items-center justify-between px-6">
         <Link
           href="/"
@@ -79,11 +79,11 @@ export function SiteHeader() {
             Log in
           </Link>
           <a
-            href={CTA.workforce.href}
-            onClick={() => track("trial_cta_clicked", { product: "workforce", placement: "header" })}
+            href={CTA.founding.href}
+            onClick={() => track("founding_cta_clicked", { product: "workforce", placement: "header" })}
             className={cn(buttonVariants({ size: "sm" }))}
           >
-            Start free trial
+            {CTA.founding.label}
           </a>
         </div>
 
@@ -144,14 +144,14 @@ export function SiteHeader() {
               Log in
             </Link>
             <a
-              href={CTA.workforce.href}
+              href={CTA.founding.href}
               onClick={() => {
-                track("trial_cta_clicked", { product: "workforce", placement: "header_mobile" })
+                track("founding_cta_clicked", { product: "workforce", placement: "header_mobile" })
                 setMobileOpen(false)
               }}
               className={cn(buttonVariants({ size: "md" }), "w-full")}
             >
-              Start free trial
+              {CTA.founding.label}
             </a>
           </div>
         </nav>

@@ -198,3 +198,19 @@ body {
 @media (prefers-reduced-motion: reduce) {
   [style*="workingPulse"] { animation: none !important; }
 }
+
+/* Agency homepage: faint engineering grid on dark hero / closing bands. */
+.bg-grid-dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-ember {
+  background-image: radial-gradient(60% 55% at 50% 100%, rgba(222, 75, 18, 0.22), transparent 70%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}

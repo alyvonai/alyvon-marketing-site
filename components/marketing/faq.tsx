@@ -50,11 +50,11 @@ export function Faq({
                   />
                 </button>
               </h3>
-              {isOpen && (
-                <div id={panelId} role="region" aria-labelledby={btnId} className="px-5 pb-5">
-                  <p className="text-body text-text-secondary">{item.a}</p>
-                </div>
-              )}
+              {/* Always in the DOM (hidden when closed) so the answers match the page's
+                  FAQPage schema and aria-controls always points at a real element. */}
+              <div id={panelId} role="region" aria-labelledby={btnId} hidden={!isOpen} className="px-5 pb-5">
+                <p className="text-body text-text-secondary">{item.a}</p>
+              </div>
             </div>
           )
         })}

@@ -54,8 +54,8 @@ describe("no drifting claim literals in app/ or components/", () => {
     expect(offenders(/102 specialists|16 departments|6 groups/)).toEqual([])
   })
 
-  it("never hardcodes a Workforce plan price — prices live in lib/pricing.ts", () => {
-    expect(offenders(/\$399|\$1,?499|\$2,?999/)).toEqual([])
+  it("never hardcodes a price — the founding rate lives in lib/pricing.ts", () => {
+    expect(offenders(/\$399|\$1,?499|\$2,?999|\$499/)).toEqual([])
   })
 })
 

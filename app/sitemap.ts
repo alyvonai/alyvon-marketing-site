@@ -1,17 +1,33 @@
-// Ticket 22: sitemap route. Maps over SITE_ROUTES (lib/nav-data.ts), the
-// single source of truth for the site's route list -- add a page's entry
-// there in the same commit that lands its app/**/page.tsx, never ahead of
-// the real route existing.
+// Sitemap. Static routes come from SITE_ROUTES (lib/nav-data.ts); blog posts and author
+// pages come from lib/blog. lastModified is only emitted when the real date is known:
+// stamping every URL with the build time teaches search engines to ignore lastmod.
 import type { MetadataRoute } from "next"
 import { SITE_ROUTES } from "@/lib/nav-data"
-
-const SITE_URL = "https://www.alyvon.com"
+import { getAllPosts } from "@/lib/blog"
+import { AUTHORS } from "@/lib/blog/authors"
+import { SITE_URL } from "@/lib/site"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return SITE_ROUTES.map((route) => ({
-    url: `${SITE_URL}${route.path}`,
-    lastModified: new Date(),
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }))
+  const posts = getAllPosts()
+  const latestPost = posts.map((p) => p.updated).sort().at(-1)
+  const routes = SITE_ROUTES.map((r) => (r.path === "/insights" && latestPost ? { ...r, lastModified: latestPost } : r))
+  return [
+    ...routes.map((route) => ({
+      url: `${SITE_URL}${route.path}`,
+      ...(route.lastModified ? { lastModified: route.lastModified } : {}),
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    })),
+    ...posts.map((p) => ({
+      url: `${SITE_URL}/insights/${p.slug}`,
+      lastModified: p.updated,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    ...AUTHORS.map((a) => ({
+      url: `${SITE_URL}/insights/authors/${a.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.3,
+    })),
+  ]
 }

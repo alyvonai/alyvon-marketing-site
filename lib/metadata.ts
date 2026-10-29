@@ -16,6 +16,10 @@ export interface BuildMetadataOptions {
   path?: string
   /** Path or absolute URL to an OG image. Defaults to the sitewide fallback. */
   ogImage?: string
+  /** Blog posts: Open Graph article type with its dates and author. */
+  article?: { publishedTime: string; modifiedTime: string; authors: string[] }
+  /** Utility pages (download pages, confirmations): keep out of the index, still follow links. */
+  noindex?: boolean
 }
 
 export function buildMetadata({
@@ -23,6 +27,8 @@ export function buildMetadata({
   description,
   path = "/",
   ogImage = DEFAULT_OG_IMAGE,
+  article,
+  noindex,
 }: BuildMetadataOptions): Metadata {
   const canonicalUrl = new URL(path, SITE_URL).toString()
   const imageUrl = new URL(ogImage, SITE_URL).toString()
@@ -38,9 +44,10 @@ export function buildMetadata({
       description,
       url: canonicalUrl,
       siteName: SITE_NAME,
-      type: "website",
       images: [{ url: imageUrl }],
+      ...(article ? { type: "article" as const, ...article } : { type: "website" as const }),
     },
+    ...(noindex ? { robots: { index: false, follow: true } } : {}),
     twitter: {
       card: "summary_large_image",
       title,

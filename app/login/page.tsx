@@ -1,69 +1,64 @@
-import { Users, Megaphone } from "lucide-react"
+import { ArrowRight, Megaphone, Users } from "lucide-react"
 
 import { buildMetadata } from "@/lib/metadata"
-import { Hero } from "@/components/marketing/hero"
+import { PageHero } from "@/components/marketing/page-hero"
 import { Section } from "@/components/marketing/section"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-// Copy source: Library deliverable 4ccea028-0024-42f6-92f2-92db2276cd9d
-// (Ticket 0g, final post-consistency-pass version), /login page section.
-// Pulled verbatim; light formatting only. This page is exactly a two-choice
-// router (Workforce vs. Marketing Hub) with no form fields -- it only routes
-// the visitor to the right subdomain. No real auth form lives here.
+// Login router: no auth form lives here, it only sends people to the right app.
+// Marketing Hub stays listed so existing Marketing Hub customers can still sign in.
 export const metadata = buildMetadata({
   title: "Log in",
-  description: "Choose which Alyvon product to log in to: Workforce or Marketing Hub.",
+  description: "Log in to Alyvon, or to Marketing Hub if you are an existing Marketing Hub customer.",
   path: "/login",
+  noindex: true,
 })
+
+const APPS = [
+  {
+    icon: Users,
+    title: "Alyvon",
+    body: "Stakeholder interviews, data discovery, scopes and the AI workforce for your client projects.",
+    href: "https://app.alyvon.com",
+    cta: "Log in to Alyvon",
+    primary: true,
+  },
+  {
+    icon: Megaphone,
+    title: "Marketing Hub",
+    body: "For existing Marketing Hub customers: CRM, automations and the AI Employee.",
+    href: "https://mh.alyvon.com",
+    cta: "Log in to Marketing Hub",
+    primary: false,
+  },
+]
 
 export default function LoginPage() {
   return (
     <>
-      <Hero
-        heading="Log in"
-        subhead="Choose which Alyvon product to log in to: Workforce or Marketing Hub."
-        align="center"
-      />
+      <PageHero eyebrow="Log in" title="Welcome back." subhead="Choose where you’re signing in." size="md" />
 
-      <Section tone="surface" spacing="sm">
-        <div className="mx-auto grid w-full max-w-[880px] gap-6 sm:grid-cols-2">
-          <Card className="flex flex-col">
-            <CardHeader className="flex flex-col gap-3">
-              <Users className="h-6 w-6 shrink-0 text-text-primary" strokeWidth={1.5} aria-hidden="true" />
-              <CardTitle>Log in to Workforce</CardTitle>
-              <CardDescription>
-                For departments, specialists, and deliverables: your AI workforce.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="mt-auto">
+      <Section tone="surface">
+        <div className="grid w-full max-w-[880px] gap-4 sm:grid-cols-2">
+          {APPS.map(({ icon: Icon, title, body, href, cta, primary }) => (
+            <div key={title} className="flex flex-col gap-4 rounded-[16px] border border-border-subtle bg-canvas p-6 sm:p-8">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-[10px] bg-accent-wash text-accent-strong">
+                <Icon className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <h2 className="text-[22px] font-semibold">{title}</h2>
+              <p className="text-body text-text-secondary">{body}</p>
               <a
-                href="https://app.alyvon.com"
-                className={cn(buttonVariants({ size: "lg" }), "w-full")}
+                href={href}
+                className={cn(
+                  buttonVariants({ size: "lg", variant: primary ? "primary" : "secondary" }),
+                  "mt-auto h-[52px] w-full rounded-full"
+                )}
               >
-                Log in to Workforce
+                {cta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
-            </CardContent>
-          </Card>
-
-          <Card className="flex flex-col">
-            <CardHeader className="flex flex-col gap-3">
-              <Megaphone className="h-6 w-6 shrink-0 text-text-primary" strokeWidth={1.5} aria-hidden="true" />
-              <CardTitle>Log in to Marketing Hub</CardTitle>
-              <CardDescription>
-                For CRM, automations, and the AI Employee: your marketing and messaging system.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="mt-auto">
-              <a
-                href="https://mh.alyvon.com"
-                className={cn(buttonVariants({ size: "lg", variant: "secondary" }), "w-full")}
-              >
-                Log in to Marketing Hub
-              </a>
-            </CardContent>
-          </Card>
+            </div>
+          ))}
         </div>
       </Section>
     </>
