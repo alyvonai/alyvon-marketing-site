@@ -55,13 +55,30 @@ export function bookCallClicked(p: {
   track("book_call_clicked", p)
 }
 
-export function leadFormSubmitted(p: {
-  product: string
-  form_name: string
-  placement: string
-  inquiry_type?: string
-}): void {
-  track("lead_form_submitted", p)
+// --- Form events ---
+// Every form sends the same three events, told apart by the `form_name` property, so one
+// PostHog funnel (form_viewed → form_started → form_submitted) broken down by form_name
+// covers every form, and new forms need no new events. form_started = the first character
+// typed into the form's email field (see components/analytics/use-form-start.ts).
+
+export type FormName = "founding_application" | "template_download" | "contact"
+
+type FormProps = { form_name: FormName; template?: string } & Props
+
+const formEvent = (event: string, p: FormProps) =>
+  track(event, { ...p, page_path: typeof window !== "undefined" ? window.location.pathname : undefined })
+
+export function formViewed(p: FormProps): void {
+  formEvent("form_viewed", p)
+}
+
+export function formStarted(p: FormProps & { field: "email" }): void {
+  formEvent("form_started", p)
+}
+
+/** Fire only after the server accepted the submission. */
+export function formSubmitted(p: FormProps): void {
+  formEvent("form_submitted", p)
 }
 
 // --- First-touch attribution (spec §11) ---

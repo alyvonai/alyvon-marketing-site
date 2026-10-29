@@ -91,7 +91,7 @@ export default async function ContactPage({
             ))}
           </ul>
           <div className="overflow-hidden rounded-[16px] border border-border-subtle bg-canvas p-2 shadow-sm sm:p-4">
-            <FormEmbed formId={FORM_ID} formName="Alyvon Form" product={product} source={source} />
+            <FormEmbed formId={FORM_ID} formName="Alyvon Form" analyticsName="contact" product={product} source={source} />
           </div>
         </div>
       </Section>

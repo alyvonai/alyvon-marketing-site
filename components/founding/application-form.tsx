@@ -4,7 +4,8 @@ import * as React from "react"
 import { Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { track } from "@/lib/analytics"
+import { formSubmitted, formViewed } from "@/lib/analytics"
+import { useFormStart } from "@/components/analytics/use-form-start"
 
 // Founding partner application: two contact fields and five questions. Errors are shown
 // inline and focus moves to the first one; the button only disables while sending.
@@ -53,9 +54,11 @@ export function ApplicationForm() {
   const [formError, setFormError] = React.useState<string | null>(null)
   const startedAt = React.useRef(Date.now())
   const formRef = React.useRef<HTMLFormElement>(null)
+  const onEmailInput = useFormStart("founding_application")
 
   React.useEffect(() => {
     startedAt.current = Date.now()
+    formViewed({ form_name: "founding_application" })
   }, [])
 
   const focusFirstError = (errs: Errors) => {
@@ -99,7 +102,7 @@ export function ApplicationForm() {
         throw new Error(json.error ?? "Something went wrong. Try again.")
       }
       setStatus("done")
-      track("founding_application_submitted", { cadence: data.cadence })
+      formSubmitted({ form_name: "founding_application", cadence: data.cadence })
     } catch (err) {
       setStatus("idle")
       setFormError(err instanceof Error ? err.message : "Something went wrong. Try again.")
@@ -150,6 +153,7 @@ export function ApplicationForm() {
               type={f.type}
               autoComplete={f.auto}
               spellCheck={f.type === "email" ? false : undefined}
+              onInput={f.name === "email" ? onEmailInput : undefined}
               inputMode={f.type === "email" ? "email" : undefined}
               placeholder={f.placeholder}
               aria-invalid={errors[f.name] ? true : undefined}
