@@ -6,7 +6,7 @@ import "./globals.css"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { PostHogProvider } from "@/components/analytics/posthog-provider"
-import { GTM_ID } from "@/lib/site"
+import { ALYVON_IS, GTM_ID } from "@/lib/site"
 
 // Brand typography per Ticket 0c Section 2: Archivo (display + body) and
 // JetBrains Mono (labels, eyebrows, timestamps, numeric figures). Fraunces
@@ -33,7 +33,12 @@ export const metadata: Metadata = {
     default: "Alyvon",
     template: "%s | Alyvon",
   },
-  description: "Direct a team. Not a tool.",
+  description: ALYVON_IS,
+  // Search Console ownership: set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION in Vercel to the
+  // content value of Google's HTML-tag verification method.
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
+    : {}),
   openGraph: {
     siteName: "Alyvon",
     type: "website",

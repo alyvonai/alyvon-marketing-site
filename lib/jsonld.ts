@@ -1,7 +1,7 @@
 // JSON-LD builders (spec §27). Each returns a plain schema.org object; render it with the
 // <JsonLd> component. Keep URLs absolute against SITE_URL.
 
-import { SITE_URL } from "@/lib/site"
+import { ALYVON_IS, SITE_URL } from "@/lib/site"
 
 type Json = Record<string, unknown>
 
@@ -14,7 +14,7 @@ export function organizationSchema(): Json {
     name: "Alyvon",
     url: SITE_URL,
     logo: abs("/icon.svg"),
-    description: "Direct a team. Not a tool.",
+    description: ALYVON_IS,
     sameAs: [] as string[],
   }
 }
@@ -96,5 +96,40 @@ export function itemListSchema(p: {
       name: it.name,
       url: abs(it.path),
     })),
+  }
+}
+
+export function personSchema(p: { name: string; role: string; path: string; sameAs?: string[] }): Json {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: p.name,
+    jobTitle: p.role,
+    url: abs(p.path),
+    worksFor: { "@type": "Organization", name: "Alyvon", url: SITE_URL },
+    ...(p.sameAs?.length ? { sameAs: p.sameAs } : {}),
+  }
+}
+
+export function blogPostingSchema(p: {
+  title: string
+  description: string
+  path: string
+  published: string
+  updated: string
+  author: { name: string; path: string }
+}): Json {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: p.title,
+    description: p.description,
+    url: abs(p.path),
+    mainEntityOfPage: abs(p.path),
+    datePublished: p.published,
+    dateModified: p.updated,
+    image: abs("/og-default.png"),
+    author: { "@type": "Person", name: p.author.name, url: abs(p.author.path) },
+    publisher: { "@type": "Organization", name: "Alyvon", url: SITE_URL, logo: abs("/icon.svg") },
   }
 }

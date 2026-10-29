@@ -1,24 +1,35 @@
-// 404 page (Ticket 22). No smarter "did you mean" suggestion is built here since
-// no real routes exist yet in this PR (Tickets 2-21 are out of scope) -- once those
-// pages land, a follow-on ticket can add route-aware suggestions. This links home
-// only, per docs/section-manifest.md.
+// 404 page. Same dark grid treatment as the rest of the site, with routes back into it.
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+import { Container } from "@/components/marketing/container"
+import { Eyebrow } from "@/components/home/ui"
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 export default function NotFound() {
   return (
-    <div className="mx-auto flex min-h-[60vh] w-full max-w-content flex-col items-center justify-center gap-4 px-4 py-16 text-center sm:py-24">
-      <p className="font-mono text-label uppercase text-text-secondary">404</p>
-      <h1 className="text-display-m text-text-primary">This page doesn&apos;t exist.</h1>
-      <p className="max-w-md text-body text-text-secondary">
-        The page you&apos;re looking for may have moved or was never built. Head back
-        to the homepage and start again from there.
-      </p>
-      <Link
-        href="/"
-        className="mt-2 inline-flex h-11 items-center justify-center rounded-card bg-accent px-5 text-body font-medium text-text-on-accent transition-colors duration-micro ease-out-standard hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-      >
-        Back to home
-      </Link>
-    </div>
+    <section className="bg-grid-dark flex min-h-[70vh] items-center bg-inverse text-text-on-inverse [color-scheme:dark]">
+      <Container className="flex flex-col items-start gap-6 py-20">
+        <Eyebrow tone="dark">404</Eyebrow>
+        <h1 className="text-balance text-[40px] font-bold leading-[1.03] tracking-[-0.045em] sm:text-[60px]">
+          This page doesn’t exist.
+        </h1>
+        <p className="max-w-[560px] text-body-l text-white/80">
+          It may have moved, or it was never built. Start again from the homepage, or read what agencies are working
+          on in Insights.
+        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link href="/" className={cn(buttonVariants({ size: "lg" }), "h-[52px] rounded-full px-8")}>
+            Back to home <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+          <Link
+            href="/insights"
+            className="inline-flex h-[52px] items-center justify-center rounded-full border border-white/25 px-8 text-body-l font-medium text-white transition-colors duration-micro ease-out-standard hover:border-white/60 hover:bg-white/5"
+          >
+            Read Insights
+          </Link>
+        </div>
+      </Container>
+    </section>
   )
 }

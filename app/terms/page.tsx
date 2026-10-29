@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Section } from "@/components/marketing/section"
+import { PageHero } from "@/components/marketing/page-hero"
 import { List, Blockquote } from "@/components/ui/typography"
 import { buildMetadata } from "@/lib/metadata"
 
@@ -15,11 +16,16 @@ const orderedListClass =
 export default function TermsPage() {
   return (
     <>
-      <Section tone="canvas" spacing="lg">
-        <span className="font-mono text-label uppercase text-text-secondary">Legal</span>
-        <h1 className="mt-3 text-display-l text-text-primary">Terms of Service</h1>
-        <p className="mt-4 text-body text-text-secondary">Effective date: August 2, 2026</p>
-      </Section>
+      <PageHero
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Terms of Service", path: "/terms" },
+        ]}
+        eyebrow="Legal"
+        title="Terms of Service"
+        meta="Effective date: August 2, 2026"
+        size="md"
+      />
 
       <Section tone="surface" spacing="lg">
         <div className="mx-auto flex max-w-[72ch] flex-col gap-12">

@@ -1,6 +1,6 @@
 import { Suspense } from "react"
 import { buildMetadata } from "@/lib/metadata"
-import { Section } from "@/components/marketing/section"
+import { Container } from "@/components/marketing/container"
 import { ThankYouClient } from "@/components/marketing/thank-you-client"
 
 // Shared confirmation page for every source (calendar, form, other). Noindexed — it's a
@@ -16,10 +16,16 @@ export const metadata = {
 
 export default function ThankYouPage() {
   return (
-    <Section tone="canvas" className="min-h-[60vh]">
-      <Suspense fallback={null}>
-        <ThankYouClient />
-      </Suspense>
-    </Section>
+    <section className="bg-grid-dark flex min-h-[70vh] items-center bg-inverse text-text-on-inverse [color-scheme:dark]">
+      <Container className="py-20">
+        <Suspense
+          fallback={
+            <h1 className="text-[40px] font-bold leading-[1.03] tracking-[-0.045em] sm:text-[60px]">Thanks, we’ve got it.</h1>
+          }
+        >
+          <ThankYouClient />
+        </Suspense>
+      </Container>
+    </section>
   )
 }

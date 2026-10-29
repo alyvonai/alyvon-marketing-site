@@ -3,8 +3,16 @@
 // below (see WORKFORCE_STATS at the end of this file). Pages, nav, and the sitemap all read
 // from here so a count or a route only changes in one place.
 
+import { FOUNDING } from "@/lib/pricing"
+
 export const SITE_URL = "https://www.alyvon.com"
 export const SUPPORT_EMAIL = "hello@alyvon.com"
+
+// The one "Alyvon is..." sentence (entity signal for search and AI answers). Use it verbatim
+// wherever the company is described: Organization schema, default meta description, author
+// pages, and off-site profiles (LinkedIn, partner listings), so every source agrees.
+export const ALYVON_IS =
+  "Alyvon is the AI workforce for AI agencies: it interviews a client’s stakeholders, checks their data for AI readiness, drafts the scope both sides sign, and builds the approved agents with the agency in control."
 
 // Google Tag Manager container. Defaults to the live container so GTM works without
 // per-environment env config; still overridable via NEXT_PUBLIC_GTM_ID. GTM IDs are
@@ -20,29 +28,14 @@ export const BOOKING_CALENDAR_URL =
   process.env.NEXT_PUBLIC_BOOKING_URL ||
   "https://api.leadconnectorhq.com/widget/booking/HgkbeF8clhycERoQtWFW"
 
-// Booking CTAs default to the on-site /book embed (keeps people on alyvon.com and lets the
-// booking hand off to /thank-you). A direct GHL/booking URL in env overrides the embed.
-const MARKETING_HUB_BOOKING =
-  process.env.NEXT_PUBLIC_MARKETING_HUB_BOOKING_URL || "/book?product=marketing_hub&source=cta"
-const ANALYTICS_BOOKING =
-  process.env.NEXT_PUBLIC_ANALYTICS_BOOKING_URL || "/book?product=analytics&source=cta"
-
+// The site's one primary action: apply to the founding partner cohort (its first 30 days
+// free replaces the old self-serve trial). Every primary button reads from here.
 export const CTA = {
-  workforce: {
-    label: "Start your 14-day free trial",
-    href: "https://app.alyvon.com/signup",
-    micro: "14 days or 15 credits, whichever comes first. No credit card.",
+  founding: {
+    label: "Get in first",
+    href: "/founding-partners#apply",
+    micro: `First ${FOUNDING.freeDays} days free. No lock-in contract.`,
     product: "workforce" as ProductId,
-  },
-  marketingHub: {
-    label: "Book a Marketing Hub walkthrough",
-    href: MARKETING_HUB_BOOKING,
-    product: "marketing_hub" as ProductId,
-  },
-  analytics: {
-    label: "Book an Analytics scoping call",
-    href: ANALYTICS_BOOKING,
-    product: "analytics" as ProductId,
   },
 } as const
 

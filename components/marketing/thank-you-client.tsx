@@ -23,7 +23,7 @@ const COPY: Record<string, { title: string; body: string }> = {
   },
   trial: {
     title: "Your trial is on its way.",
-    body: "Check your email to finish setting up. You can brief your first department the moment you’re in.",
+    body: "Check your email to finish setting up. You can send your first stakeholder interview the moment you’re in.",
   },
   default: {
     title: "Thanks — we’ve got it.",
@@ -32,9 +32,7 @@ const COPY: Record<string, { title: string; body: string }> = {
 }
 
 const PRODUCT_HOME: Record<string, { label: string; href: string }> = {
-  workforce: { label: "Explore Workforce", href: "/workforce" },
-  marketing_hub: { label: "Explore Marketing Hub", href: "/marketing-hub" },
-  analytics: { label: "Explore Analytics", href: "/analytics" },
+  workforce: { label: "Explore the platform", href: "/platform" },
 }
 
 function readBookingContext(): {
@@ -81,22 +79,25 @@ export function ThankYouClient() {
   const productLink = product ? PRODUCT_HOME[product] : undefined
 
   return (
-    <div className="flex max-w-[640px] flex-col gap-6">
-      <span className="font-mono text-label uppercase text-accent-strong">Confirmed</span>
-      <h1 className="text-display-l text-text-primary sm:text-display-xl">{copy.title}</h1>
-      <p className="text-body-l text-text-secondary">{copy.body}</p>
+    <div className="flex max-w-[680px] flex-col gap-6">
+      <p className="flex items-center gap-2 font-mono text-[13px] uppercase tracking-[0.12em] text-accent">
+        <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+        Confirmed
+      </p>
+      <h1 className="text-balance text-[40px] font-bold leading-[1.03] tracking-[-0.045em] sm:text-[60px]">{copy.title}</h1>
+      <p className="text-body-l text-white/80">{copy.body}</p>
       <div className="flex flex-wrap items-center gap-3">
-        {productLink ? (
-          <Link href={productLink.href} className={cn(buttonVariants({ variant: "primary", size: "lg" }))}>
-            {productLink.label}
-          </Link>
-        ) : (
-          <Link href="/" className={cn(buttonVariants({ variant: "primary", size: "lg" }))}>
-            Back to home
-          </Link>
-        )}
-        <Link href="/" className="text-body font-medium text-accent-strong underline underline-offset-4">
-          Return to alyvon.com
+        <Link
+          href={productLink?.href ?? "/"}
+          className={cn(buttonVariants({ size: "lg" }), "h-[52px] rounded-full px-8")}
+        >
+          {productLink?.label ?? "Back to home"}
+        </Link>
+        <Link
+          href="/insights"
+          className="inline-flex h-[52px] items-center justify-center rounded-full border border-white/25 px-8 text-body-l font-medium text-white transition-colors duration-micro ease-out-standard hover:border-white/60 hover:bg-white/5"
+        >
+          Read Insights while you wait
         </Link>
       </div>
     </div>
