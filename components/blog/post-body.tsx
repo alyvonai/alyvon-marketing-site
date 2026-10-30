@@ -147,6 +147,23 @@ export function PostBody({ blocks }: { blocks: Block[] }) {
                 </p>
               </aside>
             )
+          case "flow":
+            return (
+              <figure key={i} className="flex flex-col gap-2">
+                <ol className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                  {b.steps.map((s, n) => (
+                    <li key={s.label} className="flex flex-col gap-1 rounded-[12px] border border-border-subtle bg-surface p-4">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent-strong">
+                        Step {n + 1}
+                      </p>
+                      <p className="text-body font-semibold text-text-primary">{smartQuotes(s.label)}</p>
+                      <p className="text-body-s text-text-secondary">{smartQuotes(s.note)}</p>
+                    </li>
+                  ))}
+                </ol>
+                <figcaption className="text-body-s text-text-secondary">{smartQuotes(b.caption)}</figcaption>
+              </figure>
+            )
           case "template":
             return (
               <section key={i} aria-label={b.title} className="overflow-hidden rounded-[14px] border border-border-subtle">

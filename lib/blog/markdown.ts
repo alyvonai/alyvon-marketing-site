@@ -31,6 +31,8 @@ function block(b: Block): string {
       ].join("\n")
     case "callout":
       return `> **${b.title}** ${absolute(b.text)}`
+    case "flow":
+      return [`*${b.caption}*`, "", ...b.steps.map((s, i) => `${i + 1}. **${s.label}:** ${s.note}`)].join("\n")
     case "template":
       return [
         `### ${b.title}`,
