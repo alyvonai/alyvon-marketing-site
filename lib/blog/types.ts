@@ -17,6 +17,8 @@ export type Block =
   | { type: "definition"; term: string; text: string }
   | { type: "table"; caption?: string; head: string[]; rows: string[][] }
   | { type: "callout"; title: string; text: string }
+  /** A left-to-right system diagram: each step feeds the next. */
+  | { type: "flow"; caption: string; steps: { label: string; note: string }[] }
   /** An open, copyable template (only downloadables would ever be gated). */
   /** `download` is a /templates/[slug] key: the editable file, offered behind an email form. */
   | { type: "template"; title: string; sections: { label: string; lines: string[] }[]; download?: string }

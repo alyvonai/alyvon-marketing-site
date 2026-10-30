@@ -5,9 +5,10 @@ import { post as changeOrder } from "@/lib/blog/posts/change-order-template"
 import { post as aiWorkforce } from "@/lib/blog/posts/what-is-an-ai-workforce"
 import { post as sowTemplate } from "@/lib/blog/posts/statement-of-work-template-ai"
 import { post as scopeAiProject } from "@/lib/blog/posts/how-to-scope-an-ai-project"
+import { post as humanInTheLoop } from "@/lib/blog/posts/human-in-the-loop-ai"
 
 // Register a post here to publish it (index, sitemap, RSS and static params all read this).
-const POSTS: Post[] = [scopeAiProject, aiReadiness, pilotsFail, changeOrder, aiWorkforce, sowTemplate]
+const POSTS: Post[] = [humanInTheLoop, scopeAiProject, aiReadiness, pilotsFail, changeOrder, aiWorkforce, sowTemplate]
 
 export function getAllPosts(): Post[] {
   return [...POSTS].sort((a, b) => b.published.localeCompare(a.published) || a.title.localeCompare(b.title))
@@ -32,6 +33,8 @@ function blockText(b: Block): string {
       return [...b.head, ...b.rows.flat()].join(" ")
     case "callout":
       return `${b.title} ${b.text}`
+    case "flow":
+      return b.steps.map((s) => `${s.label} ${s.note}`).join(" ")
     case "template":
       return b.sections.flatMap((s) => [s.label, ...s.lines]).join(" ")
   }

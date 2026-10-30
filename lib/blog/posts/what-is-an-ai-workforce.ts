@@ -68,7 +68,7 @@ export const post: Post = {
     },
     {
       type: "p",
-      text: "Human in the loop is not a sign the AI is weak. It is what makes it deployable. Clients’ IT and legal teams approve agents faster when there is a clear rule for what an agent may do alone and what waits for a person. The useful rule of thumb: drafting and research run on their own; sending, publishing, spending and writing to systems of record wait for approval until there is evidence they do not need to.",
+      text: "Human in the loop is not a sign the AI is weak. It is what makes it deployable. Clients’ IT and legal teams approve agents faster when there is a clear rule for what an agent may do alone and what waits for a person. The useful rule of thumb: drafting and research run on their own; sending, publishing, spending and writing to systems of record wait for approval until there is evidence they do not need to. For the full method, see [where the approval gate belongs](/insights/human-in-the-loop-ai).",
     },
     { type: "h2", id: "agencies", text: "What does an AI workforce mean for AI agencies?" },
     {
@@ -122,5 +122,5 @@ export const post: Post = {
     heading: "Deliver your next client project on an AI workforce.",
     body: "Custom agents, memory per client, approvals and an audit trail, already built. First 30 days free for founding partners.",
   },
-  related: ["why-ai-pilots-fail", "ai-readiness-assessment"],
+  related: ["human-in-the-loop-ai", "why-ai-pilots-fail"],
 }
