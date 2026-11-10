@@ -96,7 +96,7 @@ export const post: Post = {
     },
     {
       type: "p",
-      text: "For the exact questions to ask, see the stakeholder interview questions in the [AI readiness assessment guide](/insights/ai-readiness-assessment).",
+      text: "For the exact questions to ask, by role, use the [AI readiness questionnaire](/insights/ai-readiness-questionnaire). When several decision-makers need to choose between use cases, follow the interviews with a short [AI discovery workshop](/insights/ai-discovery-workshop).",
     },
     { type: "h2", id: "disagree", text: "How do you handle stakeholders who disagree?" },
     {

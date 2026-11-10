@@ -73,7 +73,7 @@ export const TEMPLATES: DownloadTemplate[] = [
   },
   {
     slug: "ai-readiness-checklist",
-    title: "AI readiness assessment checklist",
+    title: "AI readiness audit checklist",
     summary: "The five-area audit, data readiness checks and stakeholder questions in one document.",
     includes: [
       "Five readiness areas with evidence and red flags",

@@ -6,9 +6,12 @@ import { post as aiWorkforce } from "@/lib/blog/posts/what-is-an-ai-workforce"
 import { post as sowTemplate } from "@/lib/blog/posts/statement-of-work-template-ai"
 import { post as scopeAiProject } from "@/lib/blog/posts/how-to-scope-an-ai-project"
 import { post as humanInTheLoop } from "@/lib/blog/posts/human-in-the-loop-ai"
+import { post as readinessQuestionnaire } from "@/lib/blog/posts/ai-readiness-questionnaire"
+import { post as aiEmployee } from "@/lib/blog/posts/what-is-an-ai-employee"
+import { post as discoveryWorkshop } from "@/lib/blog/posts/ai-discovery-workshop"
 
 // Register a post here to publish it (index, sitemap, RSS and static params all read this).
-const POSTS: Post[] = [humanInTheLoop, scopeAiProject, aiReadiness, pilotsFail, changeOrder, aiWorkforce, sowTemplate]
+const POSTS: Post[] = [readinessQuestionnaire, aiEmployee, discoveryWorkshop, humanInTheLoop, scopeAiProject, aiReadiness, pilotsFail, changeOrder, aiWorkforce, sowTemplate]
 
 export function getAllPosts(): Post[] {
   return [...POSTS].sort((a, b) => b.published.localeCompare(a.published) || a.title.localeCompare(b.title))
