@@ -45,7 +45,7 @@ export const post: Post = {
     },
     {
       type: "p",
-      text: "The short version of **AI agent vs chatbot**: a chatbot talks, an agent acts. An AI workforce is many agents acting together, with someone in charge.",
+      text: "The short version of **AI agent vs chatbot**: a chatbot talks, an agent acts. An AI workforce is many agents acting together, with someone in charge. For how a single-role agent is scoped and sold, see [what an AI employee is](/insights/what-is-an-ai-employee).",
     },
     { type: "h2", id: "parts", text: "What does an AI workforce need to work?" },
     {

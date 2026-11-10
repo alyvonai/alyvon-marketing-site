@@ -25,6 +25,8 @@ const nextConfig = {
       // The blog launched as Insights; catch any early /blog links.
       { source: "/blog", destination: "/insights", permanent: false },
       { source: "/blog/:path*", destination: "/insights/:path*", permanent: false },
+      // Google still surfaces this page for "AI employee" searches; send it to the post that answers them.
+      { source: "/marketing-hub/ai-employee", destination: "/insights/what-is-an-ai-employee", permanent: true },
       { source: "/marketing-hub", destination: "/", permanent: false },
       { source: "/marketing-hub/:path*", destination: "/", permanent: false },
       { source: "/analytics", destination: "/", permanent: false },

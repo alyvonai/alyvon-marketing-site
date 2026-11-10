@@ -2,12 +2,12 @@ import type { Post } from "@/lib/blog/types"
 
 export const post: Post = {
   slug: "ai-readiness-assessment",
-  title: "AI readiness assessment: the 5 checks to run before you sell an AI pilot",
-  seoTitle: "AI readiness assessment: a 5-part AI audit before any pilot",
+  title: "AI readiness audit: the 5 checks to run before you sell an AI pilot",
+  seoTitle: "AI readiness audit and assessment: 5 checks before a pilot",
   description:
-    "What an AI readiness assessment checks, the four stages of AI maturity, how to test data readiness for AI, and ten questions to ask stakeholders before a pilot.",
+    "What an AI readiness audit checks, the four stages of AI maturity, how to test data readiness, and the questionnaire to send stakeholders before any AI pilot.",
   answer:
-    "An AI readiness assessment, often called an AI audit, checks whether a business can run an AI pilot that reaches production. It tests five things: a specific use case with a cost attached, agreement between stakeholders, data that exists and can be reached, named people who approve the work, and a measurable baseline. Most businesses fail on data or agreement, not on technology.",
+    "An AI readiness audit, also called an AI readiness assessment, checks whether a business can run an AI pilot that reaches production. It tests five things: a specific use case with a cost attached, agreement between stakeholders, data that exists and can be reached, named people who approve the work, and a measurable baseline. Most businesses fail on data or agreement, not on technology.",
   takeaways: [
     "AI readiness is always readiness for one specific use case, not a company-wide score.",
     "Check five areas: the use case, stakeholder agreement, data, ownership and a baseline.",
@@ -19,11 +19,11 @@ export const post: Post = {
   category: "AI readiness",
   author: "shawn-sias",
   published: "2026-10-28",
-  updated: "2026-10-28",
+  updated: "2026-11-09",
   body: [
     { type: "p", text: "Most AI pilots that stall were never ready to start. The data lived in PDFs, the stakeholders wanted different things, or nobody could say how the work was measured. An AI readiness assessment finds that out before anyone signs, while fixing it is still cheap." },
-    { type: "h2", id: "what-is", text: "What is an AI readiness assessment?" },
-    { type: "definition", term: "AI readiness assessment", text: "An AI readiness assessment is a structured check of whether a business can put one specific AI use case into production, covering the use case and its cost, stakeholder agreement, data, ownership and a measurable baseline." },
+    { type: "h2", id: "what-is", text: "What is an AI readiness audit?" },
+    { type: "definition", term: "AI readiness audit", text: "An AI readiness audit, also called an AI readiness assessment, is a structured check of whether a business can put one specific AI use case into production, covering the use case and its cost, stakeholder agreement, data, ownership and a measurable baseline." },
     {
       type: "definition",
       term: "AI readiness",
@@ -33,7 +33,7 @@ export const post: Post = {
       type: "p",
       text: "Readiness is always readiness **for something**. A company can be ready to automate quote intake and nowhere near ready to automate underwriting decisions. That is why a useful assessment starts from a named use case, not a company-wide maturity score.",
     },
-    { type: "h2", id: "what-it-checks", text: "What does an AI readiness assessment check?" },
+    { type: "h2", id: "what-it-checks", text: "What does an AI readiness audit check?" },
     {
       type: "p",
       text: "A complete assessment covers five areas. Each one has a question to answer, evidence that actually counts, and a red flag that should stop or reshape the pilot.",
@@ -121,7 +121,7 @@ export const post: Post = {
       title: "Example: a commercial quote intake pilot",
       text: "Read-only queries against an insurance agency’s management system found 412 submissions in 90 days, 14 of the 16 carrier-portal fields populated, and loss runs stored only as PDFs. Portal pre-fill stayed in scope; reading loss runs moved to phase two. The surprise happened before the quote, where it costs nothing. (Illustrative sample engagement.)",
     },
-    { type: "h2", id: "how-long", text: "How long does an AI readiness assessment take?" },
+    { type: "h2", id: "how-long", text: "How long does an AI readiness audit take?" },
     {
       type: "p",
       text: "Run the traditional way, with scheduled discovery calls, notes rewritten into requirements and a ticket to IT for data access, an assessment commonly stretches across several weeks. Most of that time is waiting, not work.",
@@ -139,7 +139,7 @@ export const post: Post = {
         "**AI maturity model:** a company-wide scale. Useful for strategy and benchmarking, too coarse to decide whether one pilot should start.",
       ],
     },
-    { type: "h2", id: "output", text: "What should an AI readiness assessment produce?" },
+    { type: "h2", id: "output", text: "What should an AI readiness audit produce?" },
     {
       type: "p",
       text: "A slide that says “medium readiness” is not an output. The assessment should leave you with documents someone can act on:",
@@ -155,10 +155,10 @@ export const post: Post = {
         "A go, no-go or reshape recommendation, and the scope that follows from it",
       ],
     },
-    { type: "h2", id: "questions", text: "What questions should you ask stakeholders?" },
+    { type: "h2", id: "questions", text: "What should an AI readiness questionnaire ask?" },
     {
       type: "p",
-      text: "Interview the people who do the work, the people who manage it and the person who pays for it, separately. Ask each the same core questions so disagreements surface:",
+      text: "Interview the people who do the work, the people who manage it and the person who pays for it, separately. Ask each the same core questions so disagreements surface. The [full AI readiness questionnaire](/insights/ai-readiness-questionnaire) has 30 questions by role; these ten are the core:",
     },
     {
       type: "ol",
@@ -203,8 +203,8 @@ export const post: Post = {
   ],
   faq: [
     {
-      q: "What is an AI readiness assessment?",
-      a: "An AI readiness assessment checks whether a business can put a specific AI use case into production. It reviews the use case and its cost, stakeholder agreement, data readiness, ownership and approvals, and the baseline the result will be measured against.",
+      q: "What is an AI readiness audit?",
+      a: "An AI readiness audit, or AI readiness assessment, checks whether a business can put a specific AI use case into production. It reviews the use case and its cost, stakeholder agreement, data readiness, ownership and approvals, and the baseline the result will be measured against.",
     },
     {
       q: "Is an AI audit the same as an AI readiness assessment?",
@@ -227,5 +227,5 @@ export const post: Post = {
     heading: "Run the readiness assessment on your next client.",
     body: "Send each stakeholder one link, check their data read-only, and get scored requirements back in days. First 30 days free for founding partners.",
   },
-  related: ["how-to-scope-an-ai-project", "why-ai-pilots-fail"],
+  related: ["ai-readiness-questionnaire", "how-to-scope-an-ai-project"],
 }

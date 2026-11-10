@@ -35,7 +35,7 @@ function readinessChecklist(post) {
   const [areas, stages] = tables
   const [dataChecks, questions] = lists
   return {
-    title: "AI readiness assessment checklist",
+    title: "AI readiness audit checklist",
     intro: summary("ai-readiness-checklist"),
     sections: [
       {
